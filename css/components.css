@@ -573,9 +573,9 @@
     padding: 1.5rem;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    height: 100%; /* Ensure cards in grid fill height */
+    height: 100%; 
     display: flex;
-    flex-direction: column; /* Stack header and p */
+    flex-direction: column; 
 }
 
 .interest-card:hover {
@@ -607,7 +607,51 @@
 .interest-card p {
     color: var(--muted);
     line-height: 1.6;
-    flex-grow: 1; /* Allow paragraph to take space if needed */
+    flex-grow: 1; 
+    margin-bottom: 1rem; /* Add margin back below paragraph */
+}
+
+/* Container for multiple link buttons at the bottom of the card */
+.interest-card-links {
+    margin-top: auto; /* Push to bottom */
+    padding-top: 1rem; /* Increased space above links */
+    text-align: right; 
+    /* Add flex properties if needed for better alignment/spacing */
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    /* gap: 0.5rem; */
+}
+
+/* Interest Link Button - Style updated to match homelab buttons */
+.interest-link-btn {
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    /* Removed fixed width/height and circular border-radius */
+    padding: 0.5rem 0.8rem; /* Adjust padding */
+    background-color: var(--card); /* Match homelab base bg */
+    color: var(--primary); /* Match homelab base text color */
+    border: 1px solid var(--border); /* Match homelab border */
+    border-radius: 6px; /* Match homelab border-radius */
+    text-decoration: none;
+    font-size: 0.9rem; /* Match homelab icon size */
+    line-height: 1;
+    box-shadow: var(--shadow-sm); /* Match homelab shadow */
+    transition: background-color 0.2s ease-out, color 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out; /* Match homelab transitions */
+    margin-left: 0.5rem; 
+}
+
+.interest-link-btn:hover {
+    background-color: var(--primary); /* Match homelab hover bg */
+    color: white; /* Match homelab hover text color */
+    box-shadow: var(--shadow-md); /* Match homelab hover shadow */
+    transform: scale(1.05); /* Slightly different hover transform */
+}
+
+/* Ensure icon size consistency */
+.interest-link-btn i {
+    font-size: 1em; /* Inherit font-size from button */
+    line-height: 1;
 }
 
 /* Specific style for fusion item card titles if needed */
@@ -617,12 +661,22 @@
 
 /* Homelab Showcase Styles */
 .homelab-showcase {
-    margin-top: 3rem; /* Space above homelab section */
+    margin-top: 3rem; 
 }
 
 .homelab-image-container {
     /* Container for the image */
-    position: relative; /* For potential overlays or captions */
+    position: relative; 
+    display: block; /* Ensure it takes block space */
+}
+
+/* If image container is wrapped in a link */
+.homelab-content a .homelab-image-container {
+    transition: transform 0.3s ease-out; 
+}
+
+.homelab-content a:hover .homelab-image-container {
+    transform: scale(1.03); /* Example hover effect for linkable image */
 }
 
 .homelab-image {
@@ -658,4 +712,39 @@
 .homelab-specs strong {
     color: var(--text-light);
     margin-right: 0.5rem;
+}
+
+/* Homelab Links Container (below title) */
+.homelab-links {
+    margin-top: 1rem; /* Space below section line */
+    margin-bottom: 1.5rem; /* Space above main content */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem; /* Space between buttons */
+}
+
+.homelab-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--card);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out, box-shadow 0.2s ease-out;
+    box-shadow: var(--shadow-sm);
+}
+
+.homelab-link-btn i {
+    margin-right: 0.5rem; /* Space between icon and potential text */
+    font-size: 1em;
+}
+
+.homelab-link-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
 } 

@@ -321,22 +321,52 @@ document.addEventListener('DOMContentLoaded', () => {
       mainHeader.textContent = data.title || 'Interests & Passions';
     }
 
+    // Helper function to create a card element
+    const createCardElement = (itemData, baseClass) => {
+        const cardElement = document.createElement('div');
+        cardElement.className = baseClass;
+        
+        const iconHTML = itemData.icon ? `<i class="${itemData.icon} interest-icon"></i>` : '';
+        
+        // Check for links and generate buttons for ALL valid links
+        let linksHTML = '';
+        if (itemData.links && Array.isArray(itemData.links) && itemData.links.length > 0) {
+            const linkButtons = itemData.links
+                .filter(link => link.url && link.icon) // Ensure both url and icon exist
+                .map(link => `
+                    <a href="${link.url}" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="interest-link-btn" 
+                       aria-label="${itemData.title} Link">
+                        <i class="${link.icon}"></i>
+                    </a>
+                `).join(''); // Join multiple buttons
+            
+            if (linkButtons) { // Only add container if there are buttons
+                linksHTML = `<div class="interest-card-links">${linkButtons}</div>`;
+            }
+        }
+
+        cardElement.innerHTML = `
+          <div class="interest-card-header">
+            ${iconHTML}
+            <h3>${itemData.title}</h3>
+          </div>
+          <p>${itemData.description}</p>
+          ${linksHTML}
+        `;
+        
+        return cardElement; 
+    };
+
     // Load Core Interests
     const coreGrid = interestsSection.querySelector('.core-interests-grid');
     if (coreGrid && data.coreInterests) {
       coreGrid.innerHTML = '';
       data.coreInterests.forEach(interest => {
-        const card = document.createElement('div');
-        card.className = 'interest-card';
-        const iconHTML = interest.icon ? `<i class="${interest.icon} interest-icon"></i>` : '';
-        card.innerHTML = `
-          <div class="interest-card-header">
-            ${iconHTML}
-            <h3>${interest.title}</h3>
-          </div>
-          <p>${interest.description}</p>
-        `;
-        coreGrid.appendChild(card);
+        const cardElement = createCardElement(interest, 'interest-card');
+        coreGrid.appendChild(cardElement);
       });
     }
 
@@ -351,17 +381,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (fusionGrid) {
           fusionGrid.innerHTML = '';
           data.fusionPassions.forEach(fusion => {
-            const item = document.createElement('div');
-            item.className = 'fusion-item interest-card'; // Reuse interest-card style
-            const iconHTML = fusion.icon ? `<i class="${fusion.icon} interest-icon"></i>` : '';
-            item.innerHTML = `
-              <div class="interest-card-header">
-                 ${iconHTML}
-                 <h4>${fusion.title}</h4>
-              </div>
-              <p>${fusion.description}</p>
-            `;
-            fusionGrid.appendChild(item);
+             // Note: createCardElement expects h3, so we use h4 in the baseClass if needed for CSS
+             // Or adjust createCardElement to accept title tag type parameter
+            const cardElement = createCardElement(fusion, 'interest-card fusion-item'); 
+            // Manually change h3 back to h4 if createCardElement always makes h3
+            const titleElement = cardElement.querySelector('h3');
+            if (titleElement) {
+                const h4 = document.createElement('h4');
+                h4.textContent = titleElement.textContent;
+                titleElement.replaceWith(h4);
+            }
+            fusionGrid.appendChild(cardElement);
           });
       }
     }
@@ -370,17 +400,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const homelabContainer = interestsSection.querySelector('.homelab-showcase');
     if (homelabContainer && data.homelabDetails) {
       const homelabHeader = homelabContainer.querySelector('h2');
+      const homelabLinksContainer = homelabContainer.querySelector('.homelab-links'); // Target new links container
       const homelabContent = homelabContainer.querySelector('.homelab-content');
 
       if(homelabHeader) homelabHeader.textContent = data.homelabTitle || 'The Digital Forge – My Homelab';
 
+      // Populate Homelab Links under the title
+      if(homelabLinksContainer && data.homelabDetails.links && Array.isArray(data.homelabDetails.links)) {
+          homelabLinksContainer.innerHTML = ''; // Clear previous
+          data.homelabDetails.links
+              .filter(link => link.url && link.icon) // Keep filtering for valid links
+              .forEach(link => {
+                  const linkButton = document.createElement('a');
+                  linkButton.href = link.url;
+                  linkButton.target = '_blank';
+                  linkButton.rel = 'noopener noreferrer';
+                  linkButton.className = 'homelab-link-btn'; 
+                  linkButton.setAttribute('aria-label', link.label || 'Homelab Link');
+                  // Add both icon and label text
+                  linkButton.innerHTML = `<i class="${link.icon}"></i> <span>${link.label || 'Link'}</span>`; 
+                  homelabLinksContainer.appendChild(linkButton);
+              });
+      }
+
+      // Populate Homelab Content (Image, Description, Specs)
       if(homelabContent) {
           homelabContent.innerHTML = ''; // Clear existing
           
+          // Keep image separate, no longer linked itself
           let imageHTML = '';
           if(data.homelabDetails.image) {
               imageHTML = `<img src="${data.homelabDetails.image}" alt="My Homelab Setup" class="homelab-image">`;
           }
+          const imageContainerHTML = imageHTML ? `<div class="homelab-image-container">${imageHTML}</div>` : '';
 
           let descriptionHTML = '';
           if(data.homelabDetails.description) {
@@ -389,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           let specsHTML = '';
           if(data.homelabDetails.specs && Array.isArray(data.homelabDetails.specs)) {
-              // Basic markdown support for **bold**
               const specItems = data.homelabDetails.specs.map(spec => 
                   `<li>${spec.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`
               ).join('');
@@ -402,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${descriptionHTML}
                   ${specsHTML}
               </div>
-              ${imageHTML ? `<div class="homelab-image-container">${imageHTML}</div>` : ''}
+              ${imageContainerHTML} 
           `;
       }
     }
