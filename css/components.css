@@ -34,6 +34,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
 }
 
 .portfolio-image {
@@ -60,10 +61,12 @@
 
 .portfolio-content h4 {
   margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .portfolio-content p {
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .portfolio-tags {
@@ -496,4 +499,36 @@
 .timeline-content .description {
     color: var(--text);
     line-height: 1.6;
+}
+
+/* Add subtle visual cue for redacted items, e.g., slight opacity */
+.portfolio-item.is-redacted {
+    /* Optional: Add styles like opacity or border to distinguish the whole card */
+    /* opacity: 0.9; */
+}
+
+/* Redacted Badge Styles */
+.redacted-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+    color: #f0f0f0; /* Light grey text */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 2; /* Ensure it's above the image */
+    display: inline-flex; /* Use flex for icon alignment */
+    align-items: center;
+    gap: 4px; /* Space between icon and text */
+}
+
+.redacted-badge .fa-lock {
+    font-size: 0.7rem; /* Slightly smaller icon */
+}
+
+/* Ensure content doesn't overlap badge - adjust padding if needed */
+.portfolio-content {
+  /* padding: 1.5rem; */ /* Ensure padding is sufficient */
 } 

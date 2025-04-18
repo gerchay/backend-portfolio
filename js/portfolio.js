@@ -58,10 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // Create the main container div
       const portfolioItemContainer = document.createElement('div');
       portfolioItemContainer.classList.add('portfolio-item');
-      // Add fade-in class immediately for animation
       portfolioItemContainer.classList.add('fade-in'); 
       
-      // Add tags as classes for potential styling (optional)
+      // Add redacted class if applicable
+      if (item.isRedacted) {
+        portfolioItemContainer.classList.add('is-redacted');
+      }
+      
       if (item.tags && Array.isArray(item.tags)) {
           item.tags.forEach(tag => portfolioItemContainer.classList.add(`tag-${tag.toLowerCase().replace(/[^a-z0-9]/g, '-')}`));
       }
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `<div class="portfolio-tags">${item.tags.map(tag => `<span class="portfolio-tag">${tag}</span>`).join('')}</div>`
         : '';
 
-      // Create details HTML (if details exist)
+      // Create details HTML
       let detailsHTML = '';
       if (item.details) {
           detailsHTML += '<div class="portfolio-item-details">';
@@ -82,9 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           detailsHTML += '</div>';
       }
+
+      // Create Redacted Badge HTML
+      const redactedBadgeHTML = item.isRedacted 
+          ? '<div class="redacted-badge"><i class="fas fa-lock"></i> Redacted</div>' 
+          : '';
       
       // Set inner HTML for the container
       portfolioItemContainer.innerHTML = `
+        ${redactedBadgeHTML}
         <div class="portfolio-image">
           <img src="${item.image || 'https://placehold.co/800x600/eee/ccc?text=No+Image'}" alt="${item.title || 'Portfolio Item'}">
         </div>
@@ -96,14 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
-      // Determine the wrapper: link if URL exists, otherwise just the container
+      // Determine the wrapper: link if URL exists and not redacted
       let finalItemElement;
-      if (item.url && item.url !== '#') { // Check if URL is valid and not just placeholder
+      if (item.url && item.url !== '#' && !item.isRedacted) { 
           finalItemElement = document.createElement('a');
           finalItemElement.href = item.url;
-          finalItemElement.target = '_blank'; // Open in new tab
+          finalItemElement.target = '_blank'; 
           finalItemElement.rel = 'noopener noreferrer';
-          finalItemElement.className = 'portfolio-item-link'; // Add class for potential styling
+          finalItemElement.className = 'portfolio-item-link'; 
           finalItemElement.appendChild(portfolioItemContainer);
       } else {
           finalItemElement = portfolioItemContainer;

@@ -7,6 +7,7 @@
     "description": "A household budget app that automatically gathers and parses bank emails through a backend Python API running on a home server, inserting the information into MongoDB.",
     "tags": ["Flutter", "MongoDB", "Python API"],
     "url": "#",
+    "isRedacted": false,
     "details": {
       "client": "Personal Project",
       "completed": "March 2023",
@@ -14,27 +15,14 @@
     }
   },
   {
-    "id": 2,
-    "title": "MyBudget",
-    "category": "mobile",
-    "image": "https://picsum.photos/id/452/800/600",
-    "description": "An expense and income tracking app that enables users to analyze and visualize their financial data through intuitive graphs, promoting effective financial management.",
-    "tags": ["Android", "Java", "Data Visualization"],
-    "url": "#",
-    "details": {
-      "client": "Personal Project",
-      "completed": "November 2021",
-      "services": ["Android Development", "UX Design", "Data Visualization"]
-    }
-  },
-  {
     "id": 3,
-    "title": "Sigma Calculator",
+    "title": "AstralCalc",
     "category": "mobile",
     "image": "https://picsum.photos/id/48/800/600",
     "description": "A versatile calculator app that allows users to perform a range of calculations, including VAT, loans, interest, and unit conversions. Published on Google's Play Store.",
     "tags": ["Android", "Java", "UI/UX"],
-    "url": "#",
+    "url": "https://play.google.com/store/apps/details?id=com.ahs.astralcalc",
+    "isRedacted": false,
     "details": {
       "client": "Personal Project",
       "completed": "October 2021",
@@ -48,7 +36,8 @@
     "image": "https://picsum.photos/id/365/800/600",
     "description": "A comprehensive point-of-sale system that streamlined transactions and inventory management, increasing operational efficiency and customer satisfaction.",
     "tags": ["Java", "PostgreSQL", "Desktop App"],
-    "url": "#",
+    "url": "https://youtu.be/JgziDgPAzi4",
+    "isRedacted": false,
     "details": {
       "client": "Business Client",
       "completed": "December 2021",
@@ -63,6 +52,7 @@
     "description": "Collection of automation standalone scripts and full fledged automation frameworks for various IT tasks, improving efficiency and reducing manual workload in enterprise environments.",
     "tags": ["Python", "PowerShell", "Bash"],
     "url": "#",
+    "isRedacted": false,
     "details": {
       "client": "Vodafone Oman",
       "completed": "Ongoing",
@@ -77,10 +67,86 @@
     "description": "Personal homelab setup with servers, hypervisors, and containers for testing and development environments.",
     "tags": ["Linux", "Proxmox", "Virtualization"],
     "url": "https://gist.github.com/asad-albadi/f23ff6d6efabce2851421636274ccfc1",
+    "isRedacted": false,
     "details": {
       "client": "Personal Project",
       "completed": "Ongoing",
       "services": ["Server Administration", "Virtualization", "Network Setup"]
     }
-  }
+  },
+  {
+    "id": 7,
+    "title": "Enterprise Workflow Optimization Tool",
+    "category": "web",
+    "image": "https://picsum.photos/id/111/800/600",
+    "description": "Created a web application to streamline customer support requests and problems, improving customer satisfaction and reducing operational costs.",
+    "tags": ["Web App", "Process Improvement", "Internal Tool"],
+    "url": "#",
+    "isRedacted": true,
+    "details": {
+      "client": "Vodafone Oman",
+      "completed": "Q4 2022",
+      "services": ["Web Development", "Workflow Analysis"]
+    }
+  }, 
+  {
+      "id": 8, 
+      "title": "Customer Engagement Platform", 
+      "category": "automation", 
+      "image": "https://picsum.photos/id/239/800/600", 
+      "description": "Developed and managed a platform for CVM teams to execute targeted marketing campaigns via SMS and Push Notifications, incorporating a gamification system to enhance customer engagement and loyalty.", 
+      "tags": ["CVM", "Marketing Automation", "Gamification", "API Integration", "SMS", "Push Notifications"], 
+      "url": "#", 
+      "isRedacted": true, 
+      "details": {
+      "client": "Vodafone Oman",
+        "completed": "Q1 2024", 
+        "services": ["Platform Development", "Campaign Management Tools", "API Integration", "Gamification Design"] 
+      }
+    } ,
+       {
+      "id": 9, 
+      "title": "Unified Operations Dashboard", 
+      "category": "dashboard", 
+      "image": "https://picsum.photos/id/312/800/600", 
+      "description": "Designed and developed a comprehensive internal dashboard consolidating real-time data for regional tower operations, roaming partner status, CVM campaign tracking (ref: Project #8), and OpenShift/OpenStack cloud platform monitoring.", 
+      "tags": ["Dashboard", "Monitoring", "Internal Tool", "Data Visualization", "Telecom Ops", "Cloud Monitoring", "API"], 
+      "url": "#", 
+      "isRedacted": true, 
+      "details": {
+        "client": "Vodafone Oman", 
+        "completed": "Q1 2025", 
+        "services": ["Dashboard Development", "Data Aggregation", "API Integration", "Real-time Monitoring", "UI Design"] 
+      }
+    } ,
+    {
+      "id": 10, 
+      "title": "GymLog",
+      "category": "mobile", 
+      "image": "https://picsum.photos/id/1060/800/600", 
+      "description": "Comprehensive workout tracking application that helps you monitor and analyze your gym activities. Supports various exercise types, muscle group targeting, detailed logging, and statistics.", 
+      "tags": ["Android", "Fitness", "Workout Tracker", "Health", "Local Data", "SQLite"], 
+      "url": "https://play.google.com/store/apps/details?id=com.ahs.gymlog", 
+      "isRedacted": false,
+      "details": {
+        "client": "Astral Hive Solutions", 
+        "completed": "Published Dec 2024", 
+        "services": ["Android Development", "UI/UX Design", "Local Database (SQLite)", "Fitness Tracking Features", "Data Visualization"] 
+      }
+    },
+    {
+      "id": 11, 
+      "title": "MazadCars",
+      "category": "web", 
+      "image": "https://picsum.photos/id/1076/800/600", 
+      "description": "MazadCars is your all-in-one webapp for managing car auctions and logistics.", 
+      "tags": ["Web App", "Auction Platform", "Logistics", "Car Auction", "Management Tool"], 
+      "url": "https://mazadcars.net/", 
+      "isRedacted": false,
+      "details": {
+        "client": "al3badi_cars", 
+        "completed": "2024", 
+        "services": ["Web Development", "Auction System", "Logistics Management", "Database Design", "UI/UX Design"] 
+      }
+    }
 ] 
