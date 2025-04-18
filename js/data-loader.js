@@ -244,8 +244,26 @@ document.addEventListener('DOMContentLoaded', () => {
       data.technicalSkills.forEach(skill => {
         const skillItem = document.createElement('div');
         skillItem.className = 'skill-item';
+        
+        // Create icon element with background
+        let iconContainerHTML = '';
+        if (skill.icon) {
+            let iconTag = '';
+            // Basic check: if it looks like a Font Awesome class
+            if (skill.icon.startsWith('fa')) { 
+                iconTag = `<i class="${skill.icon} skill-icon"></i>`;
+            } else { // Assume it's an image URL
+                iconTag = `<img src="${skill.icon}" alt="${skill.name} icon" class="skill-icon">`;
+            }
+            // Wrap the icon tag in the background container
+            iconContainerHTML = `<span class="skill-icon-background">${iconTag}</span>`;
+        }
+
         skillItem.innerHTML = `
-          <div class="skill-name">${skill.name}</div>
+          <div class="skill-header">
+            ${iconContainerHTML} 
+            <span class="skill-name">${skill.name}</span>
+          </div>
           <div class="skill-bar">
             <div class="skill-progress" style="width: ${skill.percentage}%"></div>
           </div>

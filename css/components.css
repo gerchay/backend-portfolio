@@ -237,13 +237,56 @@
 
 /* Skills */
 .skill-item {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Circular background for the icon */
+.skill-icon-background {
+  display: inline-flex; /* Use flex to center the icon */
+  align-items: center;
+  justify-content: center;
+  width: 30px; /* Size of the background circle */
+  height: 30px;
+  background-color: white; /* White background */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 0.75rem; /* Space between background and text */
+  flex-shrink: 0;
+  /* Optional: add a subtle shadow or border if needed */
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+  /* border: 1px solid var(--border); */
+}
+
+/* Icon styles (img or i tag) inside the background */
+.skill-icon {
+  object-fit: contain;
+  margin-right: 1rem;
+  display: block; /* Helps with alignment */
+  /* Remove margin from icon itself */
+  margin-right: 0;
+}
+
+/* Font Awesome icon specific adjustments */
+.skill-icon.fas,
+.skill-icon.fab,
+.skill-icon.far {
+  font-size: 18px; /* Match size */
+  line-height: 1;
+  text-align: center;
+  color: var(--primary); /* Example: Use primary color for FA icons */
+  width: auto; /* Allow font icon to naturally size */
+  height: auto;
 }
 
 .skill-name {
-  margin-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
 }
 
 .skill-bar {
