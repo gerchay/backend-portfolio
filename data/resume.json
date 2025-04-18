@@ -52,7 +52,7 @@
       "percentage": 90
     },
     {
-      "name": "Python Automation",
+      "name": "Python Development",
       "percentage": 95
     },
     {
@@ -70,6 +70,10 @@
     {
       "name": "Database (SQL & NoSQL)",
       "percentage": 88
+    },
+    {
+      "name": "Rust Development",
+      "percentage": 40
     }
   ],
   "softSkills": [
