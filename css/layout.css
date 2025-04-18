@@ -262,6 +262,7 @@ h1 {
   }
   
   .main-content {
+    height: 50vh;
     grid-column: 2;
     width: 100%; /* Let it take the full width of the grid column */
     max-width: none; /* Remove max-width */
