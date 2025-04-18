@@ -42,8 +42,8 @@
     "specs": [
       "**Chassis:** DeskPi 10\" RackMate",
       "**Virtualization:** Proxmox VE",
-      "**Networking:** OPNsense Firewall",
-      "**Storage:** TrueNAS Scale (in Node 304 case)",
+      "**Networking:** OPNsense",
+      "**Storage:** TrueNAS Core",
       "**Containerization:** Docker",
       "**Key Services:** Self-hosted applications, CI/CD pipelines, network monitoring, automation workflows"
     ]
