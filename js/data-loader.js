@@ -181,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const experienceTimeline = resumeSection.querySelector('.resume-section:nth-of-type(1) .timeline');
     if (experienceTimeline) {
       experienceTimeline.innerHTML = '';
-      
       data.experience.forEach(job => {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
@@ -202,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const educationTimeline = resumeSection.querySelector('.resume-section:nth-of-type(2) .timeline');
     if (educationTimeline) {
       educationTimeline.innerHTML = '';
-      
       data.education.forEach(edu => {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
@@ -222,13 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const certTimeline = resumeSection.querySelector('.resume-section:nth-of-type(3) .timeline');
     if (certTimeline) {
       certTimeline.innerHTML = '';
-      
       data.certifications.forEach(cert => {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
-        
         const listItems = cert.items.map(item => `<li>${item}</li>`).join('');
-        
         timelineItem.innerHTML = `
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -243,10 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Technical Skills
-    const techSkillsGrid = resumeSection.querySelector('.skills-section:nth-of-type(1) .skills-grid');
+    const techSkillsGrid = resumeSection.querySelector('#technical-skills .skills-grid');
     if (techSkillsGrid && data.technicalSkills) {
       techSkillsGrid.innerHTML = '';
-      
       data.technicalSkills.forEach(skill => {
         const skillItem = document.createElement('div');
         skillItem.className = 'skill-item';
@@ -259,14 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
         techSkillsGrid.appendChild(skillItem);
       });
     } else {
-      console.warn('Technical skills section or data not found');
+      console.warn('Technical skills section (#technical-skills .skills-grid) or data not found');
     }
     
     // Soft Skills
-    const softSkillsGrid = resumeSection.querySelector('.skills-section:nth-of-type(2) .skills-grid');
+    const softSkillsGrid = resumeSection.querySelector('#soft-skills .skills-grid');
     if (softSkillsGrid && data.softSkills) {
       softSkillsGrid.innerHTML = '';
-      
       data.softSkills.forEach(skill => {
         const skillItem = document.createElement('div');
         skillItem.className = 'skill-item';
@@ -279,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         softSkillsGrid.appendChild(skillItem);
       });
     } else {
-      console.warn('Soft skills section or data not found');
+      console.warn('Soft skills section (#soft-skills .skills-grid) or data not found');
     }
   }
   
