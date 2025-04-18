@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "Modern E-commerce Platform",
+    "category": "web",
+    "image": "assets/images/portfolio-placeholder-1.jpg",
+    "description": "A fully responsive e-commerce platform with cart, checkout, and payment integration.",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "url": "#",
+    "details": {
+      "client": "RetailCorp Inc.",
+      "completed": "August 2022",
+      "services": ["Web Development", "UX Design", "Database Architecture"]
+    }
+  },
+  {
+    "id": 2,
+    "title": "Mobile Banking App",
+    "category": "mobile",
+    "image": "assets/images/portfolio-placeholder-2.jpg",
+    "description": "A secure banking application for iOS and Android with biometric authentication.",
+    "tags": ["React Native", "Redux", "Firebase"],
+    "url": "#",
+    "details": {
+      "client": "FinTech Solutions",
+      "completed": "March 2022",
+      "services": ["Mobile Development", "Security Implementation", "API Integration"]
+    }
+  },
+  {
+    "id": 3,
+    "title": "Portfolio Website Design",
+    "category": "design",
+    "image": "assets/images/portfolio-placeholder-3.jpg",
+    "description": "Clean and modern portfolio website design for creative professionals.",
+    "tags": ["Figma", "UI/UX", "Prototype"],
+    "url": "#",
+    "details": {
+      "client": "Creative Studio",
+      "completed": "January 2022",
+      "services": ["UI Design", "Wireframing", "Prototyping"]
+    }
+  },
+  {
+    "id": 4,
+    "title": "Task Management Dashboard",
+    "category": "web",
+    "image": "assets/images/portfolio-placeholder-4.jpg",
+    "description": "Intuitive dashboard for team collaboration and project management.",
+    "tags": ["Vue.js", "Express", "PostgreSQL"],
+    "url": "#",
+    "details": {
+      "client": "ProjectFlow Ltd.",
+      "completed": "November 2021",
+      "services": ["Frontend Development", "Backend Development", "Database Design"]
+    }
+  },
+  {
+    "id": 5,
+    "title": "Health Tracking App",
+    "category": "mobile",
+    "image": "assets/images/portfolio-placeholder-5.jpg",
+    "description": "Mobile application for tracking fitness activities and health metrics.",
+    "tags": ["Flutter", "Dart", "GraphQL"],
+    "url": "#",
+    "details": {
+      "client": "HealthTech Inc.",
+      "completed": "September 2021",
+      "services": ["Mobile Development", "API Development", "Data Visualization"]
+    }
+  },
+  {
+    "id": 6,
+    "title": "Brand Identity Design",
+    "category": "design",
+    "image": "assets/images/portfolio-placeholder-6.jpg",
+    "description": "Complete brand identity design including logo, color palette, and guidelines.",
+    "tags": ["Branding", "Illustrator", "Identity"],
+    "url": "#",
+    "details": {
+      "client": "Startup Ventures",
+      "completed": "July 2021",
+      "services": ["Brand Strategy", "Logo Design", "Brand Guidelines"]
+    }
+  }
+] 

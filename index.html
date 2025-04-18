@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asad's Portfolio - Full Stack Developer specializing in web and mobile applications">
+    <meta name="theme-color" content="#7c3aed">
+    <title>Asad's Portfolio</title>
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="css/colors.css" as="style">
+    <link rel="preload" href="css/layout.css" as="style">
+    <!-- Stylesheet loading -->
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- Defer non-critical resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Fallback for no JS -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- Sidebar (Desktop) / Header (Mobile) -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <div class="profile">
+                <div class="avatar">
+                    <img src="assets/images/avatar-placeholder.png" alt="Profile Picture">
+                </div>
+                <h1 class="name">Asad</h1>
+                <p class="title">Full Stack Developer</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>email@example.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (123) 456-7890</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>New York, USA</span>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="mobile-header">
+                <div class="mobile-profile">
+                    <img src="assets/images/avatar-placeholder.png" alt="Profile Picture">
+                    <div>
+                        <h1 class="name">Asad</h1>
+                        <p class="title">Full Stack Developer</p>
+                    </div>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <p class="about-text">
+                    I'm a passionate full-stack developer with experience in building scalable, user-friendly web and mobile applications. 
+                    My expertise includes front-end development, back-end systems, and everything in between.
+                </p>
+                
+                <div class="what-i-do">
+                    <h3>What I Do</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Web Development</h4>
+                            <p>Building responsive, accessible, and performant websites using modern technologies.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Mobile Development</h4>
+                            <p>Creating native and cross-platform mobile applications for iOS and Android.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-server"></i>
+                            <h4>Backend Development</h4>
+                            <p>Developing robust and scalable server-side applications and APIs.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>UI/UX Design</h4>
+                            <p>Designing intuitive and visually appealing user interfaces and experiences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section">
+            <div class="section-header">
+                <h2>Resume</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="resume-content">
+                <div class="resume-section">
+                    <h3>Work Experience</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Senior Developer</h4>
+                                <p class="company">Tech Company, Inc.</p>
+                                <p class="period">2020 - Present</p>
+                                <p class="description">Led development of several key projects, managing a team of developers and implementing best practices.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Full Stack Developer</h4>
+                                <p class="company">Digital Solutions LLC</p>
+                                <p class="period">2017 - 2020</p>
+                                <p class="description">Designed and developed web applications using React, Node.js, and MongoDB.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3>Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Master's in Computer Science</h4>
+                                <p class="company">University of Technology</p>
+                                <p class="period">2015 - 2017</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Bachelor's in Computer Engineering</h4>
+                                <p class="company">State University</p>
+                                <p class="period">2011 - 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-section">
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">HTML/CSS</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">JavaScript</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">React</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Node.js</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <div class="section-header">
+                <h2>Portfolio</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">UI/UX</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Portfolio items will be dynamically loaded from JS -->
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <div class="section-header">
+                <h2>Blog</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog items will be dynamically loaded from JS -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <h2>Contact</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form-container">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946229!3d40.69766374668761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1656596612322!5m2!1sen!2s" 
+                            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 Asad's Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html> 

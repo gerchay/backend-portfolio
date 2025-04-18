@@ -1,0 +1,33 @@
+/* Colors CSS - Purple Theme (Eye-Friendly) */
+
+:root {
+  /* Main Colors */
+  --bg: #0f172a;              /* Dark slate background */
+  --card: #1f2937;            /* Slightly lighter than background */
+  --primary: #7c3aed;         /* Vivid purple - main accent */
+  --accent: #a78bfa;          /* Soft light purple */
+  --hover: #c084fc;           /* Brighter hover tone */
+  
+  /* Text Colors */
+  --text: #f3f4f6;            /* Light text - primary */
+  --muted: #9ca3af;           /* Secondary muted text */
+  
+  /* Additional Colors */
+  --border: #374151;          /* Border color */
+  --input-bg: #1e293b;        /* Form input background */
+  --success: #10b981;         /* Success/confirmation color */
+  --error: #ef4444;           /* Error/warning color */
+  
+  /* Gradients */
+  --card-gradient: linear-gradient(145deg, #1e293b, #111827);
+  --primary-gradient: linear-gradient(145deg, #7c3aed, #8b5cf6);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+} 
