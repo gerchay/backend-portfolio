@@ -57,10 +57,10 @@
   },
   {
     "id": 5,
-    "title": "IT Automation Scripts",
+    "title": "Automation Engines",
     "category": "web",
     "image": "https://picsum.photos/id/160/800/600",
-    "description": "Collection of automation scripts for various IT tasks, improving efficiency and reducing manual workload in enterprise environments.",
+    "description": "Collection of automation standalone scripts and full fledged automation frameworks for various IT tasks, improving efficiency and reducing manual workload in enterprise environments.",
     "tags": ["Python", "PowerShell", "Bash"],
     "url": "#",
     "details": {

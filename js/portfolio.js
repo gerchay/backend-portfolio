@@ -48,42 +48,70 @@ document.addEventListener('DOMContentLoaded', () => {
     portfolioGrid.innerHTML = '';
     
     if (!items || items.length === 0) {
-      console.log("Render: No items to display for the current filter."); // Log if no items
+      console.log("Render: No items to display for the current filter."); 
       portfolioGrid.innerHTML = '<p class="text-center">No projects found matching the filter.</p>';
       return;
     }
     
-    console.log(`Render: Attempting to display ${items.length} items.`); // Log number of items to render
+    console.log(`Render: Attempting to display ${items.length} items.`); 
     items.forEach(item => {
-      const portfolioItem = document.createElement('div');
-      portfolioItem.classList.add('portfolio-item');
+      // Create the main container div
+      const portfolioItemContainer = document.createElement('div');
+      portfolioItemContainer.classList.add('portfolio-item');
       // Add fade-in class immediately for animation
-      portfolioItem.classList.add('fade-in'); 
+      portfolioItemContainer.classList.add('fade-in'); 
       
+      // Add tags as classes for potential styling (optional)
       if (item.tags && Array.isArray(item.tags)) {
-          item.tags.forEach(tag => portfolioItem.classList.add(`tag-${tag.toLowerCase().replace(/[^a-z0-9]/g, '-')}`));
+          item.tags.forEach(tag => portfolioItemContainer.classList.add(`tag-${tag.toLowerCase().replace(/[^a-z0-9]/g, '-')}`));
       }
       
+      // Create tags HTML
       const tagsHTML = item.tags && Array.isArray(item.tags) 
-        ? item.tags.map(tag => `<span class="portfolio-tag">${tag}</span>`).join('')
+        ? `<div class="portfolio-tags">${item.tags.map(tag => `<span class="portfolio-tag">${tag}</span>`).join('')}</div>`
         : '';
+
+      // Create details HTML (if details exist)
+      let detailsHTML = '';
+      if (item.details) {
+          detailsHTML += '<div class="portfolio-item-details">';
+          if(item.details.client) detailsHTML += `<p><strong>Client:</strong> ${item.details.client}</p>`;
+          if(item.details.completed) detailsHTML += `<p><strong>Completed:</strong> ${item.details.completed}</p>`;
+          if(item.details.services && Array.isArray(item.details.services)) {
+              detailsHTML += `<p><strong>Services:</strong> ${item.details.services.join(', ')}</p>`;
+          }
+          detailsHTML += '</div>';
+      }
       
-      portfolioItem.innerHTML = `
+      // Set inner HTML for the container
+      portfolioItemContainer.innerHTML = `
         <div class="portfolio-image">
           <img src="${item.image || 'https://placehold.co/800x600/eee/ccc?text=No+Image'}" alt="${item.title || 'Portfolio Item'}">
         </div>
         <div class="portfolio-content">
           <h4>${item.title || 'Untitled Project'}</h4>
           <p>${item.description || 'No description available.'}</p>
-          <div class="portfolio-tags">
-            ${tagsHTML}
-          </div>
+          ${tagsHTML}
+          ${detailsHTML} 
         </div>
       `;
       
-      portfolioGrid.appendChild(portfolioItem);
+      // Determine the wrapper: link if URL exists, otherwise just the container
+      let finalItemElement;
+      if (item.url && item.url !== '#') { // Check if URL is valid and not just placeholder
+          finalItemElement = document.createElement('a');
+          finalItemElement.href = item.url;
+          finalItemElement.target = '_blank'; // Open in new tab
+          finalItemElement.rel = 'noopener noreferrer';
+          finalItemElement.className = 'portfolio-item-link'; // Add class for potential styling
+          finalItemElement.appendChild(portfolioItemContainer);
+      } else {
+          finalItemElement = portfolioItemContainer;
+      }
+
+      portfolioGrid.appendChild(finalItemElement);
     });
-    console.log(`Render: Successfully added ${items.length} items to the grid.`); // Confirm rendering loop finished
+    console.log(`Render: Successfully added ${items.length} items to the grid.`);
   }
   
   // Generate filter buttons dynamically based on tags
