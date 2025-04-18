@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof setupTabNavigation === 'function') {
       setupTabNavigation();
     }
+
+    // Debug log to check if skills data exists
+    console.log('Technical Skills:', resumeData.technicalSkills);
+    console.log('Soft Skills:', resumeData.softSkills);
   })
   .catch(error => {
     console.error('Error loading data:', error);
@@ -213,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Technical Skills
     const techSkillsGrid = resumeSection.querySelector('.skills-section:nth-of-type(1) .skills-grid');
-    if (techSkillsGrid) {
+    if (techSkillsGrid && data.technicalSkills) {
       techSkillsGrid.innerHTML = '';
       
       data.technicalSkills.forEach(skill => {
@@ -227,11 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         techSkillsGrid.appendChild(skillItem);
       });
+    } else {
+      console.warn('Technical skills section or data not found');
     }
     
     // Soft Skills
     const softSkillsGrid = resumeSection.querySelector('.skills-section:nth-of-type(2) .skills-grid');
-    if (softSkillsGrid) {
+    if (softSkillsGrid && data.softSkills) {
       softSkillsGrid.innerHTML = '';
       
       data.softSkills.forEach(skill => {
@@ -245,6 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         softSkillsGrid.appendChild(skillItem);
       });
+    } else {
+      console.warn('Soft skills section or data not found');
     }
   }
   

@@ -15,8 +15,8 @@ h1 {
 
 .main-content {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; /* Max width for smaller screens */
+  margin: 0 auto; /* Center on smaller screens */
   padding: 20px;
 }
 
@@ -30,6 +30,16 @@ h1 {
 .section {
   margin-bottom: 3rem;
   padding: 1rem;
+  width: 100%;
+}
+
+/* Content Width */
+.about-content, 
+.resume-content, 
+.portfolio-grid,
+.honors-content,
+.contact-content {
+  width: 100%;
 }
 
 /* Tab Navigation */
@@ -40,6 +50,7 @@ h1 {
   margin: 1rem 0;
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
+  width: 100%;
 }
 
 .tab-btn {
@@ -77,15 +88,18 @@ h1 {
 .tab-content {
   position: relative;
   min-height: 50vh;
+  width: 100%;
 }
 
 .tab-pane {
   display: none;
   animation: fadeIn 0.5s ease-out;
+  width: 100%;
 }
 
 .tab-pane.active {
   display: block;
+  width: 100%;
 }
 
 /* Grid Layouts */
@@ -93,12 +107,14 @@ h1 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
 }
 
 .portfolio-grid {
@@ -106,6 +122,7 @@ h1 {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 /* Contact Layout */
@@ -113,6 +130,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  width: 100%;
 }
 
 /* Flexbox Layouts */
@@ -165,12 +183,14 @@ h1 {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 1.5rem 0;
+  width: 100%;
 }
 
 /* Resume Timeline */
 .timeline {
   position: relative;
   padding-left: 1.5rem;
+  width: 100%;
 }
 
 .timeline::before {
@@ -186,6 +206,7 @@ h1 {
 .timeline-item {
   position: relative;
   padding-bottom: 2rem;
+  width: 100%;
 }
 
 .timeline-dot {
@@ -242,8 +263,10 @@ h1 {
   
   .main-content {
     grid-column: 2;
-    margin-left: 0;
-    width: calc(100% - 300px);
+    width: 100%; /* Let it take the full width of the grid column */
+    max-width: none; /* Remove max-width */
+    margin: 0; /* Remove auto margin */
+    padding: 2rem; /* Adjust padding as needed */
   }
   
   .mobile-header {
@@ -265,6 +288,10 @@ h1 {
 
 /* Large Desktop Breakpoint (1280px) */
 @media screen and (min-width: 1280px) {
+  .main-content {
+    padding: 3rem; /* Example: Increase padding on very large screens */
+  }
+
   .services-grid {
     grid-template-columns: repeat(4, 1fr);
   }
