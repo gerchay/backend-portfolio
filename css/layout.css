@@ -220,6 +220,24 @@ h1 {
   transform: translateX(-50%);
 }
 
+/* Interests Grid */
+.interests-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column mobile */
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1.5rem; /* Space below subsection titles */
+}
+
+/* Homelab Showcase Layout */
+.homelab-content {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column mobile */
+  gap: 2rem;
+  margin-top: 1.5rem;
+  align-items: start; /* Align items at the start */
+}
+
 /* Tablet Breakpoint (768px) */
 @media screen and (min-width: 768px) {
   .services-grid,
@@ -239,6 +257,9 @@ h1 {
     font-size: 1.1rem;
     padding: 0.75rem 2rem;
     margin: 0 0.5rem;
+  }
+  .interests-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns tablet */
   }
 }
 
@@ -285,6 +306,13 @@ h1 {
   .tab-btn {
     font-size: 1.2rem;
   }
+  .interests-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns desktop */
+  }
+  .homelab-content {
+    grid-template-columns: 1fr 1fr; /* 2 columns desktop */
+    gap: 3rem;
+  }
 }
 
 /* Large Desktop Breakpoint (1280px) */
@@ -299,6 +327,9 @@ h1 {
   
   .portfolio-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .homelab-content {
+    gap: 4rem;
   }
 }
 

@@ -1,0 +1,51 @@
+{
+  "title": "Interests & Passions",
+  "coreInterests": [
+    {
+      "title": "Coding",
+      "icon": "fas fa-code",
+      "description": "Deep diving into backend systems, building robust automation scripts, and designing clean, maintainable software architecture."
+    },
+    {
+      "title": "Gaming",
+      "icon": "fas fa-gamepad",
+      "description": "Exploring immersive game mechanics and compelling narratives. Occasionally dabbling in indie game development and engine tinkering."
+    },
+    {
+      "title": "Making & Tinkering",
+      "icon": "fas fa-screwdriver-wrench", 
+      "description": "Bringing ideas to life through 3D printing, electronics projects, and hands-on problem-solving. Love the challenge of physical builds."
+    }
+  ],
+  "fusionTitle": "Where Worlds Collide",
+  "fusionPassions": [
+    {
+      "title": "GameDev Alchemy",
+      "icon": "fas fa-flask-vial",
+      "description": "(Coding + Gaming) Prototyping unique game ideas, experimenting with game engines, and exploring the technical side of game creation."
+    },
+    {
+      "title": "Tech Tinkerer",
+      "icon": "fas fa-microchip",
+      "description": "(Coding + Making) Building practical gadgets with microcontrollers (like ESP32/Raspberry Pi), automating home tasks, and bridging software with hardware."
+    },
+    {
+      "title": "Creative Engineering",
+      "icon": "fas fa-drafting-compass",
+      "description": "(Gaming + Making) Designing and 3D printing game-inspired props, functional replicas, or custom components for tech projects."
+    }
+  ],
+  "homelabTitle": "The Digital Forge – My Homelab",
+  "homelabDetails": {
+    "image": "assets/images/homelab.png",
+    "description": "My central hub for learning, testing, and self-hosting. It's built within a compact 10\" RackMate chassis by DeskPi, featuring custom 3D-printed mounts for optimized airflow and component placement. This setup embodies my passion for structured solutions and hands-on, DIY tech.",
+    "specs": [
+      "**Chassis:** DeskPi 10\" RackMate",
+      "**Virtualization:** Proxmox VE",
+      "**Networking:** OPNsense Firewall",
+      "**Storage:** TrueNAS Scale (in Node 304 case)",
+      "**Containerization:** Docker",
+      "**Key Services:** Self-hosted applications, CI/CD pipelines, network monitoring, automation workflows"
+    ]
+  }
+} 

@@ -16,6 +16,11 @@
       "active": false
     },
     {
+      "id": "interests",
+      "title": "Interests",
+      "active": false
+    },
+    {
       "id": "honors",
       "title": "Honors",
       "active": false

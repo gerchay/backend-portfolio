@@ -553,4 +553,109 @@
 /* Ensure content doesn't overlap badge - adjust padding if needed */
 .portfolio-content {
   /* padding: 1.5rem; */ /* Ensure padding is sufficient */
+}
+
+/* Interests Section Styles */
+
+.interests-content h2, 
+.interests-content h3 {
+    /* Sub-section titles */
+    margin-top: 3rem; 
+    margin-bottom: 0.5rem; 
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-light); /* Slightly lighter than normal text */
+}
+
+.interest-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    height: 100%; /* Ensure cards in grid fill height */
+    display: flex;
+    flex-direction: column; /* Stack header and p */
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.interest-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.interest-icon {
+    font-size: 1.5rem; /* Icon size */
+    color: var(--primary);
+    margin-right: 0.75rem;
+    width: 30px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.interest-card h3, 
+.interest-card h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.interest-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    flex-grow: 1; /* Allow paragraph to take space if needed */
+}
+
+/* Specific style for fusion item card titles if needed */
+.fusion-item h4 {
+    font-size: 1rem; /* Slightly smaller than core interest titles */
+}
+
+/* Homelab Showcase Styles */
+.homelab-showcase {
+    margin-top: 3rem; /* Space above homelab section */
+}
+
+.homelab-image-container {
+    /* Container for the image */
+    position: relative; /* For potential overlays or captions */
+}
+
+.homelab-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    display: block;
+}
+
+.homelab-description {
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.homelab-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.homelab-specs li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border); /* Subtle separator */
+    color: var(--muted);
+}
+
+.homelab-specs li:last-child {
+    border-bottom: none;
+}
+
+.homelab-specs strong {
+    color: var(--text-light);
+    margin-right: 0.5rem;
 } 

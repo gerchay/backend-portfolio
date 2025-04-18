@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('data/navigation.json').then(res => res.json()),
     fetch('data/about.json').then(res => res.json()),
     fetch('data/resume.json').then(res => res.json()),
+    fetch('data/portfolio.json').then(res => res.json()),
+    fetch('data/interests.json').then(res => res.json()),
     fetch('data/honors.json').then(res => res.json()),
     fetch('data/contact.json').then(res => res.json())
   ])
-  .then(([profileData, navigationData, aboutData, resumeData, honorsData, contactData]) => {
+  .then(([profileData, navigationData, aboutData, resumeData, portfolioData, interestsData, honorsData, contactData]) => {
     // Load profile data (Sidebar and Mobile Header)
     loadProfileData(profileData);
     
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load content sections
     loadAboutSection(aboutData);
     loadResumeSection(resumeData);
+    loadInterestsSection(interestsData);
     loadHonorsSection(honorsData);
     loadContactSection(contactData);
     
@@ -301,6 +304,107 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } else {
       console.warn('Soft skills section (#soft-skills .skills-grid) or data not found');
+    }
+  }
+  
+  // Load interests section
+  function loadInterestsSection(data) {
+    const interestsSection = document.getElementById('interests');
+    if (!interestsSection || !data) {
+        console.warn('Interests section element or data not found.');
+        return;
+    }
+
+    // Set main section title
+    const mainHeader = interestsSection.querySelector('.section-header h2');
+    if (mainHeader) {
+      mainHeader.textContent = data.title || 'Interests & Passions';
+    }
+
+    // Load Core Interests
+    const coreGrid = interestsSection.querySelector('.core-interests-grid');
+    if (coreGrid && data.coreInterests) {
+      coreGrid.innerHTML = '';
+      data.coreInterests.forEach(interest => {
+        const card = document.createElement('div');
+        card.className = 'interest-card';
+        const iconHTML = interest.icon ? `<i class="${interest.icon} interest-icon"></i>` : '';
+        card.innerHTML = `
+          <div class="interest-card-header">
+            ${iconHTML}
+            <h3>${interest.title}</h3>
+          </div>
+          <p>${interest.description}</p>
+        `;
+        coreGrid.appendChild(card);
+      });
+    }
+
+    // Load Fusion Passions
+    const fusionContainer = interestsSection.querySelector('.fusion-passions');
+    if (fusionContainer && data.fusionPassions) {
+      const fusionHeader = fusionContainer.querySelector('h2');
+      const fusionGrid = fusionContainer.querySelector('.fusions-grid');
+      
+      if(fusionHeader) fusionHeader.textContent = data.fusionTitle || 'Where Worlds Collide';
+      
+      if (fusionGrid) {
+          fusionGrid.innerHTML = '';
+          data.fusionPassions.forEach(fusion => {
+            const item = document.createElement('div');
+            item.className = 'fusion-item interest-card'; // Reuse interest-card style
+            const iconHTML = fusion.icon ? `<i class="${fusion.icon} interest-icon"></i>` : '';
+            item.innerHTML = `
+              <div class="interest-card-header">
+                 ${iconHTML}
+                 <h4>${fusion.title}</h4>
+              </div>
+              <p>${fusion.description}</p>
+            `;
+            fusionGrid.appendChild(item);
+          });
+      }
+    }
+
+    // Load Homelab Showcase
+    const homelabContainer = interestsSection.querySelector('.homelab-showcase');
+    if (homelabContainer && data.homelabDetails) {
+      const homelabHeader = homelabContainer.querySelector('h2');
+      const homelabContent = homelabContainer.querySelector('.homelab-content');
+
+      if(homelabHeader) homelabHeader.textContent = data.homelabTitle || 'The Digital Forge – My Homelab';
+
+      if(homelabContent) {
+          homelabContent.innerHTML = ''; // Clear existing
+          
+          let imageHTML = '';
+          if(data.homelabDetails.image) {
+              imageHTML = `<img src="${data.homelabDetails.image}" alt="My Homelab Setup" class="homelab-image">`;
+          }
+
+          let descriptionHTML = '';
+          if(data.homelabDetails.description) {
+              descriptionHTML = `<p class="homelab-description">${data.homelabDetails.description}</p>`;
+          }
+
+          let specsHTML = '';
+          if(data.homelabDetails.specs && Array.isArray(data.homelabDetails.specs)) {
+              // Basic markdown support for **bold**
+              const specItems = data.homelabDetails.specs.map(spec => 
+                  `<li>${spec.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`
+              ).join('');
+              specsHTML = `<ul class="homelab-specs">${specItems}</ul>`;
+          }
+
+          // Structure for potential 2-column layout
+          homelabContent.innerHTML = `
+              <div class="homelab-text">
+                  ${descriptionHTML}
+                  ${specsHTML}
+              </div>
+              ${imageHTML ? `<div class="homelab-image-container">${imageHTML}</div>` : ''}
+          `;
+      }
     }
   }
   
