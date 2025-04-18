@@ -184,11 +184,21 @@ document.addEventListener('DOMContentLoaded', () => {
       data.experience.forEach(job => {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
+        
+        // Create logo element if URL exists
+        let logoHTML = '';
+        if (job.logo) {
+            logoHTML = `<img src="${job.logo}" alt="${job.company} logo" class="company-logo">`;
+        }
+
         timelineItem.innerHTML = `
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <h4>${job.title}</h4>
-            <p class="company">${job.company}</p>
+            <div class="company-info"> 
+              ${logoHTML}
+              <p class="company">${job.company}</p>
+            </div>
             <p class="period">${job.period}</p>
             <p class="description">${job.description}</p>
           </div>

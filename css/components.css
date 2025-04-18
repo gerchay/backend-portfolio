@@ -420,4 +420,42 @@
   left: 0;
   font-size: 1.2rem;
   line-height: 1;
+}
+
+/* Resume Timeline Content Adjustments */
+.timeline-content h4 {
+    margin-bottom: 0.25rem; /* Reduce space below job title */
+}
+
+.company-info {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 0.5rem; /* Space between logo and company name */
+    margin-bottom: 0.25rem; /* Space below company info */
+}
+
+.company-logo {
+    width: 24px; /* Adjust logo size */
+    height: 24px;
+    object-fit: contain; /* Prevent distortion */
+    flex-shrink: 0; /* Prevent logo shrinking */
+    background-color: white; /* Optional: white background if logos are transparent */
+    border-radius: 4px; /* Optional: slightly rounded corners */
+}
+
+.company-info .company {
+    margin: 0; /* Remove default paragraph margin */
+    color: var(--muted); /* Match period style */
+    font-weight: 500;
+}
+
+.timeline-content .period {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content .description {
+    color: var(--text);
+    line-height: 1.6;
 } 
