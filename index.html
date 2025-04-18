@@ -60,14 +60,28 @@
                     <div>
                         <h1 class="name"><!-- Name loaded from profile.json --></h1>
                         <p class="title"><!-- Title loaded from profile.json --></p>
+                        <!-- Container for contact info in mobile header -->
+                        <div class="mobile-header-contact"></div> 
                     </div>
                 </div>
-                <button class="menu-toggle">
+                <button class="menu-toggle" aria-label="Toggle Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
             
-            <!-- Horizontal Tab Navigation -->
+            <!-- Mobile Menu Overlay (Hidden by default) -->
+            <div class="mobile-menu-overlay">
+                <div class="mobile-menu-content">
+                    <button class="close-menu-btn" aria-label="Close Menu">&times;</button>
+                    <!-- Mobile Navigation Links/Tabs will be loaded here -->
+                    <div class="mobile-nav-links"></div> 
+                    <hr class="mobile-menu-divider">
+                    <!-- Mobile Contact Info will be loaded here -->
+                    <div class="mobile-contact-info"></div>
+                </div>
+            </div>
+            
+            <!-- Horizontal Tab Navigation (Desktop/Tablet) -->
             <div class="tab-navigation">
                 <!-- Navigation tabs loaded from navigation.json -->
             </div>

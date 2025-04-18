@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('data/contact.json').then(res => res.json())
   ])
   .then(([profileData, navigationData, aboutData, resumeData, honorsData, contactData]) => {
-    // Load profile data
+    // Load profile data (Sidebar and Mobile Header)
     loadProfileData(profileData);
     
-    // Load navigation
-    loadNavigation(navigationData);
+    // Load navigation (Main Tabs)
+    loadNavigation(navigationData); 
     
     // Load content sections
     loadAboutSection(aboutData);
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set footer
     loadFooter(profileData.footer);
     
-    // Reinitialize tab navigation after all tabs are loaded
+    // Reinitialize tab navigation AFTER data and buttons are loaded
     if (typeof setupTabNavigation === 'function') {
       setupTabNavigation();
     }
@@ -39,27 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error loading data:', error);
   });
   
-  // Load profile data into sidebar and mobile header
+  // Load profile data into sidebar and mobile header/menu
   function loadProfileData(data) {
-    // Sidebar profile
+    // Name and Title (Sidebar & Mobile Header)
     document.querySelectorAll('.sidebar .name, .mobile-profile .name').forEach(el => {
       el.textContent = data.name;
     });
-    
     document.querySelectorAll('.sidebar .title, .mobile-profile .title').forEach(el => {
       el.textContent = data.title;
     });
     
-    document.querySelectorAll('.avatar img').forEach(el => {
+    // Avatar (Sidebar & Mobile Header)
+    document.querySelectorAll('.sidebar .avatar img, .mobile-profile img').forEach(el => {
       el.src = data.avatar;
-      el.alt = data.name;
+      el.alt = data.name ? `${data.name}'s profile picture` : 'Profile picture'; 
     });
     
-    // Contact info
-    const contactInfoContainer = document.querySelector('.contact-info');
-    if (contactInfoContainer) {
-      contactInfoContainer.innerHTML = '';
-      
+    // Contact info (Sidebar)
+    const contactInfoContainerSidebar = document.querySelector('.sidebar .contact-info');
+    if (contactInfoContainerSidebar) {
+      contactInfoContainerSidebar.innerHTML = '';
       data.contactInfo.forEach(item => {
         const infoItem = document.createElement('div');
         infoItem.className = 'info-item';
@@ -67,15 +66,43 @@ document.addEventListener('DOMContentLoaded', () => {
           <i class="${item.icon}"></i>
           <span>${item.text}</span>
         `;
-        contactInfoContainer.appendChild(infoItem);
+        contactInfoContainerSidebar.appendChild(infoItem);
+      });
+    }
+
+    // Contact info (Mobile Menu)
+    const contactInfoContainerMobileMenu = document.querySelector('.mobile-contact-info');
+    if (contactInfoContainerMobileMenu) {
+      contactInfoContainerMobileMenu.innerHTML = ''; // Clear existing
+      data.contactInfo.forEach(item => {
+          const infoItem = document.createElement('div');
+          infoItem.className = 'info-item mobile'; // Add specific class if needed
+          infoItem.innerHTML = `
+              <i class="${item.icon}"></i>
+              <span>${item.text}</span>
+          `;
+          contactInfoContainerMobileMenu.appendChild(infoItem);
+      });
+    }
+
+    // Contact info (Mobile Header)
+    const contactInfoContainerMobileHeader = document.querySelector('.mobile-header-contact');
+    if (contactInfoContainerMobileHeader) {
+      contactInfoContainerMobileHeader.innerHTML = ''; // Clear existing
+      data.contactInfo.forEach(item => {
+          const infoItem = document.createElement('div');
+          // Use a different class to allow separate styling if needed
+          infoItem.className = 'mobile-header-contact-item'; 
+          // Omit icon for brevity in header
+          infoItem.innerHTML = `<span>${item.text}</span>`; 
+          contactInfoContainerMobileHeader.appendChild(infoItem);
       });
     }
     
-    // Social links
-    const socialLinksContainer = document.querySelector('.social-links');
+    // Social links (Sidebar only - could be added to mobile too if desired)
+    const socialLinksContainer = document.querySelector('.sidebar .social-links');
     if (socialLinksContainer) {
       socialLinksContainer.innerHTML = '';
-      
       data.socialLinks.forEach(item => {
         const link = document.createElement('a');
         link.href = item.url;
@@ -88,12 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  // Load navigation tabs
+  // Load main navigation tabs (for Desktop/Tablet view)
   function loadNavigation(data) {
     const tabNavigation = document.querySelector('.tab-navigation');
     if (tabNavigation) {
-      tabNavigation.innerHTML = '';
-      
+      tabNavigation.innerHTML = ''; // Clear only main tab buttons
       data.tabs.forEach(tab => {
         const button = document.createElement('button');
         button.className = 'tab-btn' + (tab.active ? ' active' : '');
@@ -101,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         button.textContent = tab.title;
         tabNavigation.appendChild(button);
       });
-    }
+    } 
+    // Mobile links are now generated in setupTabNavigation in main.js
   }
   
   // Load about section
@@ -360,3 +387,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 }); 
+
+// Moved utility functions outside DOMContentLoaded scope 
+// to be accessible by data-loader.js's call to setupTabNavigation
+
+// Function to apply fade-in class to visible elements in a tab
+function showTabContent(tabPane) {
+  if (!tabPane) return;
+  const elements = tabPane.querySelectorAll('.service-card, .timeline-item, .portfolio-item, .skill-item');
+  elements.forEach(element => {
+    // Ensure the class is added to trigger the transition/animation
+    element.classList.add('fade-in'); 
+  });
+}
+
+// Setup tab navigation (for main tabs and mobile menu)
+function setupTabNavigation() {
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  
+  // Find the initially active tab and pane
+  let initialActivePane = null;
+  if (tabButtons.length > 0 && tabPanes.length > 0) {
+    tabButtons.forEach((btn, index) => {
+      if (btn.classList.contains('active')) {
+        const targetId = btn.getAttribute('data-tab');
+        initialActivePane = document.getElementById(targetId);
+        if (initialActivePane) {
+          initialActivePane.classList.add('active');
+        } else {
+          // Fallback if active button doesn't match a pane
+          tabButtons[0].classList.add('active');
+          tabPanes[0].classList.add('active');
+          initialActivePane = tabPanes[0];
+        }
+      }
+    });
+    // Ensure at least one tab is active if none were marked
+    if (!initialActivePane && tabPanes.length > 0) {
+      tabButtons[0].classList.add('active');
+      tabPanes[0].classList.add('active');
+      initialActivePane = tabPanes[0];
+    }
+  }
+
+  // Show content for the initially active tab immediately
+  if (initialActivePane) {
+    showTabContent(initialActivePane);
+  }
+  
+  // Add click event listeners to tab buttons
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-tab');
+      
+      // Remove active class from all buttons and panes
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanes.forEach(pane => pane.classList.remove('active'));
+      
+      // Add active class to clicked button and corresponding pane
+      button.classList.add('active');
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) {
+        targetPane.classList.add('active');
+        // Show content for the newly activated tab
+        showTabContent(targetPane);
+      }
+    });
+  });
+} 
