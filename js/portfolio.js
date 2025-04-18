@@ -123,52 +123,91 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`Render: Successfully added ${items.length} items to the grid.`);
   }
   
-  // Generate filter buttons dynamically based on tags
+  // Generate filter buttons dynamically based on tags, showing only most frequent initially
   function generateFilterButtons(tags, portfolioItems) {
     if (!filtersContainer) return;
 
-    filtersContainer.innerHTML = ''; 
+    filtersContainer.innerHTML = ''; // Clear existing buttons
 
-    tags.forEach(tag => {
+    // --- Tag Frequency Calculation ---
+    const tagFrequencies = tags.reduce((freq, tag) => {
+        if (tag !== 'all') { // Don't count 'all' for frequency ranking
+          freq[tag] = (freq[tag] || 0) + 1;
+        }
+        return freq;
+    }, {});
+
+    // Sort unique tags (excluding 'all') by frequency (descending), then alphabetically
+    const uniqueTags = [...new Set(tags)].filter(tag => tag !== 'all');
+    uniqueTags.sort((a, b) => {
+        const freqDiff = (tagFrequencies[b] || 0) - (tagFrequencies[a] || 0);
+        if (freqDiff !== 0) return freqDiff; // Sort by frequency first
+        return a.localeCompare(b); // Then alphabetically
+    });
+    // --- End Frequency Calculation ---
+
+    const initialVisibleCount = 7; // Number of tags to show initially (excluding 'All')
+    const allUniqueTagsSorted = ['all', ...uniqueTags]; // Add 'all' back to the beginning
+
+    let hiddenTagsExist = uniqueTags.length > initialVisibleCount;
+
+    allUniqueTagsSorted.forEach((tag, index) => {
         const button = document.createElement('button');
         button.className = 'filter-btn';
-        button.dataset.filter = tag; 
+        button.dataset.filter = tag;
         button.textContent = tag === 'all' ? 'All' : tag.charAt(0).toUpperCase() + tag.slice(1);
 
         if (tag === 'all') {
             button.classList.add('active');
+        } else if (index > initialVisibleCount) { // Hide less frequent tags (index includes 'all')
+            button.classList.add('filter-btn-hidden');
         }
 
         button.addEventListener('click', () => {
-            console.log('--- Filter Button Clicked ---'); // Log click
+            console.log('--- Filter Button Clicked ---'); 
             filtersContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-
             const filterTag = button.dataset.filter;
-            console.log(`Filtering by tag: '${filterTag}'`); // Log the tag being filtered
-
+            console.log(`Filtering by tag: '${filterTag}'`); 
             let itemsToRender;
             if (filterTag === 'all') {
                 itemsToRender = portfolioItems;
-                console.log(`Filter result: Showing all ${itemsToRender.length} items.`); // Log 'all' case
+                console.log(`Filter result: Showing all ${itemsToRender.length} items.`); 
             } else {
                 itemsToRender = portfolioItems.filter(item => 
                     item.tags && Array.isArray(item.tags) && item.tags.includes(filterTag)
                 );
-                console.log(`Filter result: Found ${itemsToRender.length} items with tag '${filterTag}'.`); // Log filtered count
-                // Optional: Log the actual filtered items for deeper debugging
-                // console.log('Filtered items:', itemsToRender);
+                console.log(`Filter result: Found ${itemsToRender.length} items with tag '${filterTag}'.`); 
             }
-            
-            console.log('Calling renderPortfolioItems...'); // Log before render call
+            console.log('Calling renderPortfolioItems...'); 
             renderPortfolioItems(itemsToRender);
-            
-            console.log('Calling createPlaceholderImages...'); // Log before placeholder call
+            console.log('Calling createPlaceholderImages...'); 
             createPlaceholderImages();
-            console.log('--- Filter Action Complete ---'); // Log end of action
+            console.log('--- Filter Action Complete ---'); 
         });
         filtersContainer.appendChild(button);
     });
+
+    // Add Show More/Less button if there are hidden tags
+    if (hiddenTagsExist) {
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'filter-btn filter-toggle-btn';
+        toggleButton.textContent = 'Show More';
+        
+        toggleButton.addEventListener('click', () => {
+            const hiddenButtons = filtersContainer.querySelectorAll('.filter-btn-hidden');
+            const isShowingMore = filtersContainer.classList.toggle('show-all-filters');
+            
+            hiddenButtons.forEach(btn => {
+                // Toggle direct display style for immediate effect if needed, 
+                // but class toggle on container is usually preferred
+                // btn.style.display = isShowingMore ? 'inline-block' : 'none'; 
+            });
+            
+            toggleButton.textContent = isShowingMore ? 'Show Less' : 'Show More';
+        });
+        filtersContainer.appendChild(toggleButton);
+    }
   }
   
   // Create placeholder images for the portfolio if needed

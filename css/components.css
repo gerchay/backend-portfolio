@@ -154,6 +154,28 @@
   color: white;
 }
 
+/* Style for initially hidden filter buttons */
+.filter-btn-hidden {
+    display: none;
+}
+
+/* Style for showing hidden buttons when container has the class */
+.portfolio-filters.show-all-filters .filter-btn-hidden {
+    display: inline-block; /* Or flex, depending on container */
+}
+
+/* Style for the Show More/Less button */
+.filter-toggle-btn {
+    /* Optional: Slightly different style to distinguish it */
+    background-color: var(--muted); 
+    color: var(--background);
+    font-weight: bold;
+}
+
+.filter-toggle-btn:hover {
+    background-color: var(--text); /* Different hover */
+}
+
 .submit-btn {
   background: var(--primary-gradient);
   color: white;
