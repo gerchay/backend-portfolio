@@ -55,18 +55,13 @@
       "icon": "https://img.icons8.com/color/48/flutter.png"
     },
     {
-      "name": "Python Development",
+      "name": "Python Development (Automation, Testing, API)",
       "percentage": 95,
       "icon": "https://img.icons8.com/color/48/python.png"
     },
     {
-      "name": "Test Automation (Appium, Selenium)",
-      "percentage": 85,
-      "icon": "https://img.icons8.com/?size=48&id=60033&format=png"
-    },
-    {
-      "name": "Java Development",
-      "percentage": 80,
+      "name": "Java Development (Desktop, Android)",
+      "percentage": 55,
       "icon": "https://img.icons8.com/color/48/java-coffee-cup-logo.png"
     },
     {
@@ -80,7 +75,7 @@
       "icon": "https://static.thenounproject.com/png/29365-200.png"
     },
     {
-      "name": "Rust Development",
+      "name": "Rust Development (Backend, API)",
       "percentage": 40,
       "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/2048px-Rust_programming_language_black_logo.svg.png"
     }
