@@ -1,0 +1,39 @@
+{
+  "name": "Asad Al Badi",
+  "title": "IT Automation Engineer",
+  "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=Asad%20Al%20Badi&backgroundColor=7c3aed&textColor=ffffff",
+  "contactInfo": [
+    {
+      "icon": "fas fa-envelope",
+      "text": "asad.albadi0@gmail.com"
+    },
+    {
+      "icon": "fas fa-phone",
+      "text": "+968 91148404"
+    },
+    {
+      "icon": "fas fa-map-marker-alt",
+      "text": "Muscat, Oman"
+    }
+  ],
+  "socialLinks": [
+    {
+      "icon": "fab fa-github",
+      "url": "https://github.com/asad-albadi",
+      "label": "GitHub"
+    },
+    {
+      "icon": "fab fa-linkedin",
+      "url": "https://linkedin.com/in/asad-albadi",
+      "label": "LinkedIn"
+    },
+    {
+      "icon": "fas fa-server",
+      "url": "https://gist.github.com/asad-albadi/f23ff6d6efabce2851421636274ccfc1",
+      "label": "Server Gist"
+    }
+  ],
+  "footer": {
+    "copyright": "© 2023 Asad Al Badi's Portfolio. All rights reserved."
+  }
+} 

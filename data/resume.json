@@ -1,0 +1,93 @@
+{
+  "title": "Resume",
+  "experience": [
+    {
+      "title": "IT Automation Engineer",
+      "company": "Vodafone Oman",
+      "period": "June 2022 - Present",
+      "description": "Implementing automated solutions, resulting in increased efficiency and reduced costs across the organization. Troubleshooting complex IT issues and providing proactive support to improve systems and processes."
+    },
+    {
+      "title": "IT Helpdesk Admin",
+      "company": "Mazoon Dairy Company SAOC",
+      "period": "September 2018 - June 2022",
+      "description": "Provided technical support to end-users and various departments, ensuring ICT-related issues were resolved efficiently. Assisted in building and configuring IT infrastructure, and proposed solutions to advance work in the pre-production phase."
+    }
+  ],
+  "education": [
+    {
+      "degree": "BSc in Software Engineering",
+      "institution": "Buraimi University College",
+      "period": "Completed in 2017"
+    }
+  ],
+  "certifications": [
+    {
+      "category": "Google & Microsoft Certifications",
+      "items": [
+        "System Administration and IT Infrastructure Services - Google",
+        "Designing and Implementing a Data Science Solution on Azure (A) - Microsoft"
+      ]
+    },
+    {
+      "category": "Cisco & Network Certifications",
+      "items": [
+        "IPv6 Fundamentals, Design and Deployment - Cisco",
+        "Prepare for the CompTIA Network+ (N10-007) Certification",
+        "Cisco CCNA (200-301) Cert Prep: Security, Automation, and Programmability"
+      ]
+    },
+    {
+      "category": "Development & Testing Certifications",
+      "items": [
+        "Using Python for Automation - LinkedIn",
+        "Machine Learning with Python: Foundations - LinkedIn",
+        "Mobile Testing with Appium - LinkedIn"
+      ]
+    }
+  ],
+  "technicalSkills": [
+    {
+      "name": "Flutter (Mobile, Desktop, Web)",
+      "percentage": 90
+    },
+    {
+      "name": "Python Automation",
+      "percentage": 95
+    },
+    {
+      "name": "Test Automation (Appium, Selenium)",
+      "percentage": 85
+    },
+    {
+      "name": "Java Development",
+      "percentage": 80
+    },
+    {
+      "name": "Server Administration",
+      "percentage": 92
+    },
+    {
+      "name": "Database (SQL & NoSQL)",
+      "percentage": 88
+    }
+  ],
+  "softSkills": [
+    {
+      "name": "Multitasking",
+      "percentage": 90
+    },
+    {
+      "name": "Attention to Detail",
+      "percentage": 95
+    },
+    {
+      "name": "Resourcefulness",
+      "percentage": 93
+    },
+    {
+      "name": "Cross-cultural Communication",
+      "percentage": 85
+    }
+  ]
+} 

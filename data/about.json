@@ -1,0 +1,26 @@
+{
+  "title": "About Me",
+  "description": "A highly skilled and dedicated IT Automation Engineer with a proven track record of developing and implementing automated solutions, driving improvements in productivity and efficiency. With a strong background in software development and IT infrastructure, I have supervised the deployment of multiple infrastructure projects and developed various mobile, desktop, and web applications. Currently, as an IT Automation Engineer at Vodafone Oman, I am focused on optimizing processes and enhancing business outcomes through my expertise in IT automation and troubleshooting.",
+  "services": [
+    {
+      "icon": "fas fa-laptop-code",
+      "title": "IT Automation",
+      "description": "Implementing automated solutions to increase efficiency and reduce costs using Python, PowerShell, and Bash scripting."
+    },
+    {
+      "icon": "fas fa-mobile-alt",
+      "title": "App Development",
+      "description": "Creating cross-platform mobile applications using Flutter and native Android apps with Java."
+    },
+    {
+      "icon": "fas fa-server",
+      "title": "IT Infrastructure",
+      "description": "Managing servers, hypervisors, containers, and web servers including Linux, Windows Server, and virtualization technologies."
+    },
+    {
+      "icon": "fas fa-bug",
+      "title": "Test Automation",
+      "description": "Automating testing processes for mobile apps, websites, and APIs using Appium, Selenium, and JMeter."
+    }
+  ]
+} 

@@ -7,6 +7,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Typography base styles */
+h1 {
+  font-size: 2rem;
+  margin-block: 0.67em;
+}
+
 .main-content {
   width: 100%;
   max-width: 1200px;
@@ -26,6 +32,62 @@ body {
   padding: 1rem;
 }
 
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition-normal);
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary);
+}
+
+/* Tab Content */
+.tab-content {
+  position: relative;
+  min-height: 50vh;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
 /* Grid Layouts */
 .services-grid {
   display: grid;
@@ -39,8 +101,7 @@ body {
   gap: 1rem;
 }
 
-.portfolio-grid, 
-.blog-grid {
+.portfolio-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
@@ -67,14 +128,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  list-style: none;
 }
 
 /* Mobile Navigation */
@@ -153,20 +206,18 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .portfolio-grid,
-  .blog-grid {
+  .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    justify-content: center;
   }
   
   .contact-content {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  .tab-btn {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+    margin: 0 0.5rem;
   }
 }
 
@@ -203,9 +254,12 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .portfolio-grid,
-  .blog-grid {
+  .portfolio-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .tab-btn {
+    font-size: 1.2rem;
   }
 }
 
@@ -215,8 +269,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
   
-  .portfolio-grid,
-  .blog-grid {
+  .portfolio-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 } 

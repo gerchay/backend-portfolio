@@ -5,11 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
-  if (menuToggle) {
+  if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('show');
     });
   }
+  
+  // Initialize tab navigation
+  setupTabNavigation();
   
   // Scrollspy for navigation
   const sections = document.querySelectorAll('.section');
@@ -32,12 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         resetActiveClass();
-        document.querySelector(`.nav-links a[href="#${sectionId}"]`).classList.add('active');
+        const activeNavLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+        if (activeNavLink) {
+          activeNavLink.classList.add('active');
+        }
       }
     });
   }
   
-  window.addEventListener('scroll', handleScroll);
+  // Only add scroll event listener if there are nav items to update
+  if (navItems.length > 0) {
+    window.addEventListener('scroll', handleScroll);
+  }
   
   // Smooth scrolling for navigation links
   navItems.forEach(item => {
@@ -47,14 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetId = item.getAttribute('href');
       const targetSection = document.querySelector(targetId);
       
-      window.scrollTo({
-        top: targetSection.offsetTop - 50,
-        behavior: 'smooth'
-      });
-      
-      // Close mobile menu if open
-      if (navLinks.classList.contains('show')) {
-        navLinks.classList.remove('show');
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 50,
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        if (navLinks && navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
       }
     });
   });
@@ -86,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Add animation on scroll
   const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.service-card, .timeline-item, .portfolio-item, .blog-item');
+    const elements = document.querySelectorAll('.service-card, .timeline-item, .portfolio-item');
     
     elements.forEach(element => {
       const elementPosition = element.getBoundingClientRect().top;
@@ -103,4 +114,35 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Add event listener for scroll
   window.addEventListener('scroll', animateOnScroll);
-}); 
+});
+
+// Setup tab navigation
+function setupTabNavigation() {
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  
+  // Set default active tab (first tab)
+  if (tabButtons.length > 0 && tabPanes.length > 0) {
+    tabButtons[0].classList.add('active');
+    tabPanes[0].classList.add('active');
+  }
+  
+  // Add click event listeners to tab buttons
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Get tab target
+      const target = button.getAttribute('data-tab');
+      
+      // Remove active class from all buttons and panes
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanes.forEach(pane => pane.classList.remove('active'));
+      
+      // Add active class to clicked button and corresponding pane
+      button.classList.add('active');
+      const targetPane = document.getElementById(target);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+    });
+  });
+} 

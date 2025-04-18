@@ -1,0 +1,36 @@
+{
+  "title": "Contact",
+  "form": {
+    "fields": [
+      {
+        "id": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "subject",
+        "label": "Subject",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "message",
+        "label": "Message",
+        "type": "textarea",
+        "rows": 5,
+        "required": true
+      }
+    ],
+    "submitButton": "Send Message"
+  },
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233160.24691797052!2d58.17678520561756!3d23.61438909150325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91ffa8879aafc9%3A0x5f7e4871e3dd5e1!2sMuscat%2C%20Oman!5e0!3m2!1sen!2sus!4v1718196687023!5m2!1sen!2sus"
+  }
+} 

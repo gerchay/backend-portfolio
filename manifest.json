@@ -1,21 +1,23 @@
 {
-  "name": "Asad's Portfolio",
-  "short_name": "Portfolio",
-  "description": "Asad's personal developer portfolio showcasing skills and projects",
+  "name": "Asad Al Badi's Portfolio",
+  "short_name": "Asad's Portfolio",
+  "description": "Professional portfolio of Asad Al Badi, an IT Automation Engineer",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#ffffff",
   "theme_color": "#7c3aed",
   "icons": [
     {
-      "src": "assets/images/icon-192.png",
+      "src": "https://placehold.co/192x192/7c3aed/FFFFFF.png?text=AAB",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/images/icon-512.png",
+      "src": "https://placehold.co/512x512/7c3aed/FFFFFF.png?text=AAB",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 } 

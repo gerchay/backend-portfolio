@@ -1,60 +1,31 @@
 // Portfolio JavaScript for handling portfolio items and filtering
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Portfolio items data
-  const portfolioItems = [
-    {
-      id: 1,
-      title: 'Modern E-commerce Platform',
-      category: 'web',
-      image: 'assets/images/portfolio-placeholder-1.jpg',
-      description: 'A fully responsive e-commerce platform with cart, checkout, and payment integration.',
-      tags: ['React', 'Node.js', 'MongoDB']
-    },
-    {
-      id: 2,
-      title: 'Mobile Banking App',
-      category: 'mobile',
-      image: 'assets/images/portfolio-placeholder-2.jpg',
-      description: 'A secure banking application for iOS and Android with biometric authentication.',
-      tags: ['React Native', 'Redux', 'Firebase']
-    },
-    {
-      id: 3,
-      title: 'Portfolio Website Design',
-      category: 'design',
-      image: 'assets/images/portfolio-placeholder-3.jpg',
-      description: 'Clean and modern portfolio website design for creative professionals.',
-      tags: ['Figma', 'UI/UX', 'Prototype']
-    },
-    {
-      id: 4,
-      title: 'Task Management Dashboard',
-      category: 'web',
-      image: 'assets/images/portfolio-placeholder-4.jpg',
-      description: 'Intuitive dashboard for team collaboration and project management.',
-      tags: ['Vue.js', 'Express', 'PostgreSQL']
-    },
-    {
-      id: 5,
-      title: 'Health Tracking App',
-      category: 'mobile',
-      image: 'assets/images/portfolio-placeholder-5.jpg',
-      description: 'Mobile application for tracking fitness activities and health metrics.',
-      tags: ['Flutter', 'Dart', 'GraphQL']
-    },
-    {
-      id: 6,
-      title: 'Brand Identity Design',
-      category: 'design',
-      image: 'assets/images/portfolio-placeholder-6.jpg',
-      description: 'Complete brand identity design including logo, color palette, and guidelines.',
-      tags: ['Branding', 'Illustrator', 'Identity']
-    }
-  ];
-
   // Get portfolio grid element
   const portfolioGrid = document.querySelector('.portfolio-grid');
+  
+  // Fetch portfolio data from JSON file
+  fetch('data/portfolio.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(portfolioItems => {
+      // Initial render once data is loaded
+      renderPortfolioItems(portfolioItems);
+      
+      // Set up filter buttons after data is loaded
+      setupFilterButtons(portfolioItems);
+      
+      // Create placeholder images for the portfolio if needed
+      createPlaceholderImages();
+    })
+    .catch(error => {
+      console.error('Error loading portfolio data:', error);
+      portfolioGrid.innerHTML = '<p class="text-center">Error loading portfolio data. Please try again later.</p>';
+    });
   
   // Create and render portfolio items
   function renderPortfolioItems(items) {
@@ -95,32 +66,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // Initial render
-  renderPortfolioItems(portfolioItems);
-  
-  // Filter buttons functionality
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      
-      // Add active class to clicked button
-      button.classList.add('active');
-      
-      // Get filter value
-      const filter = button.dataset.filter;
-      
-      // Filter items
-      if (filter === 'all') {
-        renderPortfolioItems(portfolioItems);
-      } else {
-        const filteredItems = portfolioItems.filter(item => item.category === filter);
-        renderPortfolioItems(filteredItems);
-      }
+  // Set up filter buttons functionality
+  function setupFilterButtons(portfolioItems) {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Get filter value
+        const filter = button.dataset.filter;
+        
+        // Filter items
+        if (filter === 'all') {
+          renderPortfolioItems(portfolioItems);
+        } else {
+          const filteredItems = portfolioItems.filter(item => item.category === filter);
+          renderPortfolioItems(filteredItems);
+        }
+        
+        // Create placeholders for newly filtered items
+        createPlaceholderImages();
+      });
     });
-  });
+  }
   
   // Create placeholder images for the portfolio if needed
   function createPlaceholderImages() {
@@ -145,7 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-  
-  // Call placeholder function after rendering
-  createPlaceholderImages();
 }); 
