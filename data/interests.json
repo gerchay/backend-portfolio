@@ -6,7 +6,6 @@
       "icon": "fas fa-code",
       "description": "Deep diving into backend systems, building robust automation scripts, and designing clean, maintainable software architecture.",
       "links": [ 
-        { "url": "https://github.com/asad-albadi?tab=repositories", "icon": "fab fa-github" },
         { "url": "https://github.com/asad-albadi?tab=repositories", "icon": "fab fa-github" }
       ]
     },
@@ -14,14 +13,17 @@
       "title": "Gaming",
       "icon": "fas fa-gamepad",
       "description": "Exploring immersive game mechanics and compelling narratives. Occasionally dabbling in indie game development and engine tinkering.",
-      "links": []
+      "links": [
+        { "url": "https://www.exophase.com/user/deava/", "icon": "fas fa-gamepad" },
+        { "url": "https://steamcommunity.com/id/alex12ph/", "icon": "fab fa-steam" }
+      ]
     },
     {
       "title": "Making & Tinkering",
       "icon": "fas fa-screwdriver-wrench", 
       "description": "Bringing ideas to life through 3D printing, electronics projects, and hands-on problem-solving. Love the challenge of physical builds.",
       "links": [
-        { "url": "#", "icon": "fas fa-print" }
+        { "url": "https://www.instagram.com/astralhivemakers/", "icon": "fas fa-camera" }
       ]
     }
   ],
@@ -38,14 +40,16 @@
       "icon": "fas fa-microchip",
       "description": "(Coding + Making) Building practical gadgets with microcontrollers (like ESP32/Raspberry Pi), automating home tasks, and bridging software with hardware.",
       "links": [
-          { "url": "#", "icon": "fas fa-lightbulb" }
+          { "url": "https://www.instagram.com/astralhivemakers/", "icon": "fas fa-camera" }
       ]
     },
     {
       "title": "Creative Engineering",
       "icon": "fas fa-drafting-compass",
       "description": "(Gaming + Making) Designing and 3D printing game-inspired props, functional replicas, or custom components for tech projects.",
-      "links": []
+      "links": [
+        { "url": "https://www.instagram.com/astralhivemakers/", "icon": "fas fa-camera" }
+      ] 
     }
   ],
   "homelabTitle": "The Digital Forge – My Homelab",
