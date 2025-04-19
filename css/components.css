@@ -22,6 +22,16 @@
   font-size: 2rem;
   color: var(--primary);
   margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.service-card h4 {
+  flex-shrink: 0;
+}
+
+.service-card p {
+  flex-grow: 1;
+  margin-bottom: 0;
 }
 
 /* Portfolio Cards */
