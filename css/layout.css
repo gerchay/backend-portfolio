@@ -54,6 +54,7 @@ h1 {
 }
 
 .tab-btn {
+  font-family: 'Fira Code', monospace;
   background: transparent;
   color: var(--muted);
   border: none;
