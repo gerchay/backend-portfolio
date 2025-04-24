@@ -365,9 +365,11 @@ async function generatePdf(data, jsPDF, iconMap) {
     
     // Add contact icons and text
     for (let i = 0; i < contactInfo.length; i++) {
-        const x = mainContentX + 10 + (i * (mainContentWidth / contactInfo.length));
+        // Adjust spacing for second contact
+        const spacing = i === 1 ? 15 : 10; // More space for second contact
+        const x = mainContentX + spacing + (i * (mainContentWidth / contactInfo.length));
         const iconSize = 4; // mm
-        const iconY = contactY - 1;
+        const iconY = contactY + 3; // Align with text
         
         try {
             // Add icon image if available in map
@@ -376,18 +378,18 @@ async function generatePdf(data, jsPDF, iconMap) {
             } else {
                 // Fallback to text
                 doc.setFont('helvetica', 'bold');
-                doc.text(getFontAwesomeChar(contactIcons[i]), x - 7, contactY + 3);
+                doc.text(getFontAwesomeChar(contactIcons[i]), x - 7, iconY + 1);
             }
         } catch (e) {
             console.error('Error adding contact icon:', e);
             // Fallback to text
             doc.setFont('helvetica', 'bold');
-            doc.text(getFontAwesomeChar(contactIcons[i]), x - 7, contactY + 3);
+            doc.text(getFontAwesomeChar(contactIcons[i]), x - 7, iconY + 1);
         }
         
         // Add contact text
         doc.setFont('helvetica', 'normal');
-        doc.text(contactInfo[i], x, contactY + 3);
+        doc.text(contactInfo[i], x, iconY + 1);
     }
     
     mainY = contactY + contactHeight + 5;
