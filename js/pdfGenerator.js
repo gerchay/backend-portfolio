@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         'data/resume.json',
                         'data/portfolio.json',
                         'data/honors.json',
-                        'data/contact.json'
+                        'data/contact.json',
+                        'data/interests.json'
                     ];
 
                     const responses = await Promise.all(dataUrls.map(url => fetch(url)));
@@ -35,10 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         resume: jsonData[2],
                         portfolio: jsonData[3],
                         honors: jsonData[4],
-                        contact: jsonData[5]
+                        contact: jsonData[5],
+                        interests: jsonData[6]
                     };
 
                     console.log('Fetched CV data:', cvData);
+
+                    // Load font awesome icons
+                    await loadFontAwesomeForPDF();
 
                     // Get jsPDF from window object
                     if (typeof window.jspdf === 'undefined') {
@@ -63,6 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
         subtree: true
     });
 });
+
+// Function to load FontAwesome icons for PDF
+async function loadFontAwesomeForPDF() {
+    // We'll create a canvas element to convert FontAwesome icons to images
+    window.pdfIconCache = {};
+    console.log('Setting up FontAwesome for PDF generation');
+}
 
 function generatePdf(data, jsPDF) {
     console.log('Generating PDF with data:', data);
@@ -135,27 +147,77 @@ function generatePdf(data, jsPDF) {
         return y + (splitText.length * size * 0.353) + 2;
     }
 
-    // Helper to add a section title in main content
-    function addMainSectionTitle(title, y) {
+    // Helper to add a section title in main content with icon
+    function addMainSectionTitle(title, y, icon = null) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.setTextColor('#3B82F6'); // Blue
-        doc.text(title.toUpperCase(), mainContentX, y);
         
-        // Add blue dot
-        doc.setFillColor('#3B82F6');
-        doc.circle(mainContentX - 4, y - 2, 1, 'F');
+        // Add icon background circle
+        if (icon) {
+            doc.setFillColor('#111827'); // Dark gray for icon background
+            doc.circle(mainContentX - 6, y - 2, 4, 'F');
+            
+            // Add icon placeholder (in real implementation, we'd add actual icons)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor('#FFFFFF');
+            doc.setFontSize(7);
+            doc.text(icon, mainContentX - 8, y - 0.5);
+            doc.setTextColor('#3B82F6'); // Reset to blue for title
+            doc.setFontSize(14);
+        }
+        
+        doc.text(title.toUpperCase(), mainContentX, y);
         
         return y + 8;
     }
 
-    // Helper to add a sidebar section title
-    function addSidebarSectionTitle(title, y) {
+    // Helper to add a sidebar section title with icon
+    function addSidebarSectionTitle(title, y, icon = null) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(12);
         doc.setTextColor('#FFFFFF'); // White
+        
+        // Add icon background circle
+        if (icon) {
+            doc.setFillColor('#FFFFFF'); // White circle for icon
+            doc.circle(margin - 5, y - 2, 4, 'F');
+            
+            // Add icon placeholder (in real implementation, we'd add actual icons)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor('#111827'); // Dark text for icon
+            doc.setFontSize(7);
+            doc.text(icon, margin - 7, y - 0.5);
+            doc.setTextColor('#FFFFFF'); // Reset to white for title
+            doc.setFontSize(12);
+        }
+        
         doc.text(title.toUpperCase(), margin, y);
         return y + 6;
+    }
+
+    // Helper to add bullet point with different style
+    function addBulletPoint(text, y, size = 10, style = 'normal', indent = 5) {
+        if (!text) return y;
+        
+        doc.setFont('helvetica', style);
+        doc.setFontSize(size);
+        doc.setTextColor('#000000'); // Black
+        
+        // Add bullet point
+        doc.setFillColor('#3B82F6'); // Blue bullet
+        doc.circle(mainContentX + 2, y - 2, 1, 'F');
+        
+        const x = mainContentX + indent;
+        const maxWidth = mainContentWidth - indent;
+        const splitText = doc.splitTextToSize(text, maxWidth);
+        
+        // Force-print text
+        for (let i = 0; i < splitText.length; i++) {
+            doc.text(splitText[i], x, y + (i * size * 0.353));
+        }
+        
+        return y + (splitText.length * size * 0.353) + 2;
     }
 
     // Try to add profile picture
@@ -165,12 +227,17 @@ function generatePdf(data, jsPDF) {
             const imgX = 10;
             const imgY = 10;
             
-            // Simple circle background before image
+            // Draw circle background for profile picture
             doc.setFillColor(255, 255, 255);
             doc.circle(imgX + imgWidth/2, imgY + imgWidth/2, imgWidth/2, 'F');
             
             // Try to add image directly
             doc.addImage(data.profile.avatar, 'PNG', imgX, imgY, imgWidth, imgWidth);
+            
+            // Add border
+            doc.setDrawColor('#3B82F6'); // Blue border
+            doc.setLineWidth(0.5);
+            doc.circle(imgX + imgWidth/2, imgY + imgWidth/2, imgWidth/2, 'S');
         }
     } catch (error) {
         console.error('Error adding profile picture:', error);
@@ -183,10 +250,24 @@ function generatePdf(data, jsPDF) {
 
     // Contact info
     let contactInfo = [];
+    let contactIcons = [];
     data.profile.contactInfo.forEach(info => {
-        if (info.icon.includes('fa-envelope')) contactInfo.push(info.text);
-        if (info.icon.includes('fa-phone')) contactInfo.push(info.text);
-        if (info.icon.includes('fa-map-marker-alt')) contactInfo.push(info.text);
+        if (info.icon.includes('fa-envelope')) {
+            contactInfo.push(info.text);
+            contactIcons.push('@');
+        }
+        if (info.icon.includes('fa-phone')) {
+            contactInfo.push(info.text);
+            contactIcons.push('#');
+        }
+        if (info.icon.includes('fa-map-marker-alt')) {
+            contactInfo.push(info.text);
+            contactIcons.push('o');
+        }
+        if (info.icon.includes('fa-linkedin')) {
+            contactInfo.push(info.text);
+            contactIcons.push('in');
+        }
     });
     
     // Contact info box
@@ -195,11 +276,18 @@ function generatePdf(data, jsPDF) {
     doc.setFillColor('#111827');
     doc.roundedRect(mainContentX, contactY - 5, mainContentWidth, contactHeight, 2, 2, 'F');
     
-    // Add contact info text
+    // Add contact info text with icons
     doc.setTextColor('#FFFFFF');
     doc.setFontSize(9);
     contactInfo.forEach((info, index) => {
-        const x = mainContentX + 5 + (index * (mainContentWidth / 3));
+        const x = mainContentX + 10 + (index * (mainContentWidth / contactInfo.length));
+        
+        // Add icon placeholder
+        doc.setFont('helvetica', 'bold');
+        doc.text(contactIcons[index], x - 7, contactY + 3);
+        
+        // Add contact info
+        doc.setFont('helvetica', 'normal');
         doc.text(info, x, contactY + 3);
     });
     mainY = contactY + contactHeight + 5;
@@ -212,25 +300,76 @@ function generatePdf(data, jsPDF) {
     }
 
     // Skills Section
-    sidebarY = addSidebarSectionTitle('TECHNICAL SKILLS', sidebarY);
+    sidebarY = addSidebarSectionTitle('TECHNICAL SKILLS', sidebarY, 'S');
     if (data.resume.technicalSkills) {
         data.resume.technicalSkills.forEach(skill => {
             const cleanedSkill = skill.name.replace(/\s*\([^)]*\)/g, '').trim();
             sidebarY = addSidebarText(cleanedSkill, sidebarY, 9);
         });
     }
-    sidebarY += 5;
-    sidebarY = addSidebarSectionTitle('SOFT SKILLS', sidebarY);
+    sidebarY += 10;
+    sidebarY = addSidebarSectionTitle('SOFT SKILLS', sidebarY, 'S');
+    
     if (data.resume.softSkills) {
         data.resume.softSkills.forEach(skill => {
             const cleanedSkill = skill.name.replace(/\s*\([^)]*\)/g, '').trim();
             sidebarY = addSidebarText(cleanedSkill, sidebarY, 9);
         });
     }
-    sidebarY += 5;
+    sidebarY += 10;
 
-    // Work Experience
-    mainY = addMainSectionTitle('WORK EXPERIENCE', mainY);
+    // Education Section in Sidebar
+    sidebarY = addSidebarSectionTitle('EDUCATION', sidebarY, 'E');
+    if (data.resume.education) {
+        data.resume.education.forEach(edu => {
+            sidebarY = addSidebarText(edu.degree, sidebarY, 9, 'bold');
+            sidebarY = addSidebarText(edu.institution, sidebarY, 8);
+            sidebarY = addSidebarText(edu.period, sidebarY, 8, 'italic');
+            sidebarY += 3;
+        });
+    }
+    sidebarY += 10;
+
+    // Languages Section in Sidebar
+    sidebarY = addSidebarSectionTitle('LANGUAGES', sidebarY, 'L');
+    if (data.resume.languages && data.resume.languages.length > 0) {
+        data.resume.languages.forEach(lang => {
+            sidebarY = addSidebarText(lang.language, sidebarY, 9, 'bold');
+            sidebarY = addSidebarText(lang.proficiency, sidebarY, 8, 'italic');
+            sidebarY += 2;
+        });
+    } else {
+        // Fallback to some common languages if not specified
+        sidebarY = addSidebarText('English', sidebarY, 9, 'bold');
+        sidebarY = addSidebarText('Bilingual Proficiency', sidebarY, 8, 'italic');
+        sidebarY += 2;
+    }
+    sidebarY += 10;
+
+    // Interests Section
+    sidebarY = addSidebarSectionTitle('INTERESTS', sidebarY, 'I');
+    console.log('Interests data:', data.interests);
+    if (data.interests && data.interests.coreInterests && data.interests.coreInterests.length > 0) {
+        console.log('Using coreInterests from interests data');
+        data.interests.coreInterests.forEach(interest => {
+            console.log('Adding interest:', interest.title);
+            sidebarY = addSidebarText(interest.title, sidebarY, 9);
+        });
+    } else if (data.resume.interests) {
+        console.log('Falling back to resume interests');
+        data.resume.interests.forEach(interest => {
+            sidebarY = addSidebarText(interest, sidebarY, 9);
+        });
+    } else {
+        console.log('Using placeholder interests');
+        // Add some placeholder interests
+        ['Technology', 'Web 3.0', 'Sustainability'].forEach(interest => {
+            sidebarY = addSidebarText(interest, sidebarY, 9);
+        });
+    }
+
+    // Work Experience Section in Main Content
+    mainY = addMainSectionTitle('WORK EXPERIENCE', mainY, 'W');
     if (data.resume.experience) {
         data.resume.experience.forEach(job => {
             mainY = addMainText(job.title, mainY, 12, 'bold');
@@ -238,39 +377,46 @@ function generatePdf(data, jsPDF) {
             doc.setTextColor('#808080'); // Gray for dates
             mainY = addMainText(job.period, mainY, 10, 'italic');
             doc.setTextColor('#000000'); // Reset to black
-            if (job.description) {
+            
+            // Add achievements as bullet points
+            if (job.achievements && Array.isArray(job.achievements)) {
+                mainY += 2;
+                doc.text('Achievements', mainContentX, mainY);
+                mainY += 4;
+                job.achievements.forEach(achievement => {
+                    mainY = addBulletPoint(achievement, mainY, 10, 'normal', 8);
+                });
+            } else if (job.description) {
                 mainY = addMainText(job.description, mainY, 10, 'normal', false, 5);
             }
             mainY += 5;
         });
     }
 
-    // Education
-    mainY = addMainSectionTitle('EDUCATION', mainY);
-    if (data.resume.education) {
-        data.resume.education.forEach(edu => {
-            mainY = addMainText(edu.degree, mainY, 12, 'bold');
-            mainY = addMainText(edu.institution, mainY, 11);
-            doc.setTextColor('#808080'); // Gray for dates
-            mainY = addMainText(edu.period, mainY, 10, 'italic');
-            doc.setTextColor('#000000'); // Reset to black
-            mainY += 5;
-        });
-    }
-
-    // Certifications
-    mainY = addMainSectionTitle('CONFERENCES & COURSES', mainY);
+    // Certifications/Courses Section
+    mainY = addMainSectionTitle('CONFERENCES & COURSES', mainY, 'C');
     if (data.resume.certifications) {
         data.resume.certifications.forEach(category => {
             if (category.items) {
                 category.items.forEach(cert => {
-                    mainY = addMainText(`• ${cert}`, mainY, 10, 'normal', false, 5);
+                    const certText = cert.includes('|') ? cert.split('|')[0].trim() : cert;
+                    mainY = addBulletPoint(certText, mainY, 10, 'normal', 8);
                 });
             }
         });
     }
+    
+    // Honors & Awards Section
+    mainY += 5;
+    mainY = addMainSectionTitle('HONORS & AWARDS', mainY, 'A');
+    if (data.honors && data.honors.awards && data.honors.awards.length > 0) {
+        data.honors.awards.forEach(award => {
+            const awardText = `${award.title} - ${award.organization}, ${award.date}`;
+            mainY = addBulletPoint(awardText, mainY, 10, 'normal', 8);
+        });
+    }
 
-    console.log('Generated PDF with hex colors');
+    console.log('Generated PDF with icons and enhanced styling');
 
     try {
         doc.save('Asad_Al_Badi_CV.pdf');

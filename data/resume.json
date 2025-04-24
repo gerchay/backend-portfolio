@@ -48,6 +48,20 @@
       ]
     }
   ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Bilingual Proficiency"
+    },
+    {
+      "language": "Arabic",
+      "proficiency": "Native Proficiency"
+    },
+    {
+      "language": "Spanish",
+      "proficiency": "Beginner"
+    }
+  ],
   "technicalSkills": [
     {
       "name": "Flutter (Mobile, Desktop, Web)",
