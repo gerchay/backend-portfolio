@@ -115,6 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
         link.setAttribute('aria-label', item.label);
         socialLinksContainer.appendChild(link);
       });
+      const downloadLink = document.createElement('a');
+      downloadLink.className = 'btn btn-primary social-icon';
+      downloadLink.id = 'download-cv-btn';
+      downloadLink.innerHTML = '<i class="fas fa-download"></i>';
+      downloadLink.setAttribute('aria-label', 'Download CV');
+      socialLinksContainer.appendChild(downloadLink);
     }
   }
   
