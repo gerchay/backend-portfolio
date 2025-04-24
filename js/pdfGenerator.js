@@ -326,9 +326,9 @@ async function generatePdf(data, jsPDF, iconMap) {
             // Try to add image directly
             doc.addImage(data.profile.avatar, 'PNG', imgX, imgY, imgWidth, imgWidth);
             
-            // Add border
+            // Add border with increased size
             doc.setDrawColor('#3B82F6'); // Blue border
-            doc.setLineWidth(0.5);
+            doc.setLineWidth(1.5); // Increased border width
             doc.circle(imgX + imgWidth/2, imgY + imgWidth/2, imgWidth/2, 'S');
         }
     } catch (error) {
