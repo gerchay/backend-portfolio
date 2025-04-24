@@ -1,5 +1,13 @@
 {
   "title": "Resume",
+  "sectionIcons": {
+    "experience": "fas fa-briefcase",
+    "education": "fas fa-graduation-cap",
+    "certifications": "fas fa-certificate",
+    "languages": "fas fa-language",
+    "technicalSkills": "fas fa-laptop-code",
+    "softSkills": "fas fa-brain"
+  },
   "experience": [
     {
       "title": "IT Automation Engineer",

@@ -42,15 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     console.log('Fetched CV data:', cvData);
 
-                    // Load font awesome icons
-                    await loadFontAwesomeForPDF();
+                    // Load icon maps
+                    const iconMap = await loadIconMap();
 
                     // Get jsPDF from window object
                     if (typeof window.jspdf === 'undefined') {
                         throw new Error('jsPDF library not loaded!');
                     }
                     const { jsPDF } = window.jspdf;
-                    generatePdf(cvData, jsPDF);
+                    generatePdf(cvData, jsPDF, iconMap);
 
                 } catch (error) {
                     console.error('Error generating PDF:', error);
@@ -69,14 +69,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Function to load FontAwesome icons for PDF
-async function loadFontAwesomeForPDF() {
-    // We'll create a canvas element to convert FontAwesome icons to images
-    window.pdfIconCache = {};
-    console.log('Setting up FontAwesome for PDF generation');
+// Function to create icon map with image URLs
+async function loadIconMap() {
+    // Map FontAwesome icons to image URLs
+    const iconMap = {
+        // Section icons
+        'fas fa-briefcase': 'https://img.icons8.com/ios-filled/50/FFFFFF/briefcase.png',
+        'fas fa-graduation-cap': 'https://img.icons8.com/ios-filled/50/FFFFFF/graduation-cap.png',
+        'fas fa-certificate': 'https://img.icons8.com/ios-filled/50/FFFFFF/certificate.png',
+        'fas fa-language': 'https://img.icons8.com/ios-filled/50/FFFFFF/language.png',
+        'fas fa-laptop-code': 'https://img.icons8.com/ios-filled/50/FFFFFF/source-code.png',
+        'fas fa-brain': 'https://img.icons8.com/ios-filled/50/FFFFFF/brain.png',
+        'fas fa-heart': 'https://img.icons8.com/ios-filled/50/FFFFFF/hearts.png',
+        'fas fa-award': 'https://img.icons8.com/ios-filled/50/FFFFFF/medal.png',
+        
+        // Contact icons
+        'fas fa-envelope': 'https://img.icons8.com/ios-filled/50/FFFFFF/mail.png',
+        'fas fa-phone': 'https://img.icons8.com/ios-filled/50/FFFFFF/phone.png',
+        'fas fa-map-marker-alt': 'https://img.icons8.com/ios-filled/50/FFFFFF/marker.png',
+        'fab fa-linkedin': 'https://img.icons8.com/ios-filled/50/FFFFFF/linkedin.png'
+    };
+    
+    // For dark icons (for white backgrounds)
+    const darkIconMap = {};
+    for (const [key, url] of Object.entries(iconMap)) {
+        darkIconMap[key] = url.replace('FFFFFF', '111827');
+    }
+    
+    return { 
+        light: iconMap,
+        dark: darkIconMap 
+    };
 }
 
-function generatePdf(data, jsPDF) {
+// Function to get fallback character if icon image fails
+function getFontAwesomeChar(iconName) {
+    const iconMap = {
+        'fas fa-briefcase': 'W',
+        'fas fa-graduation-cap': 'E',
+        'fas fa-certificate': 'C',
+        'fas fa-language': 'L',
+        'fas fa-brain': 'S',
+        'fas fa-heart': 'I',
+        'fas fa-award': 'A',
+        'fas fa-code': 'C',
+        'fas fa-code': 'T',
+        'fas fa-envelope': '@',
+        'fas fa-phone': '#',
+        'fas fa-map-marker-alt': 'L',
+        'fab fa-linkedin': 'in'
+    };
+    
+    return iconMap[iconName] || iconName.charAt(iconName.length - 1).toUpperCase();
+}
+
+async function generatePdf(data, jsPDF, iconMap) {
     console.log('Generating PDF with data:', data);
     const doc = new jsPDF({
         orientation: 'portrait',
@@ -148,50 +195,95 @@ function generatePdf(data, jsPDF) {
     }
 
     // Helper to add a section title in main content with icon
-    function addMainSectionTitle(title, y, icon = null) {
+    function addMainSectionTitle(title, y, iconName = null) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.setTextColor('#3B82F6'); // Blue
         
-        // Add icon background circle
-        if (icon) {
-            doc.setFillColor('#111827'); // Dark gray for icon background
-            doc.circle(mainContentX - 6, y - 2, 4, 'F');
-            
-            // Add icon placeholder (in real implementation, we'd add actual icons)
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor('#FFFFFF');
-            doc.setFontSize(7);
-            doc.text(icon, mainContentX - 8, y - 0.5);
-            doc.setTextColor('#3B82F6'); // Reset to blue for title
-            doc.setFontSize(14);
+        // Add icon
+        if (iconName) {
+            try {
+                const iconSize = 6; // mm
+                const circleSize = 9; // mm - increased circle size
+                const iconX = mainContentX - circleSize - 2;
+                const iconY = y - circleSize/2;
+                
+                // Draw circle background for main content icons
+                doc.setFillColor('#111827'); // Dark gray background
+                doc.circle(iconX + circleSize/2, iconY + circleSize/2, circleSize/2, 'F');
+                
+                // Add icon image if available in map
+                if (iconMap.light[iconName]) {
+                    // Center the icon within the circle
+                    const iconOffset = (circleSize - iconSize) / 2;
+                    doc.addImage(iconMap.light[iconName], 'PNG', iconX + iconOffset, iconY + iconOffset, iconSize, iconSize);
+                } else {
+                    // Fallback to letter
+                    const iconChar = getFontAwesomeChar(iconName);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setTextColor('#FFFFFF');
+                    doc.setFontSize(7);
+                    doc.text(iconChar, mainContentX - 10, y - 0.5);
+                }
+            } catch (e) {
+                console.error('Error adding icon image:', e);
+                // Fallback to letter
+                const iconChar = getFontAwesomeChar(iconName);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor('#FFFFFF');
+                doc.setFontSize(7);
+                doc.text(iconChar, mainContentX - 10, y - 0.5);
+            }
         }
         
+        // Add the title text
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.setTextColor('#3B82F6'); // Blue
         doc.text(title.toUpperCase(), mainContentX, y);
         
         return y + 8;
     }
 
     // Helper to add a sidebar section title with icon
-    function addSidebarSectionTitle(title, y, icon = null) {
+    function addSidebarSectionTitle(title, y, iconName = null) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(12);
         doc.setTextColor('#FFFFFF'); // White
         
-        // Add icon background circle
-        if (icon) {
-            doc.setFillColor('#FFFFFF'); // White circle for icon
-            doc.circle(margin - 5, y - 2, 4, 'F');
-            
-            // Add icon placeholder (in real implementation, we'd add actual icons)
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor('#111827'); // Dark text for icon
-            doc.setFontSize(7);
-            doc.text(icon, margin - 7, y - 0.5);
-            doc.setTextColor('#FFFFFF'); // Reset to white for title
-            doc.setFontSize(12);
+        // Add icon without circle
+        if (iconName) {
+            try {
+                const iconSize = 6; // mm
+                const iconX = margin - iconSize - 2;
+                const iconY = y - iconSize/2;
+                
+                // Add icon image if available in map
+                if (iconMap.light[iconName]) {
+                    doc.addImage(iconMap.light[iconName], 'PNG', iconX, iconY, iconSize, iconSize);
+                } else {
+                    // Fallback to letter
+                    const iconChar = getFontAwesomeChar(iconName);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setTextColor('#FFFFFF');
+                    doc.setFontSize(7);
+                    doc.text(iconChar, margin - 7, y - 0.5);
+                }
+            } catch (e) {
+                console.error('Error adding sidebar icon image:', e);
+                // Fallback to letter
+                const iconChar = getFontAwesomeChar(iconName);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor('#FFFFFF');
+                doc.setFontSize(7);
+                doc.text(iconChar, margin - 7, y - 0.5);
+            }
         }
         
+        // Add the title text
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(12);
+        doc.setTextColor('#FFFFFF'); // White
         doc.text(title.toUpperCase(), margin, y);
         return y + 6;
     }
@@ -248,25 +340,16 @@ function generatePdf(data, jsPDF) {
     mainY = addMainText(data.profile.title, mainY, 14, 'normal', true);
     mainY += 5;
 
-    // Contact info
+    // Contact info with icons
     let contactInfo = [];
     let contactIcons = [];
     data.profile.contactInfo.forEach(info => {
-        if (info.icon.includes('fa-envelope')) {
+        if (info.icon.includes('fa-envelope') || 
+           info.icon.includes('fa-phone') || 
+           info.icon.includes('fa-map-marker-alt') || 
+           info.icon.includes('fa-linkedin')) {
             contactInfo.push(info.text);
-            contactIcons.push('@');
-        }
-        if (info.icon.includes('fa-phone')) {
-            contactInfo.push(info.text);
-            contactIcons.push('#');
-        }
-        if (info.icon.includes('fa-map-marker-alt')) {
-            contactInfo.push(info.text);
-            contactIcons.push('o');
-        }
-        if (info.icon.includes('fa-linkedin')) {
-            contactInfo.push(info.text);
-            contactIcons.push('in');
+            contactIcons.push(info.icon);
         }
     });
     
@@ -279,17 +362,34 @@ function generatePdf(data, jsPDF) {
     // Add contact info text with icons
     doc.setTextColor('#FFFFFF');
     doc.setFontSize(9);
-    contactInfo.forEach((info, index) => {
-        const x = mainContentX + 10 + (index * (mainContentWidth / contactInfo.length));
+    
+    // Add contact icons and text
+    for (let i = 0; i < contactInfo.length; i++) {
+        const x = mainContentX + 10 + (i * (mainContentWidth / contactInfo.length));
+        const iconSize = 4; // mm
+        const iconY = contactY - 1;
         
-        // Add icon placeholder
-        doc.setFont('helvetica', 'bold');
-        doc.text(contactIcons[index], x - 7, contactY + 3);
+        try {
+            // Add icon image if available in map
+            if (iconMap.light[contactIcons[i]]) {
+                doc.addImage(iconMap.light[contactIcons[i]], 'PNG', x - 6, iconY - iconSize/2, iconSize, iconSize);
+            } else {
+                // Fallback to text
+                doc.setFont('helvetica', 'bold');
+                doc.text(getFontAwesomeChar(contactIcons[i]), x - 7, contactY + 3);
+            }
+        } catch (e) {
+            console.error('Error adding contact icon:', e);
+            // Fallback to text
+            doc.setFont('helvetica', 'bold');
+            doc.text(getFontAwesomeChar(contactIcons[i]), x - 7, contactY + 3);
+        }
         
-        // Add contact info
+        // Add contact text
         doc.setFont('helvetica', 'normal');
-        doc.text(info, x, contactY + 3);
-    });
+        doc.text(contactInfo[i], x, contactY + 3);
+    }
+    
     mainY = contactY + contactHeight + 5;
 
     // About section
@@ -300,7 +400,7 @@ function generatePdf(data, jsPDF) {
     }
 
     // Skills Section
-    sidebarY = addSidebarSectionTitle('TECHNICAL SKILLS', sidebarY, 'S');
+    sidebarY = addSidebarSectionTitle('TECHNICAL SKILLS', sidebarY, data.resume.sectionIcons?.technicalSkills || 'T');
     if (data.resume.technicalSkills) {
         data.resume.technicalSkills.forEach(skill => {
             const cleanedSkill = skill.name.replace(/\s*\([^)]*\)/g, '').trim();
@@ -308,7 +408,7 @@ function generatePdf(data, jsPDF) {
         });
     }
     sidebarY += 10;
-    sidebarY = addSidebarSectionTitle('SOFT SKILLS', sidebarY, 'S');
+    sidebarY = addSidebarSectionTitle('SOFT SKILLS', sidebarY, data.resume.sectionIcons?.softSkills || 'S');
     
     if (data.resume.softSkills) {
         data.resume.softSkills.forEach(skill => {
@@ -319,7 +419,7 @@ function generatePdf(data, jsPDF) {
     sidebarY += 10;
 
     // Education Section in Sidebar
-    sidebarY = addSidebarSectionTitle('EDUCATION', sidebarY, 'E');
+    sidebarY = addSidebarSectionTitle('EDUCATION', sidebarY, data.resume.sectionIcons?.education || 'E');
     if (data.resume.education) {
         data.resume.education.forEach(edu => {
             sidebarY = addSidebarText(edu.degree, sidebarY, 9, 'bold');
@@ -331,7 +431,7 @@ function generatePdf(data, jsPDF) {
     sidebarY += 10;
 
     // Languages Section in Sidebar
-    sidebarY = addSidebarSectionTitle('LANGUAGES', sidebarY, 'L');
+    sidebarY = addSidebarSectionTitle('LANGUAGES', sidebarY, data.resume.sectionIcons?.languages || 'L');
     if (data.resume.languages && data.resume.languages.length > 0) {
         data.resume.languages.forEach(lang => {
             sidebarY = addSidebarText(lang.language, sidebarY, 9, 'bold');
@@ -347,29 +447,50 @@ function generatePdf(data, jsPDF) {
     sidebarY += 10;
 
     // Interests Section
-    sidebarY = addSidebarSectionTitle('INTERESTS', sidebarY, 'I');
+    sidebarY = addSidebarSectionTitle('INTERESTS', sidebarY, data.interests?.sectionIcon || 'I');
     console.log('Interests data:', data.interests);
+    
+    // Interest icons and titles in sidebar
     if (data.interests && data.interests.coreInterests && data.interests.coreInterests.length > 0) {
         console.log('Using coreInterests from interests data');
-        data.interests.coreInterests.forEach(interest => {
-            console.log('Adding interest:', interest.title);
-            sidebarY = addSidebarText(interest.title, sidebarY, 9);
-        });
+        for (const interest of data.interests.coreInterests) {
+            try {
+                console.log('Adding interest:', interest.title);
+                const iconSize = 4; // mm
+                const iconX = margin;
+                const iconY = sidebarY;
+                
+                // Add icon if available
+                if (interest.icon && iconMap.light[interest.icon]) {
+                    doc.addImage(iconMap.light[interest.icon], 'PNG', iconX, iconY - iconSize/2, iconSize, iconSize);
+                    sidebarY = addSidebarText('  ' + interest.title, sidebarY, 9, 'bold');
+                } else {
+                    sidebarY = addSidebarText(interest.title, sidebarY, 9, 'bold');
+                }
+                sidebarY += 2; // Extra space after each interest
+            } catch (e) {
+                console.error('Error adding interest icon:', e);
+                sidebarY = addSidebarText(interest.title, sidebarY, 9, 'bold');
+                sidebarY += 2;
+            }
+        }
     } else if (data.resume.interests) {
         console.log('Falling back to resume interests');
         data.resume.interests.forEach(interest => {
             sidebarY = addSidebarText(interest, sidebarY, 9);
+            sidebarY += 2;
         });
     } else {
         console.log('Using placeholder interests');
         // Add some placeholder interests
         ['Technology', 'Web 3.0', 'Sustainability'].forEach(interest => {
             sidebarY = addSidebarText(interest, sidebarY, 9);
+            sidebarY += 2;
         });
     }
 
     // Work Experience Section in Main Content
-    mainY = addMainSectionTitle('WORK EXPERIENCE', mainY, 'W');
+    mainY = addMainSectionTitle('WORK EXPERIENCE', mainY, data.resume.sectionIcons?.experience || 'W');
     if (data.resume.experience) {
         data.resume.experience.forEach(job => {
             mainY = addMainText(job.title, mainY, 12, 'bold');
@@ -394,7 +515,7 @@ function generatePdf(data, jsPDF) {
     }
 
     // Certifications/Courses Section
-    mainY = addMainSectionTitle('CONFERENCES & COURSES', mainY, 'C');
+    mainY = addMainSectionTitle('CONFERENCES & COURSES', mainY, data.resume.sectionIcons?.certifications || 'C');
     if (data.resume.certifications) {
         data.resume.certifications.forEach(category => {
             if (category.items) {
@@ -408,7 +529,7 @@ function generatePdf(data, jsPDF) {
     
     // Honors & Awards Section
     mainY += 5;
-    mainY = addMainSectionTitle('HONORS & AWARDS', mainY, 'A');
+    mainY = addMainSectionTitle('HONORS & AWARDS', mainY, data.honors?.sectionIcon || 'A');
     if (data.honors && data.honors.awards && data.honors.awards.length > 0) {
         data.honors.awards.forEach(award => {
             const awardText = `${award.title} - ${award.organization}, ${award.date}`;
@@ -416,7 +537,7 @@ function generatePdf(data, jsPDF) {
         });
     }
 
-    console.log('Generated PDF with icons and enhanced styling');
+    console.log('Generated PDF with icons from data');
 
     try {
         doc.save('Asad_Al_Badi_CV.pdf');

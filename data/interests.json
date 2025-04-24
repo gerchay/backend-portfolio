@@ -1,5 +1,6 @@
 {
   "title": "Interests & Passions",
+  "sectionIcon": "fas fa-heart",
   "coreInterests": [
     {
       "title": "Coding",
