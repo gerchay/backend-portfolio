@@ -72,19 +72,24 @@
   ],
   "technicalSkills": [
     {
-      "name": "Flutter (Mobile, Desktop, Web)",
+      "name": "Flutter/Dart",
       "percentage": 90,
       "icon": "https://img.icons8.com/color/48/flutter.png"
     },
     {
-      "name": "Python Development (Automation, Testing, API)",
+      "name": "Python",
       "percentage": 95,
       "icon": "https://img.icons8.com/color/48/python.png"
     },
     {
-      "name": "Java Development (Desktop, Android)",
+      "name": "Java",
       "percentage": 55,
       "icon": "https://img.icons8.com/color/48/java-coffee-cup-logo.png"
+    },
+    {
+      "name": "Rust",
+      "percentage": 40,
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/2048px-Rust_programming_language_black_logo.svg.png"
     },
     {
       "name": "Server Administration",
@@ -92,14 +97,9 @@
       "icon": "https://static.thenounproject.com/png/640121-200.png"
     },
     {
-      "name": "Database (SQL & NoSQL)",
+      "name": "Database (PostgreSQL, MongoDB)",
       "percentage": 88,
       "icon": "https://static.thenounproject.com/png/29365-200.png"
-    },
-    {
-      "name": "Rust Development (Backend, API)",
-      "percentage": 40,
-      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/2048px-Rust_programming_language_black_logo.svg.png"
     }
   ],
   "softSkills": [
