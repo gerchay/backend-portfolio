@@ -272,6 +272,8 @@ h1 {
   body {
     display: grid;
     grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
   }
   
   .sidebar {
@@ -284,15 +286,23 @@ h1 {
     overflow-y: auto;
     padding: 2rem;
     z-index: 10;
+    grid-column: 1;
+    grid-row: 1 / -1;
   }
   
   .main-content {
-    height: 50vh;
     grid-column: 2;
-    width: 100%; /* Let it take the full width of the grid column */
-    max-width: none; /* Remove max-width */
-    margin: 0; /* Remove auto margin */
-    padding: 2rem; /* Adjust padding as needed */
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  .footer {
+    grid-column: 2;
+    width: 100%;
+    margin-top: 2rem;
   }
   
   .mobile-header {
