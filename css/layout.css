@@ -44,7 +44,7 @@ h1 {
 
 /* Tab Navigation */
 .tab-navigation {
-  display: flex;
+  display: none; /* Hidden by default on mobile */
   flex-wrap: wrap;
   justify-content: center;
   margin: 1rem 0;
@@ -261,6 +261,9 @@ h1 {
   }
   .interests-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 columns tablet */
+  }
+  .tab-navigation {
+    display: flex; /* Show tab navigation on tablet and up */
   }
 }
 
