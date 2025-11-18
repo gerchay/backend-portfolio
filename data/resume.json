@@ -10,9 +10,16 @@
   },
   "experience": [
     {
+      "title": "Application Development Senior Specialist",
+      "company": "Vodafone Oman",
+      "period": "November 2025 - Present",
+      "description": "Designing, developing, and delivering enterprise-grade applications that power Vodafone Oman’s digital services",
+      "logo": "https://brandlogos.net/wp-content/uploads/2022/08/vodafone-logo_brandlogos.net_yvaun.png"
+    },
+    {
       "title": "IT Automation Engineer",
       "company": "Vodafone Oman",
-      "period": "June 2022 - Present",
+      "period": "June 2022 - November 2025",
       "description": "Implementing automated solutions, resulting in increased efficiency and reduced costs across the organization. Troubleshooting complex IT issues and providing proactive support to improve systems and processes.",
       "logo": "https://brandlogos.net/wp-content/uploads/2022/08/vodafone-logo_brandlogos.net_yvaun.png"
     },
