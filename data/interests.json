@@ -58,14 +58,17 @@
       { "url": "#", "icon": "fas fa-network-wired", "label": "Network Diagram" }
     ],
     "image": "assets/images/homelab.png",
-    "description": "My central hub for learning, testing, and self-hosting. It's built within a compact 10\" RackMate chassis by DeskPi, featuring custom 3D-printed mounts for optimized airflow and component placement. This setup embodies my passion for structured solutions and hands-on, DIY tech.",
-    "specs": [
-      "**Chassis:** DeskPi 10\" RackMate",
-      "**Virtualization:** Proxmox VE",
-      "**Networking:** OPNsense",
-      "**Storage:** TrueNAS Core",
-      "**Containerization:** Docker",
-      "**Key Services:** Self-hosted applications, CI/CD pipelines, network monitoring, automation workflows"
-    ]
+    "description": "My personal homelab serves as a complete ecosystem for development, automation, self-hosting, and smart home orchestration. It runs across a Proxmox cluster, a dedicated TrueNAS server, multiple Raspberry Pi boards, and an OPNsense firewall appliance. This environment powers my daily development workflows, 3D-printing operations, automation pipelines, and shared family services.",
+"specs": [
+  "**Compute & Virtualization:** Proxmox cluster running on multiple Lenovo M910q nodes",
+  "**Storage:** Dedicated custom-built TrueNAS Core server (RAID-5 + standalone media storage)",
+  "**Development Node:** Mac Mini M4 used exclusively for coding and local LLM workloads",
+  "**Edge & Utility Nodes:** Raspberry Pi 4 Kubernetes cluster",
+  "**Networking:** OPNsense firewall appliance with segmented VLANs for homelab, IoT, and services",
+  "**Containerization:** Docker VM on Proxmox hosting shared services (Affine, n8n, Audiobookshelf, Plex, etc.)",
+  "**Home Automation:** Home Assistant, Zigbee, Metabase dashboards, FinTrack pipelines for expense/income tracking",
+  "**3D Printing:** Elegoo Saturn 4 Ultra & Creality Hi with automated monitoring and workflow integrations"
+]
+
   }
 } 
