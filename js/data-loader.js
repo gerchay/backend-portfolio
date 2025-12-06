@@ -453,13 +453,15 @@ document.addEventListener('DOMContentLoaded', () => {
               specsHTML = `<ul class="homelab-specs">${specItems}</ul>`;
           }
 
-          // Structure for potential 2-column layout
+          // Structure: description (left) + image (right), specs full width below
           homelabContent.innerHTML = `
               <div class="homelab-text">
                   ${descriptionHTML}
+              </div>
+              ${imageContainerHTML}
+              <div class="homelab-specs-container">
                   ${specsHTML}
               </div>
-              ${imageContainerHTML} 
           `;
       }
     }

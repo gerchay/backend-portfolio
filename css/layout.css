@@ -239,6 +239,11 @@ h1 {
   align-items: start; /* Align items at the start */
 }
 
+/* Specs container spans full width */
+.homelab-specs-container {
+  grid-column: 1 / -1; /* Full width across all columns */
+}
+
 /* Tablet Breakpoint (768px) */
 @media screen and (min-width: 768px) {
   .services-grid,
