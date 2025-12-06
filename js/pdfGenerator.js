@@ -519,14 +519,28 @@ async function generatePdf(data, jsPDF, iconMap) {
     // Certifications/Courses Section
     mainY = addMainSectionTitle('CONFERENCES & COURSES', mainY, data.resume.sectionIcons?.certifications || 'C');
     if (data.resume.certifications) {
+        // Collect all certification items
+        const allCerts = [];
         data.resume.certifications.forEach(category => {
             if (category.items) {
                 category.items.forEach(cert => {
                     const certText = cert.includes('|') ? cert.split('|')[0].trim() : cert;
-                    mainY = addBulletPoint(certText, mainY, 10, 'normal', 8);
+                    allCerts.push(certText);
                 });
             }
         });
+        
+        // Limit to first 4 items
+        const maxCerts = 4;
+        const certsToShow = allCerts.slice(0, maxCerts);
+        certsToShow.forEach(certText => {
+            mainY = addBulletPoint(certText, mainY, 10, 'normal', 8);
+        });
+        
+        // Add "...etc" if there are more
+        if (allCerts.length > maxCerts) {
+            mainY = addBulletPoint(`...and ${allCerts.length - maxCerts} more`, mainY, 10, 'italic', 8);
+        }
     }
     
     // Honors & Awards Section
