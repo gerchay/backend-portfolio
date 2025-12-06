@@ -40,35 +40,36 @@
   ],
   "certifications": [
   {
-    "category": "Leadership & Professional Development",
+    "category": "Leadership & Management",
     "items": [
-      "The Elite Program by LEORON Institute"
+      "The Elite Program – LEORON Institute"
     ]
   },
-    {
-      "category": "Google & Microsoft Certifications",
-      "items": [
-        "System Administration and IT Infrastructure Services - Google",
-        "Designing and Implementing a Data Science Solution on Azure (A) - Microsoft"
-      ]
-    },
-    {
-      "category": "Cisco & Network Certifications",
-      "items": [
-        "IPv6 Fundamentals, Design and Deployment - Cisco",
-        "Prepare for the CompTIA Network+ (N10-007) Certification",
-        "Cisco CCNA (200-301) Cert Prep: Security, Automation, and Programmability"
-      ]
-    },
-    {
-      "category": "Development & Testing Certifications",
-      "items": [
-        "Using Python for Automation - LinkedIn",
-        "Machine Learning with Python: Foundations - LinkedIn",
-        "Mobile Testing with Appium - LinkedIn"
-      ]
-    }
-  ],
+  {
+    "category": "Cloud & Infrastructure",
+    "items": [
+      "System Administration and IT Infrastructure Services – Google",
+      "Designing and Implementing a Data Science Solution on Azure (A) – Microsoft"
+    ]
+  },
+  {
+    "category": "Networking & Security",
+    "items": [
+      "IPv6 Fundamentals, Design and Deployment – Cisco",
+      "CompTIA Network+ (N10-007) Preparation",
+      "Cisco CCNA (200-301) Security, Automation, and Programmability"
+    ]
+  },
+  {
+    "category": "Software Development & Automation",
+    "items": [
+      "Using Python for Automation – LinkedIn",
+      "Machine Learning with Python: Foundations – LinkedIn",
+      "Mobile Testing with Appium – LinkedIn"
+    ]
+  }
+],
+
   "languages": [
     {
       "language": "English",
