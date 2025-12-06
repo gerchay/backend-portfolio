@@ -129,7 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabNavigation = document.querySelector('.tab-navigation');
     if (tabNavigation) {
       tabNavigation.innerHTML = ''; // Clear only main tab buttons
-      data.tabs.forEach(tab => {
+      // Filter out hidden tabs
+      const visibleTabs = data.tabs.filter(tab => !tab.hidden);
+      visibleTabs.forEach(tab => {
         const button = document.createElement('button');
         button.className = 'tab-btn' + (tab.active ? ' active' : '');
         button.dataset.tab = tab.id;

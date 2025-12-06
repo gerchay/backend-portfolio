@@ -3,32 +3,38 @@
     {
       "id": "about",
       "title": "About",
-      "active": true
+      "active": true,
+      "hidden": false
     },
     {
       "id": "resume",
       "title": "Resume",
-      "active": false
+      "active": false,
+      "hidden": false
     },
     {
       "id": "portfolio",
       "title": "Portfolio",
-      "active": false
+      "active": false,
+      "hidden": false
     },
     {
       "id": "interests",
       "title": "Interests",
-      "active": false
+      "active": false,
+      "hidden": false
     },
     {
       "id": "honors",
       "title": "Honors",
-      "active": false
+      "active": false,
+      "hidden": false
     },
     {
       "id": "contact",
       "title": "Contact",
-      "active": false
+      "active": false,
+      "hidden": true
     }
   ]
 } 
