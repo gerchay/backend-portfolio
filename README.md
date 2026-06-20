@@ -1,70 +1,84 @@
-# Modern Developer Portfolio Template
+# Asad Al Badi — Portfolio
 
-A clean, responsive, and data-driven developer portfolio website template built with pure HTML, CSS, and JavaScript.
+A fast, data-driven personal portfolio built with **pure HTML, CSS, and JavaScript** — no framework, no build step. Live at **[asadalbadi.dev](https://asadalbadi.dev)**.
+
+Design language: **"The Forge console"** — a terminal/console-native dark theme (cool-ink ground, single mint-cyan accent, monospace system chrome) that presents the engineer as a system.
 
 ## Features
 
-- 💜 Purple-themed dark mode design (easily customizable)
-- 📱 Fully responsive layout (mobile, tablet, desktop)
-- 🧩 Modular CSS with clean separation of concerns (Layout, Components, Colors, Style)
-- ⚡ No frameworks - pure HTML, CSS, and JavaScript
-- 📄 **Data-Driven:** All content (profile info, about, resume, portfolio, honors, contact, navigation) is loaded dynamically from JSON files in the `/data` directory.
-- 🚀 **Easy Templating:** Update your portfolio by simply editing the JSON files - no HTML changes needed!
-- 🏗️ Structured for easy maintenance and future scaling
+- 🖥️ **Terminal-native UI** — status console, typed hero, monospace section labels, subtle dotted-grid background.
+- 🧩 **Data-driven** — every section renders from JSON in `/data`. Update content by editing JSON; no HTML/JS changes needed.
+- 📄 **One data model, two renderers** — the same JSON powers both the live site and a downloadable **CV PDF** (generated client-side with jsPDF).
+- 📊 **Skills as honest signal** — grouped by domain with a 5-cell proficiency meter (expert → learning) and Devicon icons.
+- 🗂️ **Portfolio with generated art** — each project uses a self-contained, on-brand **SVG cover** (no fragile external images); confidential work carries an NDA badge.
+- 📱 **Responsive** — the console collapses into a slide-in drawer on mobile (nav + contact + links + Download CV); zero horizontal overflow.
+- 🎨 **One-file theming** — all design tokens live in `css/colors.css`.
 
-## Project Structure
+## Project structure
 
 ```
-portfolio/
-├── index.html                # Main HTML structure (content loaded dynamically)
-├── manifest.json             # PWA configuration
-├── README.md                 # This file
-├── /assets/                  # Optional: For non-placeholder assets (e.g., favicon)
-│   └── fonts/                # (Optional) Web fonts if needed
+Portfolio/
+├── index.html              # App shell + content slots (filled at runtime)
+├── .nojekyll               # Serve files as-is on GitHub Pages
+├── CNAME                   # Custom domain (asadalbadi.dev)
 ├── /css/
-│   ├── colors.css            # Theme variables and color palette
-│   ├── layout.css            # Grid, flex, spacing, mobile menu
-│   ├── components.css        # Cards, buttons, forms, specific element styling
-│   └── style.css             # General styles & overrides
+│   ├── colors.css          # Design tokens — color, type, spacing, motion (theme lives here)
+│   ├── style.css           # Reset, base typography, background, hero, motion
+│   ├── layout.css          # App grid, console sidebar, tab bar, mobile drawer
+│   └── components.css       # Cards, timeline, skill meters, portfolio, forms
 ├── /js/
-│   ├── main.js               # Core interactivity (menu toggle, tab logic)
-│   ├── portfolio.js          # Portfolio filtering and rendering logic
-│   └── data-loader.js        # Fetches and loads all JSON data into HTML
-└── /data/                    # <<< ALL YOUR CONTENT GOES HERE >>>
-    ├── profile.json          # Name, title, avatar, contact, social links, footer
-    ├── navigation.json       # Defines the main navigation tabs
-    ├── about.json            # "About Me" text and "What I Do" services
-    ├── resume.json           # Experience, education, certifications, skills
-    ├── portfolio.json        # Your project details and tags
-    ├── honors.json           # Awards and recognitions
-    └── contact.json          # Contact form fields and map settings
+│   ├── data-loader.js      # Fetches all JSON → renders sections into the DOM
+│   ├── main.js             # Tabs, mobile drawer, typed hero, local clock
+│   ├── portfolio.js        # Portfolio cards + auto tag filters
+│   └── pdfGenerator.js     # Builds the CV PDF from the same JSON (jsPDF)
+├── /data/                  # <<< ALL CONTENT LIVES HERE >>>
+│   ├── profile.json        # Name, title, avatar, contact, social links, footer
+│   ├── navigation.json     # Tabs (id, title, active, hidden)
+│   ├── about.json          # Intro + "What I Do" services
+│   ├── resume.json         # Experience, education, certifications, grouped skills, languages
+│   ├── portfolio.json      # Projects (title, description, image, tags, url, isRedacted, logo)
+│   ├── interests.json      # Interests, fusion passions, homelab showcase
+│   ├── honors.json         # Awards
+│   └── contact.json        # Contact form fields + map
+└── /assets/images/
+    ├── homelab.svg         # Generated homelab rack illustration
+    └── /portfolio/         # Generated per-project SVG covers
 ```
 
-## Getting Started
+## Run locally
 
-1.  Clone or download this repository.
-2.  Open `index.html` in your browser (or use a simple live server for best results with `fetch`).
-3.  **Start editing the `.json` files in the `/data` directory to add your own content!**
+`fetch` needs HTTP, so serve over a local server (don't open `file://`):
 
-## Customizing Your Portfolio (Easy!)
+```bash
+npx live-server --port=5500     # auto-reload
+# or
+python3 -m http.server 5500
+```
 
-This template is designed for easy customization by editing the JSON files in the `/data` directory:
+Then open `http://127.0.0.1:5500`.
 
-1.  **Profile & Sidebar/Header:** Edit `data/profile.json` to change your name, title, avatar URL, contact details (email, phone, location), social media links, and footer copyright.
-2.  **Navigation Tabs:** Modify `data/navigation.json` to change the names, order, or target IDs of the main navigation tabs.
-3.  **About Section:** Update `data/about.json` with your personal description and the services you offer.
-4.  **Resume Section:** Fill `data/resume.json` with your work experience, education, certifications, technical skills, and soft skills.
-5.  **Portfolio Projects:** Add/edit your projects in `data/portfolio.json`. The filter buttons will automatically update based on the unique `tags` you use across your projects.
-6.  **Honors & Awards:** List your achievements in `data/honors.json`.
-7.  **Contact Section:** Configure the contact form fields and the embedded map URL in `data/contact.json`.
-8.  **Colors:** Edit the CSS variables in `css/colors.css` to easily change the theme.
-9.  **(Optional) Favicon/Assets:** Replace `favicon.ico` and add any other necessary assets to the `/assets` folder if needed.
+## Edit content
 
-**That's it! No need to modify `index.html` or complex JavaScript files for content updates.**
+All content is in `/data/*.json`:
 
-## Browser Support
+- **Profile / sidebar:** `profile.json`
+- **Tabs:** `navigation.json` (`hidden: true` removes a tab; `active: true` is the default)
+- **About / services:** `about.json`
+- **Resume:** `resume.json` — `technicalSkills` is grouped `{category, skills:[{name, level 1–5, icon}]}`; `level` maps to a tier (5 expert · 4 advanced · 3 proficient · 2 familiar · 1 learning)
+- **Portfolio:** `portfolio.json` — `tags` build the filter buttons automatically; `isRedacted: true` adds an NDA badge; `logo: true` centers a square icon on a branded panel
+- **Interests / homelab:** `interests.json`
+- **Honors:** `honors.json`
+- **Contact:** `contact.json`
 
-This project works in all modern browsers (Chrome, Firefox, Safari, Edge).
+> When changing a JSON shape, update **both** renderers (`data-loader.js` and `pdfGenerator.js`).
+
+## Theming
+
+Edit the CSS custom properties in `css/colors.css` — `--ground`, `--text`, `--accent`, the type scale, spacing, and motion all derive from there.
+
+## Deploy
+
+Hosted on **GitHub Pages** (legacy build) from the `html-js-css` branch root, with the `asadalbadi.dev` custom domain (`CNAME`) and `.nojekyll`. Pushing to `html-js-css` redeploys automatically.
 
 ## License
 
@@ -72,4 +86,4 @@ MIT
 
 ---
 
-Made with ❤️ by Asad 
+Built by Asad Al Badi.
