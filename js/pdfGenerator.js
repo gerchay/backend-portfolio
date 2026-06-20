@@ -143,7 +143,7 @@ async function generatePdf(data, jsPDF) {
   const li = (data.profile.socialLinks || []).find(s => (s.icon || '').includes('linkedin'));
   sideLabel('Contact');
   [find('fa-envelope'), find('fa-phone'), find('fa-map-marker'),
-   li && li.url.replace(/^https?:\/\//, '').replace(/\/$/, ''), 'asadalbadi.dev']
+   li && li.url.replace(/^https?:\/\//, '').replace(/\/$/, ''), data.profile.website]
     .filter(Boolean).forEach(t => sideText(t, { color: SIDE_DIM, gap: 1.5 }));
 
   // Technical skills (grouped)
@@ -191,7 +191,7 @@ async function generatePdf(data, jsPDF) {
 
   // Summary (full, no truncation)
   if (data.about && data.about.description) {
-    mainLabel('Summary');
+    mainLabel(data.about.title || 'Summary');
     mainText(data.about.description, { color: TEXT, lh: 1.36 });
   }
 
@@ -211,21 +211,24 @@ async function generatePdf(data, jsPDF) {
     });
   }
 
-  // Certifications — condensed to issuing bodies (kept tidy, nothing cut mid-sentence)
-  const issuers = [...new Set(
-    (data.resume.certifications || []).flatMap(c => c.items || [])
-      .map(it => { const p = it.split('–'); return (p.length > 1 ? p[p.length - 1] : '').trim(); })
-      .filter(Boolean)
-  )];
-  if (issuers.length) {
+  // Certifications & courses — latest two per category
+  const certCats = (data.resume.certifications || []).filter(c => c && Array.isArray(c.items) && c.items.length);
+  if (certCats.length) {
     mainLabel('Certifications & Courses');
-    mainText(issuers.join('  ·  '), { size: 9, color: MUTE });
+    certCats.forEach(cat => {
+      mainText(cat.category, { size: 9, style: 'bold', color: TEXT, gap: 1 });
+      cat.items.slice(0, 2).forEach(it => {
+        doc.setFillColor(TEAL); doc.circle(MX + 1.1, my - 1.1, 0.7, 'F');
+        mainText(it, { size: 8.8, color: MUTE, x: MX + 4.5, w: MW - 4.5, lh: 1.3, gap: 1.2 });
+      });
+      my += 2;
+    });
   }
 
   // Honors & Awards (all)
   const awards = (data.honors && data.honors.awards) || [];
   if (awards.length) {
-    mainLabel('Honors & Awards');
+    mainLabel((data.honors && data.honors.title) || 'Honors & Awards');
     awards.forEach(a => {
       font(9.5, 'bold'); doc.setTextColor(TEXT);
       doc.text(a.title, MX, my);
@@ -236,8 +239,10 @@ async function generatePdf(data, jsPDF) {
   }
 
   // Footer link
-  font(8.5, 'bold'); doc.setTextColor(TEAL);
-  doc.text('Full portfolio & projects — asadalbadi.dev', MX, H - 12);
+  if (data.profile.website) {
+    font(8.5, 'bold'); doc.setTextColor(TEAL);
+    doc.text(data.profile.website, MX, H - 12);
+  }
 
-  doc.save('Asad_Al_Badi_CV.pdf');
+  doc.save(`${String(data.profile.name || 'CV').replace(/\s+/g, '_')}_CV.pdf`);
 }
