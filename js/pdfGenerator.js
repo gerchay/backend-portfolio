@@ -147,7 +147,7 @@ async function generatePdf(data, jsPDF, iconMap) {
     let mainY = margin;
 
     // Draw sidebar background
-    doc.setFillColor('#111827'); // Dark gray
+    doc.setFillColor('#0A0E14'); // Forge ink sidebar
     doc.rect(0, 0, sidebarWidth, pageHeight, 'F');
 
     // Helper function to add text in the main content area
@@ -159,7 +159,7 @@ async function generatePdf(data, jsPDF, iconMap) {
         
         // Set text color
         if (isBlue) {
-            doc.setTextColor('#3B82F6'); // Blue
+            doc.setTextColor('#0E7C66'); // Blue
         } else {
             doc.setTextColor('#000000'); // Black
         }
@@ -198,7 +198,7 @@ async function generatePdf(data, jsPDF, iconMap) {
     function addMainSectionTitle(title, y, iconName = null) {
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
-        doc.setTextColor('#3B82F6'); // Blue
+        doc.setTextColor('#0E7C66'); // Blue
         
         // Add icon
         if (iconName) {
@@ -209,7 +209,7 @@ async function generatePdf(data, jsPDF, iconMap) {
                 const iconY = y - circleSize/2;
                 
                 // Draw circle background for main content icons
-                doc.setFillColor('#111827'); // Dark gray background
+                doc.setFillColor('#0A0E14'); // Dark gray background
                 doc.circle(iconX + circleSize/2, iconY + circleSize/2, circleSize/2, 'F');
                 
                 // Add icon image if available in map
@@ -239,7 +239,7 @@ async function generatePdf(data, jsPDF, iconMap) {
         // Add the title text
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
-        doc.setTextColor('#3B82F6'); // Blue
+        doc.setTextColor('#0E7C66'); // Blue
         doc.text(title.toUpperCase(), mainContentX, y);
         
         return y + 8;
@@ -297,7 +297,7 @@ async function generatePdf(data, jsPDF, iconMap) {
         doc.setTextColor('#000000'); // Black
         
         // Add bullet point
-        doc.setFillColor('#3B82F6'); // Blue bullet
+        doc.setFillColor('#0E7C66'); // Blue bullet
         doc.circle(mainContentX + 2, y - 2, 1, 'F');
         
         const x = mainContentX + indent;
@@ -327,7 +327,7 @@ async function generatePdf(data, jsPDF, iconMap) {
             doc.addImage(data.profile.avatar, 'PNG', imgX, imgY, imgWidth, imgWidth);
             
             // Add border with increased size
-            doc.setDrawColor('#3B82F6'); // Blue border
+            doc.setDrawColor('#0E7C66'); // Blue border
             doc.setLineWidth(1.5); // Increased border width
             doc.circle(imgX + imgWidth/2, imgY + imgWidth/2, imgWidth/2, 'S');
         }
@@ -356,7 +356,7 @@ async function generatePdf(data, jsPDF, iconMap) {
     // Contact info box
     const contactY = mainY;
     const contactHeight = 15;
-    doc.setFillColor('#111827');
+    doc.setFillColor('#0A0E14');
     doc.roundedRect(mainContentX, contactY - 5, mainContentWidth, contactHeight, 2, 2, 'F');
     
     // Add contact info text with icons
@@ -403,10 +403,16 @@ async function generatePdf(data, jsPDF, iconMap) {
 
     // Skills Section
     sidebarY = addSidebarSectionTitle('TECHNICAL SKILLS', sidebarY, data.resume.sectionIcons?.technicalSkills || 'T');
-    if (data.resume.technicalSkills) {
-        data.resume.technicalSkills.forEach(skill => {
-            const cleanedSkill = skill.name.replace(/\s*\([^)]*\)/g, '').trim();
-            sidebarY = addSidebarText(cleanedSkill, sidebarY, 9);
+    if (Array.isArray(data.resume.technicalSkills)) {
+        data.resume.technicalSkills.forEach(group => {
+            if (!group || !Array.isArray(group.skills)) return;
+            // Category subheader, then its skills as a compact comma list
+            sidebarY = addSidebarText(group.category, sidebarY, 8, 'bold');
+            const names = group.skills
+                .map(s => s.name.replace(/\s*\([^)]*\)/g, '').trim())
+                .join(', ');
+            sidebarY = addSidebarText(names, sidebarY, 8);
+            sidebarY += 2;
         });
     }
     sidebarY += 10;

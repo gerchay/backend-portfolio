@@ -48,12 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     portfolioGrid.innerHTML = '';
     
     if (!items || items.length === 0) {
-      console.log("Render: No items to display for the current filter."); 
       portfolioGrid.innerHTML = '<p class="text-center">No projects found matching the filter.</p>';
       return;
     }
     
-    console.log(`Render: Attempting to display ${items.length} items.`); 
     items.forEach(item => {
       // Create the main container div
       const portfolioItemContainer = document.createElement('div');
@@ -88,13 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Create Redacted Badge HTML
       const redactedBadgeHTML = item.isRedacted 
-          ? '<div class="redacted-badge"><i class="fas fa-lock"></i> Redacted</div>' 
+          ? '<div class="redacted-badge"><i class="fas fa-lock"></i> NDA</div>'
           : '';
       
       // Set inner HTML for the container
       portfolioItemContainer.innerHTML = `
         ${redactedBadgeHTML}
-        <div class="portfolio-image">
+        <div class="portfolio-image${item.logo ? ' logo' : ''}">
           <img src="${item.image || 'https://placehold.co/800x600/eee/ccc?text=No+Image'}" alt="${item.title || 'Portfolio Item'}">
         </div>
         <div class="portfolio-content">
@@ -120,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       portfolioGrid.appendChild(finalItemElement);
     });
-    console.log(`Render: Successfully added ${items.length} items to the grid.`);
   }
   
   // Generate filter buttons dynamically based on tags, showing only most frequent initially
@@ -164,26 +161,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         button.addEventListener('click', () => {
-            console.log('--- Filter Button Clicked ---'); 
             filtersContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             const filterTag = button.dataset.filter;
-            console.log(`Filtering by tag: '${filterTag}'`); 
             let itemsToRender;
             if (filterTag === 'all') {
                 itemsToRender = portfolioItems;
-                console.log(`Filter result: Showing all ${itemsToRender.length} items.`); 
             } else {
                 itemsToRender = portfolioItems.filter(item => 
                     item.tags && Array.isArray(item.tags) && item.tags.includes(filterTag)
                 );
-                console.log(`Filter result: Found ${itemsToRender.length} items with tag '${filterTag}'.`); 
             }
-            console.log('Calling renderPortfolioItems...'); 
             renderPortfolioItems(itemsToRender);
-            console.log('Calling createPlaceholderImages...'); 
             createPlaceholderImages();
-            console.log('--- Filter Action Complete ---'); 
         });
         filtersContainer.appendChild(button);
     });

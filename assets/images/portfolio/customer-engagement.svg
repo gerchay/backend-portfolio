@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Customer Engagement Platform">
+  <defs>
+    <radialGradient id="glow" cx="22%" cy="0%" r="85%">
+      <stop offset="0" stop-color="#5be6c4" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#5be6c4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.4" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#0a0e14"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+
+  <!-- broadcast source (operator) -->
+  <g transform="translate(210 250)">
+    <rect x="-58" y="-58" width="116" height="116" rx="20" fill="#11161f" stroke="#5be6c4" stroke-width="4"/>
+    <line x1="0" y1="14" x2="0" y2="-22" stroke="#5be6c4" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="0" cy="-26" r="7" fill="#5be6c4"/>
+    <g fill="none" stroke="#5be6c4" stroke-width="4" stroke-linecap="round">
+      <path d="M -16 30 a 24 24 0 0 1 32 0"/>
+      <path d="M -30 42 a 44 44 0 0 1 60 0"/>
+    </g>
+  </g>
+
+  <!-- flow links -->
+  <g stroke="#2b3645" stroke-width="2.5" stroke-dasharray="6 8" fill="none">
+    <path d="M 280 224 H 470"/>
+    <path d="M 280 276 H 470"/>
+  </g>
+  <g fill="#5c6677">
+    <path d="M 470 218 l 14 6 l -14 6 Z"/>
+    <path d="M 470 270 l 14 6 l -14 6 Z"/>
+  </g>
+
+  <!-- message bubbles in transit -->
+  <g transform="translate(360 200)">
+    <path d="M -42 -26 H 42 a 12 12 0 0 1 12 12 V 14 a 12 12 0 0 1 -12 12 H 6 l -16 16 v -16 H -42 a 12 12 0 0 1 -12 -12 V -14 a 12 12 0 0 1 12 -12 Z"
+          fill="#0a0e14" stroke="#5be6c4" stroke-width="3.5"/>
+    <g fill="#5be6c4"><circle cx="-22" cy="-4" r="4"/><circle cx="0" cy="-4" r="4"/><circle cx="22" cy="-4" r="4"/></g>
+  </g>
+  <g transform="translate(360 300)">
+    <path d="M -42 -26 H 42 a 12 12 0 0 1 12 12 V 14 a 12 12 0 0 1 -12 12 H 6 l -16 16 v -16 H -42 a 12 12 0 0 1 -12 -12 V -14 a 12 12 0 0 1 12 -12 Z"
+          fill="#0a0e14" stroke="#f2a65a" stroke-width="3.5"/>
+    <g fill="#f2a65a"><circle cx="-22" cy="-4" r="4"/><circle cx="0" cy="-4" r="4"/><circle cx="22" cy="-4" r="4"/></g>
+  </g>
+
+  <!-- recipients (customers) -->
+  <g fill="none" stroke="#97a1b0" stroke-width="4">
+    <g transform="translate(560 178)"><circle cx="0" cy="-12" r="13"/><path d="M -22 26 a 22 22 0 0 1 44 0"/></g>
+    <g transform="translate(620 250)"><circle cx="0" cy="-12" r="13"/><path d="M -22 26 a 22 22 0 0 1 44 0"/></g>
+    <g transform="translate(560 322)"><circle cx="0" cy="-12" r="13"/><path d="M -22 26 a 22 22 0 0 1 44 0"/></g>
+  </g>
+
+  <text x="400" y="452" text-anchor="middle" fill="#5c6677" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="4">// targeted campaigns · sms · push</text>
+</svg>

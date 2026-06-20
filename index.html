@@ -3,256 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Asad Al Badi's Portfolio - Software Engineer specializing in automated solutions, software development and IT infrastructure">
-    <meta name="theme-color" content="#7c3aed">
-    <title>Asad Al Badi's Portfolio</title>
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="css/colors.css" as="style">
-    <link rel="preload" href="css/layout.css" as="style">
-    <link rel="preload" href="css/components.css" as="style">
-    <link rel="preload" href="css/style.css" as="style">
-    <!-- Stylesheet loading -->
+    <meta name="description" content="Asad Al Badi — Software Engineer building SaaS, large interconnected systems, and cross-platform apps, with deep automation and IT infrastructure experience.">
+    <meta name="theme-color" content="#0a0e14">
+    <title>Asad Al Badi — Software Engineer</title>
+
+    <!-- Stylesheets (cascade order matters: tokens → base → layout → components) -->
     <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
-    <!-- Defer non-critical resources -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <!-- Fallback for no JS -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     </noscript>
 </head>
 <body>
-    <!-- Sidebar (Desktop) / Header (Mobile) -->
-    <aside class="sidebar">
-        <div class="sidebar-content">
-            <div class="profile">
-                <div class="avatar">
-                    <img src="https://api.dicebear.com/7.x/initials/svg?seed=Asad%20Al%20Badi&backgroundColor=7c3aed&textColor=ffffff" alt="Asad Al Badi">
-                </div>
-                <h1 class="name"><!-- Name loaded from profile.json --></h1>
-                <p class="title"><!-- Title loaded from profile.json --></p>
-            </div>
-            
-            <div class="contact-info">
-                <!-- Contact info loaded from profile.json -->
-            </div>
-            
-            <div class="social-links">
-                <!-- Social links loaded from profile.json -->
-            </div>
-        </div>
-    </aside>
+    <!-- Decorative background: dotted grid + vignette (non-interactive) -->
+    <div class="bg" aria-hidden="true">
+        <div class="bg-grid"></div>
+        <div class="bg-glow"></div>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Navbar -->
-        <nav class="navbar">
-            <div class="mobile-header">
-                <div class="mobile-profile">
-                    <img src="https://api.dicebear.com/7.x/initials/svg?seed=Asad%20Al%20Badi&backgroundColor=7c3aed&textColor=ffffff" alt="">
-                    <div>
-                        <h1 class="name"><!-- Name loaded from profile.json --></h1>
-                        <p class="title"><!-- Title loaded from profile.json --></p>
-                        <!-- Container for contact info in mobile header -->
-                        <div class="mobile-header-contact"></div> 
+    <div class="app">
+        <!-- ===================== STATUS CONSOLE (sidebar) ===================== -->
+        <aside class="sidebar">
+            <div class="console">
+                <div class="console-bar">
+                    <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+                    <span class="console-path">asad@forge: ~</span>
+                </div>
+
+                <div class="console-body">
+                    <div class="profile">
+                        <div class="avatar">
+                            <img src="assets/images/profile_cropped.png" alt="Asad Al Badi">
+                        </div>
+                        <div class="profile-id">
+                            <h1 class="name"><!-- profile.json --></h1>
+                            <p class="title"><!-- profile.json --></p>
+                        </div>
+                    </div>
+
+                    <div class="status">
+                        <span class="status-dot" data-state="ok"></span>
+                        <span class="status-label">available for work</span>
+                        <span class="status-clock" id="local-clock">--:--</span>
+                    </div>
+
+                    <div class="console-section">
+                        <span class="console-key">// contact</span>
+                        <div class="contact-info"><!-- profile.json --></div>
+                    </div>
+
+                    <div class="console-section">
+                        <span class="console-key">// links</span>
+                        <div class="social-links"><!-- profile.json --></div>
                     </div>
                 </div>
-                <button class="menu-toggle" aria-label="Toggle Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
-            
-            <!-- Mobile Menu Overlay (Hidden by default) -->
-            <div class="mobile-menu-overlay">
-                <div class="mobile-menu-content">
-                    <button class="close-menu-btn" aria-label="Close Menu">&times;</button>
-                    <!-- Mobile Navigation Links/Tabs will be loaded here -->
-                    <div class="mobile-nav-links"></div> 
-                    <!-- Mobile Contact Info will be loaded here -->
+        </aside>
+
+        <!-- ===================== MAIN ===================== -->
+        <main class="main-content">
+            <nav class="navbar">
+                <!-- Mobile header -->
+                <div class="mobile-header">
+                    <div class="mobile-profile">
+                        <img src="assets/images/profile_cropped.png" alt="">
+                        <div>
+                            <h1 class="name"><!-- profile.json --></h1>
+                            <p class="title"><!-- profile.json --></p>
+                            <div class="mobile-header-contact"></div>
+                        </div>
+                    </div>
+                    <div class="mobile-actions">
+                        <button class="mobile-cv-btn" id="header-download-cv" aria-label="Download CV">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="menu-toggle" aria-label="Toggle menu">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Desktop / tablet tab bar -->
+                <div class="tabbar">
+                    <span class="tabbar-prompt">&gt;</span>
+                    <div class="tab-navigation"><!-- navigation.json --></div>
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                <!-- ===== ABOUT (default / hero) ===== -->
+                <section id="about" class="section tab-pane active">
+                    <div class="hero">
+                        <div class="hero-term" aria-hidden="true">
+                            <span class="term-prompt">asad@forge:~$</span>
+                            <span class="term-cmd">whoami</span>
+                        </div>
+                        <h2 class="hero-headline">
+                            I build systems<br>that <span class="accent">run themselves.</span>
+                        </h2>
+                        <p class="hero-sub">
+                            <span class="type-target" data-type="Software Engineer — SaaS · interconnected systems · apps · automation">Software Engineer — SaaS · interconnected systems · apps · automation</span><span class="caret">_</span>
+                        </p>
+                    </div>
+
+                    <div class="section-head">
+                        <span class="section-index">01</span>
+                        <h3 class="section-title"><!-- about.json --></h3>
+                        <span class="section-rule"></span>
+                    </div>
+
+                    <p class="about-text"><!-- about.json --></p>
+
+                    <div class="what-i-do">
+                        <span class="console-key">// what I do</span>
+                        <div class="services-grid"><!-- about.json --></div>
+                    </div>
+                </section>
+
+                <!-- ===== RESUME ===== -->
+                <section id="resume" class="section tab-pane">
+                    <div class="section-head">
+                        <span class="section-index">02</span>
+                        <h3 class="section-title"><!-- resume.json --></h3>
+                        <span class="section-rule"></span>
+                    </div>
+
+                    <div class="resume-content">
+                        <div class="resume-section">
+                            <span class="console-key">// work experience</span>
+                            <div class="timeline"><!-- resume.json --></div>
+                        </div>
+                        <div class="resume-section">
+                            <span class="console-key">// education</span>
+                            <div class="timeline"><!-- resume.json --></div>
+                        </div>
+                        <div class="resume-section">
+                            <span class="console-key">// certifications</span>
+                            <div class="timeline"><!-- resume.json --></div>
+                        </div>
+
+                        <div class="skills-section" id="technical-skills">
+                            <span class="console-key">// technical skills</span>
+                            <div class="skills-grid"><!-- resume.json --></div>
+                        </div>
+                        <div class="skills-section" id="soft-skills">
+                            <span class="console-key">// soft skills</span>
+                            <div class="skills-grid"><!-- resume.json --></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PORTFOLIO ===== -->
+                <section id="portfolio" class="section tab-pane">
+                    <div class="section-head">
+                        <span class="section-index">03</span>
+                        <h3 class="section-title">Portfolio</h3>
+                        <span class="section-rule"></span>
+                    </div>
+                    <div class="portfolio-filters"><!-- portfolio.js --></div>
+                    <div class="portfolio-grid"><!-- portfolio.json --></div>
+                </section>
+
+                <!-- ===== INTERESTS ===== -->
+                <section id="interests" class="section tab-pane">
+                    <div class="section-head">
+                        <span class="section-index">04</span>
+                        <h3 class="section-title"><!-- interests.json --></h3>
+                        <span class="section-rule"></span>
+                    </div>
+
+                    <div class="interests-content">
+                        <div class="core-interests">
+                            <span class="console-key">// core interests</span>
+                            <div class="interests-grid core-interests-grid"></div>
+                        </div>
+                        <div class="fusion-passions">
+                            <span class="console-key">// where worlds collide</span>
+                            <h2></h2>
+                            <div class="interests-grid fusions-grid"></div>
+                        </div>
+                        <div class="homelab-showcase">
+                            <span class="console-key">// the digital forge</span>
+                            <h2></h2>
+                            <div class="homelab-links"></div>
+                            <div class="homelab-content"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== HONORS ===== -->
+                <section id="honors" class="section tab-pane">
+                    <div class="section-head">
+                        <span class="section-index">05</span>
+                        <h3 class="section-title"><!-- honors.json --></h3>
+                        <span class="section-rule"></span>
+                    </div>
+                    <div class="honors-content">
+                        <div class="timeline"><!-- honors.json --></div>
+                    </div>
+                </section>
+
+                <!-- ===== CONTACT ===== -->
+                <section id="contact" class="section tab-pane">
+                    <div class="section-head">
+                        <span class="section-index">06</span>
+                        <h3 class="section-title"><!-- contact.json --></h3>
+                        <span class="section-rule"></span>
+                    </div>
+                    <div class="contact-content">
+                        <div class="contact-form-container">
+                            <form class="contact-form"><!-- contact.json --></form>
+                        </div>
+                        <div class="map-container"><!-- contact.json --></div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="footer"><!-- profile.json --></footer>
+        </main>
+    </div>
+
+    <!-- Mobile menu (drawer) — top-level so no transformed/blurred ancestor clamps it -->
+    <div class="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <button class="close-menu-btn" aria-label="Close menu">&times;</button>
+            <div class="drawer-scroll">
+                <nav class="mobile-nav-links" aria-label="Sections"></nav>
+                <div class="drawer-section">
+                    <span class="console-key">// contact</span>
                     <div class="mobile-contact-info"></div>
                 </div>
+                <div class="drawer-section">
+                    <span class="console-key">// links</span>
+                    <div class="mobile-social-links"></div>
+                </div>
             </div>
-            
-            <!-- Horizontal Tab Navigation (Desktop/Tablet) -->
-            <div class="tab-navigation">
-                <!-- Navigation tabs loaded from navigation.json -->
-            </div>
-        </nav>
-
-        <!-- Tab Content -->
-        <div class="tab-content">
-            <!-- About Section -->
-            <section id="about" class="section tab-pane active">
-                <div class="section-header">
-                    <h2><!-- Title loaded from about.json --></h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="about-content">
-                    <p class="about-text">
-                        <!-- Description loaded from about.json -->
-                    </p>
-                    
-                    <div class="what-i-do">
-                        <h3>What I Do</h3>
-                        <div class="services-grid">
-                            <!-- Services loaded from about.json -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Resume Section -->
-            <section id="resume" class="section tab-pane">
-                <div class="section-header">
-                    <h2><!-- Title loaded from resume.json --></h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="resume-content">
-                    <div class="resume-section">
-                        <h3>Work Experience</h3>
-                        <div class="timeline">
-                            <!-- Work experience loaded from resume.json -->
-                        </div>
-                    </div>
-                    
-                    <div class="resume-section">
-                        <h3>Education</h3>
-                        <div class="timeline">
-                            <!-- Education loaded from resume.json -->
-                        </div>
-                    </div>
-                    
-                    <div class="resume-section">
-                        <h3>Certifications</h3>
-                        <div class="timeline">
-                            <!-- Certifications loaded from resume.json -->
-                        </div>
-                    </div>
-                    
-                    <div class="skills-section" id="technical-skills">
-                        <h3>Technical Skills</h3>
-                        <div class="skills-grid">
-                            <!-- Technical skills loaded from resume.json -->
-                        </div>
-                    </div>
-                    
-                    <div class="skills-section" id="soft-skills">
-                        <h3>Soft Skills</h3>
-                        <div class="skills-grid">
-                            <!-- Soft skills loaded from resume.json -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Portfolio Section -->
-            <section id="portfolio" class="section tab-pane">
-                <div class="section-header">
-                    <h2>Portfolio</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="portfolio-filters">
-                    <!-- Filter buttons are now dynamically loaded from portfolio.js -->
-                </div>
-                
-                <div class="portfolio-grid">
-                    <!-- Portfolio items dynamically loaded from portfolio.json -->
-                </div>
-            </section>
-
-            <!-- Interests Section -->
-            <section id="interests" class="section tab-pane">
-                <div class="section-header">
-                    <h2><!-- Title loaded from interests.json --></h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="interests-content">
-                    <!-- Core Interests -->
-                    <div class="core-interests">
-                        <h3>Core Interests</h3>
-                        <div class="interests-grid core-interests-grid">
-                             <!-- Core interests loaded here -->
-                        </div>
-                    </div>
-
-                    <!-- Fusion Passions -->
-                    <div class="fusion-passions">
-                        <h2><!-- Fusion title loaded here --></h2>
-                        <div class="interests-grid fusions-grid">
-                            <!-- Fusion passions loaded here -->
-                        </div>
-                    </div>
-
-                    <!-- Homelab Showcase -->
-                    <div class="homelab-showcase">
-                        <h2><!-- Homelab title loaded here --></h2>
-                        <div class="section-line"></div>
-                        <!-- Container for Homelab Links -->
-                        <div class="homelab-links"></div> 
-                        
-                        <div class="homelab-content">
-                            <!-- Homelab details loaded here -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Honors & Awards Section -->
-            <section id="honors" class="section tab-pane">
-                <div class="section-header">
-                    <h2><!-- Title loaded from honors.json --></h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="honors-content">
-                    <div class="timeline">
-                        <!-- Awards loaded from honors.json -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="section tab-pane">
-                <div class="section-header">
-                    <h2><!-- Title loaded from contact.json --></h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="contact-content">
-                    <div class="contact-form-container">
-                        <form class="contact-form">
-                            <!-- Form fields loaded from contact.json -->
-                        </form>
-                    </div>
-                    
-                    <div class="map-container">
-                        <!-- Map loaded from contact.json -->
-                    </div>
-                </div>
-            </section>
+            <button class="drawer-download" id="drawer-download-cv">
+                <i class="fas fa-download"></i> download cv
+            </button>
         </div>
-    </main>
-
-    <footer class="footer">
-        <!-- Footer loaded from profile.json -->
-    </footer>
+    </div>
 
     <script src="js/data-loader.js"></script>
     <script src="js/main.js"></script>
     <script src="js/portfolio.js"></script>
-    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- Load PDF Generator script -->
     <script src="js/pdfGenerator.js"></script>
 </body>
-</html> 
+</html>

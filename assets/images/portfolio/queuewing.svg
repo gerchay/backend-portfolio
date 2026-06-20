@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="QueueWing">
+  <defs>
+    <radialGradient id="glow" cx="22%" cy="0%" r="85%">
+      <stop offset="0" stop-color="#5be6c4" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#5be6c4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.4" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#0a0e14"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <g transform="translate(400 240)">
+    <path d="M -150 -90 H 150 a 0 0 0 0 1 0 0 V -16 a 16 16 0 0 0 0 32 V 90 H -150 V 16 a 16 16 0 0 0 0 -32 Z"
+          fill="#11161f" stroke="#2b3645" stroke-width="4"/>
+    <line x1="40" y1="-90" x2="40" y2="90" stroke="#2b3645" stroke-width="3" stroke-dasharray="6 8"/>
+    <g fill="#5be6c4">
+      <rect x="-128" y="-66" width="14" height="14"/><rect x="-110" y="-66" width="14" height="14"/><rect x="-74" y="-66" width="14" height="14"/>
+      <rect x="-128" y="-48" width="14" height="14"/><rect x="-92" y="-48" width="14" height="14"/><rect x="-74" y="-48" width="14" height="14"/>
+      <rect x="-128" y="-30" width="14" height="14"/><rect x="-110" y="-30" width="14" height="14"/><rect x="-74" y="-30" width="14" height="14"/>
+    </g>
+    <text x="-128" y="58" fill="#5be6c4" font-family="ui-monospace,Menlo,monospace" font-size="34" font-weight="700">A-042</text>
+    <text x="98" y="-6" text-anchor="middle" fill="#5c6677" font-family="ui-monospace,Menlo,monospace" font-size="13">NOW</text>
+    <text x="98" y="34" text-anchor="middle" fill="#f2a65a" font-family="ui-monospace,Menlo,monospace" font-size="40" font-weight="700">39</text>
+  </g>
+  <text x="400" y="452" text-anchor="middle" fill="#5c6677" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="4">// queue management · saas</text>
+</svg>

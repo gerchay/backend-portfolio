@@ -1,243 +1,180 @@
-/* General Styles, Typography, and Global Resets */
+/* ============================================================
+   Base — reset, typography, background, hero, motion
+   ============================================================ */
 
-/* Reset and Base Styles */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip; /* hard guard: no horizontal scroll, ever (sticky still works) */
 }
 
 body {
-  font-family: 'Fira Code', monospace;
-  background-color: var(--bg);
-  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
   line-height: 1.6;
-  font-size: 16px;
+  color: var(--text);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: var(--transition-normal);
-}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+ul { list-style: none; padding: 0; }
 
-a:hover {
-  color: var(--hover);
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1rem;
+/* ---- Typography roles ------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-block: 0.67em;
+/* Mono "system chrome" voice: eyebrows, keys, labels */
+.console-key,
+.section-index,
+.console-path,
+.term-prompt,
+.term-cmd,
+.status-label,
+.status-clock {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: lowercase;
 }
 
-section h1 {
-  font-size: 2.5rem;
-  margin-block: 0.5em;
+.console-key {
+  display: block;
+  color: var(--text-faint);
+  margin-bottom: var(--s-3);
 }
 
-h2 {
-  font-size: 1.75rem;
-  color: var(--text);
+.accent { color: var(--accent); }
+
+/* ---- Decorative background -------------------------------- */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--ground);
+  pointer-events: none;
+  overflow: hidden; /* contain the glow so it can't widen the page on mobile */
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 90% 70% at 30% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 30% 0%, #000 30%, transparent 80%);
+}
+.bg-glow {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: min(600px, 100%);
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 65%);
+  filter: blur(20px);
 }
 
-h3 {
-  font-size: 1.5rem;
-  color: var(--text);
-  margin-bottom: 1.5rem;
+/* ---- Hero (the thesis) ------------------------------------ */
+.hero {
+  padding: var(--s-4) 0 var(--s-7);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--s-7);
 }
-
-h4 {
-  font-size: 1.25rem;
-  color: var(--text);
+.hero-term {
+  display: inline-flex;
+  gap: var(--s-2);
+  align-items: center;
+  margin-bottom: var(--s-5);
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
 }
+.term-prompt { color: var(--accent); }
+.term-cmd { color: var(--text-dim); }
 
-p {
-  margin-bottom: 1rem;
-  color: var(--muted);
+.hero-headline {
+  font-size: var(--fs-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
-
-.about-text {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: var(--muted);
+.hero-sub {
+  margin-top: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
 }
-
-/* Utility Classes */
-.text-primary {
-  color: var(--primary);
+.caret {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  animation: blink 1.1s steps(1) infinite;
 }
+@keyframes blink { 50% { opacity: 0; } }
 
-.text-center {
-  text-align: center;
-}
-
-.mb-1 {
-  margin-bottom: 0.5rem;
-}
-
-.mb-2 {
-  margin-bottom: 1rem;
-}
-
-.mb-3 {
-  margin-bottom: 1.5rem;
-}
-
-.mb-4 {
-  margin-bottom: 2rem;
-}
-
-/* Sidebar Styles */
-.sidebar {
-  background-color: var(--card);
-  border-right: 1px solid var(--border);
-}
-
-.sidebar-content {
+/* ---- Section heads ---------------------------------------- */
+.section-head {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  align-items: center;
+  gap: var(--s-4);
+  margin-bottom: var(--s-6);
+}
+.section-index {
+  color: var(--amber);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+.section-title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-strong), transparent);
 }
 
-.name {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+/* ---- Entrance motion -------------------------------------- */
+.fade-in {
+  animation: rise 0.5s var(--ease) both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
 }
 
-.title {
-  color: var(--primary);
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+/* ---- Focus + accessibility -------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 2rem 0;
-  color: var(--muted);
-  font-size: 0.875rem;
-  border-top: 1px solid var(--border);
-  margin-top: 2rem;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--hover);
-}
-
-/* Tablet and Above */
-@media screen and (min-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-  
-  section h1 {
-    font-size: 3rem;
-  }
-  
-  h2 {
-    font-size: 2rem;
-  }
-  
-  h3 {
-    font-size: 1.75rem;
-  }
-  
-  .about-text {
-    font-size: 1.2rem;
-    max-width: 80%;
-  }
+  .caret { opacity: 1; }
 }
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.section {
-  animation: fadeIn 0.5s ease-out;
-}
-
-/* Base Styles, Variables, Global Resets */
-
-@font-face {
-  font-family: 'Fira Code';
-  src: url('../assets/fonts/Fira_Code/static/FiraCode-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Fira Code';
-  src: url('../assets/fonts/Fira_Code/static/FiraCode-Regular.ttf') format('truetype');
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Fira Code';
-  src: url('../assets/fonts/Fira_Code/static/FiraCode-Medium.ttf') format('truetype');
-  font-weight: 500; /* Medium */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Fira Code';
-  src: url('../assets/fonts/Fira_Code/static/FiraCode-SemiBold.ttf') format('truetype');
-  font-weight: 600; /* SemiBold */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Fira Code';
-  src: url('../assets/fonts/Fira_Code/static/FiraCode-Bold.ttf') format('truetype');
-  font-weight: 700; /* Bold */
-  font-style: normal;
-}
-
-/* Global Variables */
-:root {
-  /* ... existing variables ... */
-}
-
-/* ... rest of style.css ... */ 

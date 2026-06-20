@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Point-of-Sale System">
+  <defs>
+    <radialGradient id="glow" cx="22%" cy="0%" r="85%">
+      <stop offset="0" stop-color="#5be6c4" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#5be6c4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.4" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#0a0e14"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <!-- POS terminal -->
+  <g transform="translate(330 230)">
+    <rect x="-150" y="-120" width="210" height="146" rx="14" fill="#11161f" stroke="#2b3645" stroke-width="4"/>
+    <rect x="-128" y="-98" width="166" height="102" rx="6" fill="#0a0e14" stroke="#5be6c4" stroke-width="3"/>
+    <g stroke="#2b3645" stroke-width="7" stroke-linecap="round">
+      <line x1="-112" y1="-76" x2="-34" y2="-76"/>
+      <line x1="-112" y1="-54" x2="-54" y2="-54"/>
+      <line x1="-112" y1="-32" x2="-44" y2="-32"/>
+    </g>
+    <line x1="-112" y1="-12" x2="22" y2="-12" stroke="#2b3645" stroke-width="2"/>
+    <text x="22" y="-72" text-anchor="end" fill="#5be6c4" font-family="ui-monospace,Menlo,monospace" font-size="16">OMR</text>
+    <text x="22" y="-2" text-anchor="end" fill="#5be6c4" font-family="ui-monospace,Menlo,monospace" font-size="22" font-weight="700">24.500</text>
+    <rect x="-70" y="26" width="22" height="34" fill="#2b3645"/>
+    <rect x="-112" y="60" width="106" height="14" rx="6" fill="#2b3645"/>
+  </g>
+  <!-- receipt -->
+  <g transform="translate(560 248)">
+    <path d="M -46 -118 H 46 V 96 l -9 12 l -9 -12 l -9 12 l -9 -12 l -9 12 l -9 -12 l -9 12 l -9 -12 l -9 12 l -9 -12 Z"
+          fill="#11161f" stroke="#5be6c4" stroke-width="4"/>
+    <g stroke="#2b3645" stroke-width="6" stroke-linecap="round">
+      <line x1="-30" y1="-92" x2="30" y2="-92"/>
+      <line x1="-30" y1="-66" x2="14" y2="-66"/>
+      <line x1="-30" y1="-44" x2="22" y2="-44"/>
+      <line x1="-30" y1="-22" x2="6" y2="-22"/>
+    </g>
+    <line x1="-30" y1="6" x2="30" y2="6" stroke="#f2a65a" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="452" text-anchor="middle" fill="#5c6677" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="4">// point of sale · java · postgresql</text>
+</svg>

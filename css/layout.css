@@ -1,462 +1,243 @@
-/* Layout CSS - Grid, Flexbox, Spacing and Positioning */
+/* ============================================================
+   Layout — app grid, console sidebar, tab bar, responsive
+   ============================================================ */
 
-/* Base Layout */
-body {
-  display: block; /* Changed from grid to block for mobile */
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  gap: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-/* Typography base styles */
-h1 {
-  font-size: 2rem;
-  margin-block: 0.67em;
-}
-
-.main-content {
-  width: 100%;
-  max-width: 1200px; /* Max width for smaller screens */
-  margin: 0 auto; /* Center on smaller screens */
-  padding: 20px;
-}
-
-/* Sidebar */
+/* ---- Status console (sidebar) ----------------------------- */
 .sidebar {
-  display: none; /* Hidden on mobile by default */
-  background-color: var(--card);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: var(--s-6) var(--s-5);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
 }
-
-/* Section Spacing */
-.section {
-  margin-bottom: 3rem;
-  padding: 1rem;
-  width: 100%;
+.console {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
-
-/* Content Width */
-.about-content, 
-.resume-content, 
-.portfolio-grid,
-.honors-content,
-.contact-content {
-  width: 100%;
-}
-
-/* Tab Navigation */
-.tab-navigation {
-  display: none; /* Hidden by default on mobile */
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.5rem;
-  width: 100%;
-}
-
-.tab-btn {
-  font-family: 'Fira Code', monospace;
-  background: transparent;
-  color: var(--muted);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  margin: 0 0.25rem;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  position: relative;
-  transition: var(--transition-normal);
-}
-
-.tab-btn:hover {
-  color: var(--text);
-}
-
-.tab-btn.active {
-  color: var(--primary);
-}
-
-.tab-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: -0.5rem;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary);
-}
-
-/* Tab Content */
-.tab-content {
-  position: relative;
-  min-height: 50vh;
-  width: 100%;
-}
-
-.tab-pane {
-  display: none;
-  animation: fadeIn 0.5s ease-out;
-  width: 100%;
-}
-
-.tab-pane.active {
-  display: block;
-  width: 100%;
-}
-
-/* Grid Layouts */
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  width: 100%;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  width: 100%;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-/* Contact Layout */
-.contact-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  width: 100%;
-}
-
-/* Flexbox Layouts */
-.mobile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 1rem 0;
-}
-
-.mobile-profile {
+.console-bar {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
 }
-
-/* Mobile Navigation */
-.nav-links {
-  display: none; /* Hidden by default on mobile */
+.console-bar .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
 }
-
-.nav-links.show {
+.dot-r { background: #ef5f6b; }
+.dot-y { background: #f2a65a; }
+.dot-g { background: #5be6c4; }
+.console-path {
+  margin-left: var(--s-2);
+  color: var(--text-faint);
+}
+.console-body {
+  padding: var(--s-5) var(--s-4);
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
-  background-color: var(--card);
-  position: absolute;
-  top: 70px;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  box-shadow: var(--shadow-md);
-  animation: fadeIn 0.3s ease-out;
+  gap: var(--s-5);
 }
+.console-section { display: flex; flex-direction: column; }
 
-.nav-links.show a {
-  padding: 0.75rem 1.5rem;
-}
-
-.social-links {
+/* ---- Main ------------------------------------------------- */
+.main-content {
+  min-width: 0;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1.5rem;
+  flex-direction: column;
 }
 
-.portfolio-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1.5rem 0;
-  width: 100%;
-}
-
-/* Resume Timeline */
-.timeline {
-  position: relative;
-  padding-left: 1.5rem;
-  width: 100%;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
+/* ---- Tab bar ---------------------------------------------- */
+.navbar {
+  position: sticky;
   top: 0;
-  height: 100%;
-  width: 2px;
-  background-color: var(--border);
+  z-index: 20;
+  background: rgba(10, 14, 20, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.tabbar {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-7);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabbar::-webkit-scrollbar { display: none; }
+.tabbar-prompt {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 700;
+}
+.tab-navigation {
+  display: flex;
+  gap: var(--s-1);
 }
 
-.timeline-item {
-  position: relative;
-  padding-bottom: 2rem;
+/* ---- Tab content + sections ------------------------------- */
+.tab-content {
+  flex: 1;
+  padding: var(--s-7);
   width: 100%;
+  max-width: calc(var(--content-max) + var(--s-7) * 2);
 }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
 
-.timeline-dot {
-  position: absolute;
-  left: -1.5rem;
-  top: 0.4rem;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--primary);
-  transform: translateX(-50%);
-}
+.resume-content { display: flex; flex-direction: column; gap: var(--s-7); }
+.skills-section { margin-top: var(--s-2); }
 
-/* Interests Grid */
-.interests-grid {
+.interests-content { display: flex; flex-direction: column; gap: var(--s-7); }
+
+.contact-content {
   display: grid;
-  grid-template-columns: 1fr; /* 1 column mobile */
-  gap: 1.5rem;
-  width: 100%;
-  margin-top: 1.5rem; /* Space below subsection titles */
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-6);
 }
 
-/* Homelab Showcase Layout */
-.homelab-content {
-  display: grid;
-  grid-template-columns: 1fr; /* 1 column mobile */
-  gap: 2rem;
-  margin-top: 1.5rem;
-  align-items: start; /* Align items at the start */
+.footer {
+  margin-top: auto;
+  padding: var(--s-5) var(--s-7);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-faint);
 }
 
-/* Specs container spans full width */
-.homelab-specs-container {
-  grid-column: 1 / -1; /* Full width across all columns */
-}
+/* ---- Mobile chrome (hidden on desktop) -------------------- */
+.mobile-header,
+.mobile-menu-overlay { display: none; }
 
-/* Tablet Breakpoint (768px) */
-@media screen and (min-width: 768px) {
-  .services-grid,
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .contact-content {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .tab-btn {
-    font-size: 1.1rem;
-    padding: 0.75rem 2rem;
-    margin: 0 0.5rem;
-  }
-  .interests-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns tablet */
-  }
-  .tab-navigation {
-    display: flex; /* Show tab navigation on tablet and up */
-  }
-}
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
 
-/* Desktop Breakpoint (1024px) */
-@media screen and (min-width: 1024px) {
-  body {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 1fr auto;
-    min-height: 100vh;
-  }
-  
-  .sidebar {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 100vh;
-    overflow-y: auto;
-    padding: 2rem;
-    z-index: 10;
-    grid-column: 1;
-    grid-row: 1 / -1;
-  }
-  
-  .main-content {
-    grid-column: 2;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 2rem;
-    min-height: 100vh;
-  }
+  /* The status console collapses into the slide-in drawer below. */
+  .sidebar { display: none; }
 
-  .footer {
-    grid-column: 2;
-    width: 100%;
-    margin-top: 2rem;
-  }
-  
+  /* Compact sticky header with hamburger */
   .mobile-header {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+    padding: var(--s-4) var(--s-5);
   }
-  
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .mobile-profile { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
+  .mobile-profile img {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--line-strong);
+    flex: none;
   }
-  
-  .portfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .tab-btn {
-    font-size: 1.2rem;
-  }
-  .interests-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns desktop */
-  }
-  .homelab-content {
-    grid-template-columns: 1fr 1fr; /* 2 columns desktop */
-    gap: 3rem;
-  }
-}
+  .mobile-profile .name { font-size: var(--fs-md); line-height: 1.15; }
+  .mobile-profile .title { font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--accent); }
+  .mobile-header-contact { display: none; }
+  .mobile-actions { display: flex; align-items: center; gap: var(--s-2); flex: none; }
+  .menu-toggle { font-size: 1.4rem; color: var(--accent); padding: var(--s-2); flex: none; }
 
-/* Large Desktop Breakpoint (1280px) */
-@media screen and (min-width: 1280px) {
-  .main-content {
-    padding: 3rem; /* Example: Increase padding on very large screens */
-  }
+  /* Navigation lives in the drawer on mobile — hide the tab bar so sections
+     aren't duplicated (and so the row can't overflow the viewport). */
+  .tabbar { display: none; }
 
-  .services-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .mobile-cv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: var(--r-md);
+    color: var(--ground);
+    background: var(--accent);
   }
-  
-  .portfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .homelab-content {
-    gap: 4rem;
-  }
-}
+  .mobile-cv-btn:active { background: var(--accent-press); }
 
-/* Layout CSS - Add styles for Mobile Menu Overlay */
+  .tabbar { padding: var(--s-3) var(--s-5); }
+  .tab-content { padding: var(--s-5) var(--s-4) var(--s-7); }
+  .section-head { gap: var(--s-3); }
+  .section-title { white-space: normal; }
+  .contact-content { grid-template-columns: 1fr; }
+  .footer { padding: var(--s-5) var(--s-4); }
 
-/* Mobile Menu Overlay */
-.mobile-menu-overlay {
-    display: none; /* Hidden by default */
+  /* ---- Slide-in drawer ---- */
+  .mobile-menu-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    z-index: 1000;
+    inset: 0;
+    z-index: 100;
+    display: block;
+    overflow: hidden; /* clip the off-screen (closed) drawer so it can't widen the page */
+    background: rgba(6, 9, 13, 0.72);
+    backdrop-filter: blur(6px);
     opacity: 0;
-    transition: opacity 0.3s ease-out;
-}
-
-.mobile-menu-overlay.show {
-    display: block;
-    opacity: 1;
-}
-
-.mobile-menu-content {
+    visibility: hidden;
+    transition: opacity var(--t-base), visibility var(--t-base);
+  }
+  .mobile-menu-overlay.show { opacity: 1; visibility: visible; }
+  .mobile-menu-content {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 80%; /* Adjust width as needed */
-    max-width: 300px;
-    height: 100%;
-    background-color: var(--card); /* Use card background color */
-    padding: 2rem;
-    box-shadow: var(--shadow-lg);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
-    overflow-y: auto; /* Allow scrolling if content overflows */
+    top: 0; right: 0; bottom: 0;
+    width: min(86%, 360px);
+    background: var(--surface);
+    border-left: 1px solid var(--line);
+    padding: var(--s-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    overflow: hidden; /* the inner .drawer-scroll handles scrolling */
+    /* Vertical-only motion — never positioned off-screen horizontally, so it
+       can't create page overflow on any browser. */
+    transform: translateY(10px);
+    transition: transform var(--t-base);
+  }
+  .mobile-menu-overlay.show .mobile-menu-content { transform: translateY(0); }
+  .close-menu-btn { align-self: flex-end; flex: none; font-size: 1.8rem; line-height: 1; color: var(--text-dim); }
+
+  /* Scrollable region; the download button below it stays pinned + visible */
+  .drawer-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+  .mobile-nav-links { display: flex; flex-direction: column; gap: var(--s-1); }
+  .drawer-section { display: flex; flex-direction: column; }
+  .mobile-social-links { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .drawer-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    flex: none;
+    padding: var(--s-4);
+    border-radius: var(--r-md);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    letter-spacing: var(--tracking-mono);
+    color: var(--ground);
+    background: var(--accent);
+    transition: var(--t-fast);
+  }
+  .drawer-download:hover { background: var(--accent-press); }
 }
-
-.mobile-menu-overlay.show .mobile-menu-content {
-    transform: translateX(0);
-}
-
-.close-menu-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    color: var(--muted);
-    cursor: pointer;
-    line-height: 1;
-    padding: 0;
-}
-
-.mobile-nav-links {
-    margin-top: 2rem; /* Space below close button */
-}
-
-.mobile-nav-link {
-    display: block;
-    padding: 0.75rem 0;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.2s ease-out;
-}
-
-.mobile-nav-link:last-child {
-    border-bottom: none;
-}
-
-.mobile-nav-link:hover,
-.mobile-nav-link.active {
-    color: var(--primary);
-}
-
-.mobile-menu-divider {
-    border: none;
-    height: 1px;
-    background-color: var(--border);
-    margin: 1.5rem 0;
-}
-
-.mobile-contact-info {
-    /* Styles for contact info within mobile menu */
-    margin-top: 1.5rem;
-}
-
-.mobile-contact-info .info-item {
-    /* Use existing info-item styles, maybe adjust spacing */
-    margin-bottom: 1rem;
-}
-
-/* Adjustments for Desktop Breakpoint */
-@media screen and (min-width: 1024px) {
-    /* Hide mobile menu elements on desktop */
-    .mobile-header .menu-toggle,
-    .mobile-menu-overlay {
-        display: none;
-    }
-    
-    /* Ensure main tab navigation is visible on desktop */
-    .tab-navigation {
-        display: flex; 
-    }
-
-    /* ... rest of desktop styles ... */
-} 

@@ -86,52 +86,72 @@
   ],
   "technicalSkills": [
     {
-      "name": "Flutter/Dart",
-      "percentage": 90,
-      "icon": "https://img.icons8.com/color/48/flutter.png"
+      "category": "Languages",
+      "skills": [
+        { "name": "Python", "level": 5, "icon": "devicon-python-plain" },
+        { "name": "Dart", "level": 5, "icon": "devicon-dart-plain" },
+        { "name": "TypeScript", "level": 4, "icon": "devicon-typescript-plain" },
+        { "name": "Bash", "level": 4, "icon": "devicon-bash-plain" },
+        { "name": "PowerShell", "level": 4, "icon": "devicon-powershell-plain" },
+        { "name": "Java", "level": 2, "icon": "devicon-java-plain" },
+        { "name": "Rust", "level": 2, "icon": "devicon-rust-original" }
+      ]
     },
     {
-      "name": "Python",
-      "percentage": 95,
-      "icon": "https://img.icons8.com/color/48/python.png"
+      "category": "Frameworks & Mobile",
+      "skills": [
+        { "name": "Flutter", "level": 5, "icon": "devicon-flutter-plain" },
+        { "name": "React (TypeScript)", "level": 4, "icon": "devicon-react-original" },
+        { "name": "Android (Java)", "level": 3, "icon": "devicon-android-plain" }
+      ]
     },
     {
-      "name": "Java",
-      "percentage": 55,
-      "icon": "https://img.icons8.com/color/48/java-coffee-cup-logo.png"
+      "category": "Web Tooling",
+      "skills": [
+        { "name": "Vite", "level": 3, "icon": "devicon-vitejs-plain" },
+        { "name": "Bun", "level": 3, "icon": "devicon-bun-plain" }
+      ]
     },
     {
-      "name": "Rust",
-      "percentage": 40,
-      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/2048px-Rust_programming_language_black_logo.svg.png"
+      "category": "AI & Prompt Engineering",
+      "skills": [
+        { "name": "Prompt Engineering", "level": 4, "icon": "fas fa-wand-magic-sparkles" },
+        { "name": "Claude Code", "level": 4, "icon": "fas fa-terminal" },
+        { "name": "Codex", "level": 4, "icon": "fas fa-robot" }
+      ]
     },
     {
-      "name": "Server Administration",
-      "percentage": 92,
-      "icon": "https://static.thenounproject.com/png/640121-200.png"
+      "category": "Infrastructure",
+      "skills": [
+        { "name": "Linux", "level": 5, "icon": "devicon-linux-plain" },
+        { "name": "macOS", "level": 4, "icon": "devicon-apple-original" },
+        { "name": "Windows", "level": 4, "icon": "devicon-windows11-original" },
+        { "name": "Virtualization", "level": 4, "icon": "fas fa-layer-group" },
+        { "name": "Docker", "level": 4, "icon": "devicon-docker-plain" },
+        { "name": "Web Servers", "level": 3, "icon": "devicon-nginx-original" }
+      ]
     },
     {
-      "name": "Database (PostgreSQL, MongoDB)",
-      "percentage": 88,
-      "icon": "https://static.thenounproject.com/png/29365-200.png"
+      "category": "Data",
+      "skills": [
+        { "name": "PostgreSQL", "level": 4, "icon": "devicon-postgresql-plain" },
+        { "name": "MongoDB", "level": 4, "icon": "devicon-mongodb-plain" }
+      ]
+    },
+    {
+      "category": "Automation & Testing",
+      "skills": [
+        { "name": "n8n", "level": 4, "icon": "fas fa-diagram-project" },
+        { "name": "Appium", "level": 4, "icon": "fas fa-mobile-screen-button" },
+        { "name": "Selenium", "level": 4, "icon": "devicon-selenium-original" },
+        { "name": "JMeter", "level": 3, "icon": "fas fa-gauge-high" }
+      ]
     }
   ],
   "softSkills": [
-    {
-      "name": "Multitasking",
-      "percentage": 90
-    },
-    {
-      "name": "Attention to Detail",
-      "percentage": 95
-    },
-    {
-      "name": "Resourcefulness",
-      "percentage": 93
-    },
-    {
-      "name": "Cross-cultural Communication",
-      "percentage": 85
-    }
+    { "name": "Multitasking", "level": 5 },
+    { "name": "Attention to Detail", "level": 5 },
+    { "name": "Resourcefulness", "level": 5 },
+    { "name": "Cross-cultural Communication", "level": 4 }
   ]
 } 

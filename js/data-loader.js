@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Debug log to check if skills data exists
-    console.log('Technical Skills:', resumeData.technicalSkills);
-    console.log('Soft Skills:', resumeData.softSkills);
   })
   .catch(error => {
     console.error('Error loading data:', error);
@@ -121,6 +119,23 @@ document.addEventListener('DOMContentLoaded', () => {
       downloadLink.innerHTML = '<i class="fas fa-download"></i>';
       downloadLink.setAttribute('aria-label', 'Download CV');
       socialLinksContainer.appendChild(downloadLink);
+    }
+
+    // Social links (Mobile drawer) — mirror of sidebar links, no download
+    // button here (the drawer has its own full-width "download cv" action).
+    const mobileSocial = document.querySelector('.mobile-social-links');
+    if (mobileSocial) {
+      mobileSocial.innerHTML = '';
+      data.socialLinks.forEach(item => {
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.className = 'social-icon';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.innerHTML = `<i class="${item.icon}"></i>`;
+        link.setAttribute('aria-label', item.label);
+        mobileSocial.appendChild(link);
+      });
     }
   }
   
@@ -258,58 +273,58 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    // Technical Skills
-    const techSkillsGrid = resumeSection.querySelector('#technical-skills .skills-grid');
-    if (techSkillsGrid && data.technicalSkills) {
-      techSkillsGrid.innerHTML = '';
-      data.technicalSkills.forEach(skill => {
-        const skillItem = document.createElement('div');
-        skillItem.className = 'skill-item';
-        
-        // Create icon element with background
-        let iconContainerHTML = '';
-        if (skill.icon) {
-            let iconTag = '';
-            // Basic check: if it looks like a Font Awesome class
-            if (skill.icon.startsWith('fa')) { 
-                iconTag = `<i class="${skill.icon} skill-icon"></i>`;
-            } else { // Assume it's an image URL
-                iconTag = `<img src="${skill.icon}" alt="${skill.name} icon" class="skill-icon">`;
-            }
-            // Wrap the icon tag in the background container
-            iconContainerHTML = `<span class="skill-icon-background">${iconTag}</span>`;
-        }
+    // ---- Skills: grouped rows with a 5-cell segmented proficiency meter ----
+    const TIERS = ['', 'learning', 'familiar', 'proficient', 'advanced', 'expert'];
+    const tierName = (lvl) => TIERS[Math.max(0, Math.min(5, lvl))] || '';
 
-        skillItem.innerHTML = `
-          <div class="skill-header">
-            ${iconContainerHTML} 
-            <span class="skill-name">${skill.name}</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" style="width: ${skill.percentage}%"></div>
-          </div>
-        `;
-        techSkillsGrid.appendChild(skillItem);
+    const skillRow = (skill, showTier) => {
+      const lvl = Math.max(0, Math.min(5, Number(skill.level) || 0));
+      let cells = '';
+      for (let i = 1; i <= 5; i++) cells += `<span class="cell ${i <= lvl ? 'on' : ''}"></span>`;
+      const tier = tierName(lvl);
+      const tierHTML = showTier && tier
+        ? `<span class="skill-tier" data-tier="${tier}">${tier}</span>` : '';
+      // Icon: a class (devicon / Font Awesome) renders as <i>, a URL as <img>
+      let iconHTML = '';
+      if (skill.icon) {
+        iconHTML = skill.icon.startsWith('http')
+          ? `<img src="${skill.icon}" class="skill-icon" alt="" aria-hidden="true">`
+          : `<i class="${skill.icon} skill-icon" aria-hidden="true"></i>`;
+      }
+      return `
+        <div class="skill-row">
+          <span class="skill-name">${iconHTML}${skill.name}</span>
+          <span class="meter" role="img" aria-label="${lvl} of 5">${cells}</span>
+          ${tierHTML}
+        </div>`;
+    };
+
+    // Technical Skills (grouped by category)
+    const techSkillsGrid = resumeSection.querySelector('#technical-skills .skills-grid');
+    if (techSkillsGrid && Array.isArray(data.technicalSkills)) {
+      techSkillsGrid.innerHTML = '';
+      data.technicalSkills.forEach(group => {
+        if (!group || !Array.isArray(group.skills)) return;
+        const cat = document.createElement('div');
+        cat.className = 'skill-cat';
+        const rows = group.skills.map(s => skillRow(s, true)).join('');
+        cat.innerHTML = `
+          <span class="skill-cat-label">${group.category}</span>
+          <div class="skill-rows">${rows}</div>`;
+        techSkillsGrid.appendChild(cat);
       });
     } else {
       console.warn('Technical skills section (#technical-skills .skills-grid) or data not found');
     }
-    
-    // Soft Skills
+
+    // Soft Skills (single group, meter without tier label)
     const softSkillsGrid = resumeSection.querySelector('#soft-skills .skills-grid');
-    if (softSkillsGrid && data.softSkills) {
+    if (softSkillsGrid && Array.isArray(data.softSkills)) {
       softSkillsGrid.innerHTML = '';
-      data.softSkills.forEach(skill => {
-        const skillItem = document.createElement('div');
-        skillItem.className = 'skill-item';
-        skillItem.innerHTML = `
-          <div class="skill-name">${skill.name}</div>
-          <div class="skill-bar">
-            <div class="skill-progress" style="width: ${skill.percentage}%"></div>
-          </div>
-        `;
-        softSkillsGrid.appendChild(skillItem);
-      });
+      const wrap = document.createElement('div');
+      wrap.className = 'skill-rows';
+      wrap.innerHTML = data.softSkills.map(s => skillRow(s, false)).join('');
+      softSkillsGrid.appendChild(wrap);
     } else {
       console.warn('Soft skills section (#soft-skills .skills-grid) or data not found');
     }
@@ -573,72 +588,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 }); 
-
-// Moved utility functions outside DOMContentLoaded scope 
-// to be accessible by data-loader.js's call to setupTabNavigation
-
-// Function to apply fade-in class to visible elements in a tab
-function showTabContent(tabPane) {
-  if (!tabPane) return;
-  const elements = tabPane.querySelectorAll('.service-card, .timeline-item, .portfolio-item, .skill-item');
-  elements.forEach(element => {
-    // Ensure the class is added to trigger the transition/animation
-    element.classList.add('fade-in'); 
-  });
-}
-
-// Setup tab navigation (for main tabs and mobile menu)
-function setupTabNavigation() {
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabPanes = document.querySelectorAll('.tab-pane');
-  
-  // Find the initially active tab and pane
-  let initialActivePane = null;
-  if (tabButtons.length > 0 && tabPanes.length > 0) {
-    tabButtons.forEach((btn, index) => {
-      if (btn.classList.contains('active')) {
-        const targetId = btn.getAttribute('data-tab');
-        initialActivePane = document.getElementById(targetId);
-        if (initialActivePane) {
-          initialActivePane.classList.add('active');
-        } else {
-          // Fallback if active button doesn't match a pane
-          tabButtons[0].classList.add('active');
-          tabPanes[0].classList.add('active');
-          initialActivePane = tabPanes[0];
-        }
-      }
-    });
-    // Ensure at least one tab is active if none were marked
-    if (!initialActivePane && tabPanes.length > 0) {
-      tabButtons[0].classList.add('active');
-      tabPanes[0].classList.add('active');
-      initialActivePane = tabPanes[0];
-    }
-  }
-
-  // Show content for the initially active tab immediately
-  if (initialActivePane) {
-    showTabContent(initialActivePane);
-  }
-  
-  // Add click event listeners to tab buttons
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetId = button.getAttribute('data-tab');
-      
-      // Remove active class from all buttons and panes
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      tabPanes.forEach(pane => pane.classList.remove('active'));
-      
-      // Add active class to clicked button and corresponding pane
-      button.classList.add('active');
-      const targetPane = document.getElementById(targetId);
-      if (targetPane) {
-        targetPane.classList.add('active');
-        // Show content for the newly activated tab
-        showTabContent(targetPane);
-      }
-    });
-  });
-} 

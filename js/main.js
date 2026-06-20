@@ -21,7 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuOverlay.classList.remove('show');
       }
     });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') mobileMenuOverlay.classList.remove('show');
+    });
   }
+
+  // Mobile "download cv" buttons (header + drawer) proxy to the real
+  // generator button that lives in the (hidden-on-mobile) sidebar console.
+  document.querySelectorAll('#header-download-cv, #drawer-download-cv').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('show');
+      const realBtn = document.getElementById('download-cv-btn');
+      if (realBtn) realBtn.click();
+    });
+  });
   
   // Tab navigation setup is now called from data-loader.js after data loads
   
@@ -92,7 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
       contactForm.reset();
     });
   }
-  
+
+  // Local clock in the status console
+  const clockEl = document.getElementById('local-clock');
+  if (clockEl) {
+    const tick = () => {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      clockEl.textContent = `${hh}:${mm} GST`;
+    };
+    tick();
+    setInterval(tick, 30000);
+  }
+
+  // Typed hero subtitle (progressive enhancement; respects reduced motion)
+  const typeTarget = document.querySelector('.type-target');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (typeTarget && !reduceMotion) {
+    const full = typeTarget.dataset.type || typeTarget.textContent;
+    typeTarget.textContent = '';
+    let i = 0;
+    const typeNext = () => {
+      if (i <= full.length) {
+        typeTarget.textContent = full.slice(0, i);
+        i++;
+        setTimeout(typeNext, 28);
+      }
+    };
+    setTimeout(typeNext, 350);
+  }
+
 });
 
 // Function to apply fade-in class to visible elements in a tab
@@ -119,6 +164,10 @@ function setupTabNavigation() {
   let activeTabId = 'about'; // Default to 'about'
 
   if (mainTabButtons.length > 0 && tabPanes.length > 0) {
+    // Start from a clean slate so the statically-active pane in the HTML
+    // doesn't stay visible when a different tab is the initial one.
+    tabPanes.forEach(pane => pane.classList.remove('active'));
+
     // Find the initially active button based on class or default
     let initialActiveButton = document.querySelector('.tab-navigation .tab-btn.active');
     if (!initialActiveButton) {

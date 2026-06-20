@@ -1,33 +1,75 @@
-/* Colors CSS - Purple Theme (Eye-Friendly) */
+/* ============================================================
+   Design tokens — "The Forge console"
+   Cool-ink ground, mint-cyan signal accent, amber reserved for
+   status/numerals. All color, type, spacing and motion live here.
+   ============================================================ */
 
 :root {
-  /* Main Colors */
-  --bg: #0f172a;              /* Dark slate background */
-  --card: #1f2937;            /* Slightly lighter than background */
-  --primary: #7c3aed;         /* Vivid purple - main accent */
-  --accent: #a78bfa;          /* Soft light purple */
-  --hover: #c084fc;           /* Brighter hover tone */
-  
-  /* Text Colors */
-  --text: #f3f4f6;            /* Light text - primary */
-  --muted: #9ca3af;           /* Secondary muted text */
-  
-  /* Additional Colors */
-  --border: #374151;          /* Border color */
-  --input-bg: #1e293b;        /* Form input background */
-  --success: #10b981;         /* Success/confirmation color */
-  --error: #ef4444;           /* Error/warning color */
-  
-  /* Gradients */
-  --card-gradient: linear-gradient(145deg, #1e293b, #111827);
-  --primary-gradient: linear-gradient(145deg, #7c3aed, #8b5cf6);
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2);
-  
-  /* Transitions */
-  --transition-normal: all 0.3s ease;
-  --transition-slow: all 0.5s ease;
-} 
+  /* ---- Color: ground & surfaces ---------------------------- */
+  --ground: #0a0e14;          /* deep cool ink — page background */
+  --ground-2: #0c1119;        /* faint lift for grid/atmosphere  */
+  --surface: #11161f;         /* cards / panels                  */
+  --surface-2: #161c27;       /* raised surface / hover          */
+  --line: #1f2733;            /* hairline borders                */
+  --line-strong: #2b3645;     /* stronger dividers               */
+
+  /* ---- Color: text ---------------------------------------- */
+  --text: #d7dee8;            /* primary cool off-white          */
+  --text-dim: #97a1b0;        /* secondary                       */
+  --text-faint: #5c6677;      /* captions, system chrome         */
+
+  /* ---- Color: accents ------------------------------------- */
+  --accent: #5be6c4;          /* mint-cyan — the single signal   */
+  --accent-press: #36c9a6;    /* pressed / deeper                */
+  --accent-soft: rgba(91, 230, 196, 0.12);  /* tint wash        */
+  --accent-line: rgba(91, 230, 196, 0.30);  /* tinted border    */
+  --amber: #f2a65a;           /* reserved: numerals, warn dots   */
+
+  /* ---- Status semaphore (small dots only) ----------------- */
+  --ok: #5be6c4;
+  --warn: #f2a65a;
+  --down: #ef5f6b;
+
+  /* ---- Typography ----------------------------------------- */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* fluid type scale */
+  --fs-mono: 0.75rem;         /* system chrome / eyebrows        */
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: clamp(1.6rem, 1.1rem + 2vw, 2.4rem);
+  --fs-display: clamp(2.2rem, 1.3rem + 3.6vw, 3.9rem);
+
+  --tracking-mono: 0.08em;    /* letterspacing for mono labels   */
+  --tracking-wide: 0.18em;
+
+  /* ---- Spacing scale -------------------------------------- */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+
+  /* ---- Radius & shadow ------------------------------------ */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 0 1px var(--accent-line), 0 8px 30px rgba(0, 0, 0, 0.5);
+
+  /* ---- Motion --------------------------------------------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 0.18s var(--ease);
+  --t-base: 0.3s var(--ease);
+
+  /* ---- Layout metrics ------------------------------------- */
+  --sidebar-w: 320px;
+  --content-max: 1080px;
+}

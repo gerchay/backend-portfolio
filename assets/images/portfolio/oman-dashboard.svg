@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Unified Operations Dashboard — Oman">
+  <defs>
+    <radialGradient id="glow" cx="22%" cy="0%" r="85%">
+      <stop offset="0" stop-color="#5be6c4" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#5be6c4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.4" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#0a0e14"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+
+  <!-- Oman landmass -->
+  <path d="M 452 158 L 512 182 L 542 240 L 520 280 L 452 332 L 384 356 L 336 350 L 360 300 L 344 250 L 386 214 L 408 176 Z"
+        fill="#5be6c4" fill-opacity="0.08" stroke="#5be6c4" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- Musandam exclave -->
+  <path d="M 512 104 L 544 116 L 532 144 L 506 130 Z"
+        fill="#5be6c4" fill-opacity="0.08" stroke="#5be6c4" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- monitoring links -->
+  <g stroke="#2b3645" stroke-width="2" stroke-dasharray="5 7">
+    <line x1="508" y1="190" x2="392" y2="346"/>
+    <line x1="508" y1="190" x2="430" y2="252"/>
+    <line x1="392" y1="346" x2="408" y2="296"/>
+  </g>
+
+  <!-- nodes -->
+  <g fill="#5be6c4">
+    <circle cx="430" cy="252" r="5"/>
+    <circle cx="408" cy="296" r="5"/>
+  </g>
+  <!-- key pins (capitals): Muscat (amber), Salalah (mint) -->
+  <g fill="none" stroke="#f2a65a" stroke-width="4">
+    <circle cx="508" cy="190" r="11"/>
+  </g>
+  <circle cx="508" cy="190" r="4" fill="#f2a65a"/>
+  <g fill="none" stroke="#5be6c4" stroke-width="4">
+    <circle cx="392" cy="346" r="10"/>
+  </g>
+  <circle cx="392" cy="346" r="4" fill="#5be6c4"/>
+
+  <!-- dashboard side panel (status bars) -->
+  <g transform="translate(610 150)">
+    <text x="0" y="-14" fill="#5c6677" font-family="ui-monospace,Menlo,monospace" font-size="14">status</text>
+    <g>
+      <rect x="0" y="0" width="120" height="10" rx="5" fill="#161c27"/><rect x="0" y="0" width="98" height="10" rx="5" fill="#5be6c4"/>
+      <rect x="0" y="28" width="120" height="10" rx="5" fill="#161c27"/><rect x="0" y="28" width="72" height="10" rx="5" fill="#5be6c4"/>
+      <rect x="0" y="56" width="120" height="10" rx="5" fill="#161c27"/><rect x="0" y="56" width="110" height="10" rx="5" fill="#f2a65a"/>
+      <rect x="0" y="84" width="120" height="10" rx="5" fill="#161c27"/><rect x="0" y="84" width="58" height="10" rx="5" fill="#5be6c4"/>
+    </g>
+  </g>
+
+  <text x="400" y="452" text-anchor="middle" fill="#5c6677" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="4">// regional operations · monitoring</text>
+</svg>
