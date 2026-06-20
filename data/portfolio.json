@@ -154,6 +154,20 @@
     }
   },
   {
+    "id": 19,
+    "title": "Single Sign-On",
+    "category": "web",
+    "image": "assets/images/portfolio/sso.svg",
+    "description": "Centralized single sign-on giving users one secure identity with seamless access across multiple applications.",
+    "tags": ["SSO", "Identity"],
+    "url": "#",
+    "isRedacted": false,
+    "details": {
+      "client": "Vodafone Oman",
+      "completed": "2025"
+    }
+  },
+  {
     "id": 9,
     "title": "Unified Operations Dashboard",
     "category": "dashboard",
