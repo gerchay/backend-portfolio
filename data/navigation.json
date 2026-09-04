@@ -1,10 +1,10 @@
 {
   "links": [
-    { "label": "About", "href": "#about" },
-    { "label": "Experience", "href": "#experience" },
-    { "label": "Work", "href": "#work" },
-    { "label": "Expertise", "href": "#expertise" },
-    { "label": "Education", "href": "#education" },
-    { "label": "Contact", "href": "#contact" }
+    { "id": "about", "href": "#about" },
+    { "id": "experience", "href": "#experience" },
+    { "id": "work", "href": "#work" },
+    { "id": "expertise", "href": "#expertise" },
+    { "id": "education", "href": "#education" },
+    { "id": "contact", "href": "#contact" }
   ]
 }

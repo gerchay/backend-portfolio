@@ -1,48 +1,25 @@
 {
-  "intro": "Backend engineering experience across financial services, distributed media platforms and full-stack product development.",
   "items": [
     {
+      "id": "ficohsa",
       "company": "Grupo Financiero Ficohsa",
       "role": "Backend Developer",
-      "dates": "July 2022 – Present",
-      "summary": "Developing and modernizing backend services for financial platforms, including lending and extra-financing systems, within a serverless Azure environment.",
-      "achievements": [
-        "Design and maintain backend services and integrations supporting financial product workflows.",
-        "Contribute to serverless architecture and system modernization using Azure Functions, NestJS and TypeScript.",
-        "Strengthen reliability and maintainability through unit testing, code analysis and security validation practices.",
-        "Implement observability and operational alerting with Application Insights.",
-        "Participate in backend technical decisions and leadership responsibilities within agile teams."
-      ],
       "technologies": ["Node.js", "TypeScript", "NestJS", "Azure", "Azure Functions", "MongoDB", "Cosmos DB", "Redis", "GraphQL", "Jest", "Application Insights", "SonarQube"],
       "leadership": true,
       "featured": true
     },
     {
+      "id": "toolbox",
       "company": "Toolbox Digital S.A.",
       "role": "Tech Lead / Backend Developer",
-      "dates": "May 2020 – July 2022",
-      "summary": "Built and led backend work for cloud-based media processing and streaming platforms serving major entertainment clients.",
-      "achievements": [
-        "Developed distributed backend services and microservices for media ingestion, processing and delivery workflows.",
-        "Designed and evolved AWS-based services supporting scalable video encoding and transcoding operations.",
-        "Worked with HLS and DASH workflows, FFmpeg and multiple file transfer protocols.",
-        "Contributed to the modernization of a legacy Java monolith into maintainable backend services.",
-        "Provided technical leadership and supported backend team responsibilities, architecture decisions and delivery."
-      ],
       "technologies": ["Node.js", "TypeScript", "JavaScript", "MongoDB", "AWS", "S3", "ECS", "Lambda", "CloudFront", "Docker", "FFmpeg", "HLS", "DASH", "Elasticsearch", "Kibana", "Grafana", "FTP", "SFTP", "IBM Aspera"],
       "leadership": true,
       "featured": true
     },
     {
+      "id": "posicionarte",
       "company": "Posicionarte S.A.",
       "role": "Fullstack Developer",
-      "dates": "April 2019 – May 2020",
-      "summary": "Started my professional career building web applications across frontend and backend, establishing the foundation for later backend specialization.",
-      "achievements": [
-        "Developed web application features with Angular, React and Node.js.",
-        "Built and integrated APIs backed by Firebase and Firestore.",
-        "Worked with Google Cloud Functions for serverless application logic."
-      ],
       "technologies": ["Angular", "React", "Node.js", "APIs", "Google Cloud", "Firebase", "Firestore", "Cloud Functions"],
       "leadership": false,
       "featured": false

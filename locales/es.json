@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "title": "Gerardo Chay | Senior Backend Engineer",
+    "description": "Senior Backend Engineer especializado en arquitecturas cloud-native, sistemas distribuidos y plataformas fintech."
+  },
+  "accessibility": {
+    "skipToContent": "Saltar al contenido",
+    "backToTop": "Gerardo Chay — Volver al inicio",
+    "primaryNavigation": "Navegación principal",
+    "professionalProfiles": "Perfiles profesionales",
+    "languageSelector": "Selector de idioma",
+    "switchToEnglish": "Cambiar idioma a inglés",
+    "switchToSpanish": "Cambiar idioma a español",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mobileNavigation": "Navegación móvil",
+    "emailLink": "Escríbeme — abre tu cliente de correo",
+    "externalLink": "{label} — abre en una pestaña nueva",
+    "photoAlt": "Espacio reservado para la fotografía profesional de Gerardo Chay"
+  },
+  "ui": {
+    "eyebrow": "Backend · Cloud · Arquitectura",
+    "photoNote": "Espacio para fotografía profesional",
+    "navigate": "Navegación",
+    "language": "Idioma",
+    "leadership": "Liderazgo",
+    "privateWork": "Trabajo privado",
+    "architecture": "Arquitectura",
+    "technologies": "Tecnologías",
+    "readCaseStudy": "Ver caso de estudio",
+    "problem": "Problema",
+    "contribution": "Rol y contribución",
+    "outcome": "Resultado",
+    "linkUnavailable": "El enlace se agregará en una fase posterior",
+    "javascriptRequired": "JavaScript es necesario para cargar el contenido del portfolio."
+  },
+  "navigation": {
+    "about": "Perfil",
+    "experience": "Experiencia",
+    "work": "Proyectos",
+    "expertise": "Especialidad",
+    "education": "Educación",
+    "contact": "Contacto"
+  },
+  "sections": {
+    "about": { "kicker": "Perfil profesional", "title": "Sobre mí" },
+    "experience": { "kicker": "Experiencia en producción", "title": "Experiencia" },
+    "work": { "kicker": "Casos de estudio profesionales", "title": "Proyectos destacados" },
+    "expertise": { "kicker": "Áreas de ingeniería", "title": "Especialidad" },
+    "education": { "kicker": "Formación académica", "title": "Educación" },
+    "contact": { "kicker": "Contacto" }
+  },
+  "profile": {
+    "role": "Senior Backend Engineer",
+    "specialization": "Cloud · Sistemas Distribuidos · Fintech",
+    "description": "Diseño y construyo sistemas backend escalables, arquitecturas cloud-native y plataformas distribuidas para entornos reales de producción.",
+    "availability": "Abierto a oportunidades remotas y proyectos freelance.",
+    "actions": {
+      "experience": "Ver experiencia",
+      "cv": "Descargar CV",
+      "email": "Escríbeme"
+    }
+  },
+  "about": {
+    "summary": "Soy Backend Engineer con más de cinco años de experiencia construyendo y evolucionando sistemas escalables para fintech, banca, entornos enterprise y plataformas multimedia. Me especializo en Node.js y TypeScript, y diseño servicios cloud-native en AWS y Azure con arquitecturas serverless, de microservices, event-driven y distribuidas. Mi experiencia abarca APIs enterprise, integraciones financieras, flujos de procesamiento de video, observabilidad, pruebas automatizadas y prácticas de calidad de código. He participado en decisiones técnicas, modernización de backend y liderazgo de equipos, manteniendo la confiabilidad, seguridad y mantenibilidad como prioridades. Mi enfoque es una arquitectura práctica: sistemas claros de operar, resilientes en producción y alineados con necesidades reales del negocio.",
+    "highlights": {
+      "experience": "Años de experiencia",
+      "backend": "Ingeniería Cloud",
+      "fintech": "Sistemas financieros",
+      "distributed": "Sistemas en producción"
+    }
+  },
+  "experience": {
+    "intro": "Experiencia en backend engineering para servicios financieros, plataformas multimedia distribuidas y desarrollo de productos full-stack.",
+    "items": {
+      "ficohsa": {
+        "dates": "Julio 2022 – Actualidad",
+        "summary": "Desarrollo y modernización de servicios backend para plataformas financieras, incluidos sistemas de préstamos y extrafinanciamiento, en un entorno serverless sobre Azure.",
+        "achievements": [
+          "Diseño y mantenimiento de servicios backend e integraciones que soportan flujos de productos financieros.",
+          "Contribución a la arquitectura serverless y modernización de sistemas con Azure Functions, NestJS y TypeScript.",
+          "Fortalecimiento de la confiabilidad y mantenibilidad mediante pruebas unitarias, análisis de código y prácticas de validación de seguridad.",
+          "Implementación de observabilidad y alertas operativas con Application Insights.",
+          "Participación en decisiones técnicas de backend y responsabilidades de liderazgo dentro de equipos ágiles."
+        ]
+      },
+      "toolbox": {
+        "dates": "Mayo 2020 – Julio 2022",
+        "summary": "Desarrollo y liderazgo técnico de backend para plataformas cloud de procesamiento multimedia y streaming utilizadas por importantes clientes de entretenimiento.",
+        "achievements": [
+          "Desarrollo de servicios backend distribuidos y microservices para flujos de ingesta, procesamiento y entrega de contenido multimedia.",
+          "Diseño y evolución de servicios en AWS para operaciones escalables de encoding y transcoding de video.",
+          "Trabajo con flujos HLS y DASH, FFmpeg y múltiples protocolos de transferencia de archivos.",
+          "Contribución a la modernización de un monolito legacy en Java hacia servicios backend mantenibles.",
+          "Liderazgo técnico y apoyo al equipo backend en responsabilidades, decisiones de arquitectura y entregas."
+        ]
+      },
+      "posicionarte": {
+        "dates": "Abril 2019 – Mayo 2020",
+        "summary": "Inicio de mi carrera profesional desarrollando aplicaciones web en frontend y backend, donde construí la base de mi posterior especialización en backend.",
+        "achievements": [
+          "Desarrollo de funcionalidades para aplicaciones web con Angular, React y Node.js.",
+          "Construcción e integración de APIs respaldadas por Firebase y Firestore.",
+          "Trabajo con Google Cloud Functions para lógica serverless de aplicaciones."
+        ]
+      }
+    }
+  },
+  "caseStudies": {
+    "intro": "Ejemplos seleccionados de sistemas en producción y desafíos técnicos en los que he trabajado para servicios financieros, plataformas cloud y procesamiento multimedia.",
+    "confidentialityNote": "Los detalles de implementación se han generalizado intencionalmente para proteger sistemas privados e información de las empresas.",
+    "items": {
+      "financial-backend-platforms": {
+        "title": "Plataformas Backend Financieras",
+        "type": "Banca / Servicios financieros",
+        "shortDescription": "Servicios backend para productos financieros, integraciones enterprise y flujos operativos críticos.",
+        "context": "Plataformas financieras para productos de préstamos y extrafinanciamiento.",
+        "problem": "Los productos financieros dependen de flujos backend que deben conservar su confiabilidad mientras evolucionan las integraciones, fuentes de datos y necesidades operativas. El reto consistió en construir y modernizar servicios sin comprometer la seguridad, la mantenibilidad ni la visibilidad del comportamiento en producción.",
+        "contribution": "Contribuí al diseño y evolución de servicios backend, APIs enterprise y flujos serverless. Mi trabajo incluyó integración de datos, caching, resiliencia, pruebas automatizadas, controles de seguridad y calidad de código, observabilidad, así como participación en decisiones técnicas y responsabilidades de liderazgo de backend.",
+        "outcome": "El trabajo favoreció flujos backend más confiables y mantenibles, mayor visibilidad operativa y entregas más seguras mediante pruebas, validaciones de seguridad y controles de calidad de código."
+      },
+      "cloud-video-processing-streaming": {
+        "title": "Procesamiento de Video y Streaming en Cloud",
+        "type": "Multimedia / Streaming / Procesamiento de video",
+        "shortDescription": "Flujos backend distribuidos para procesar y entregar contenido audiovisual mediante plataformas cloud.",
+        "context": "Plataformas multimedia para importantes clientes de entretenimiento.",
+        "problem": "Las plataformas multimedia necesitan ingerir, procesar y distribuir contenido audiovisual mediante flujos complejos entre servicios cloud y sistemas externos de transferencia. Estas cargas requieren jobs backend coordinados, encoding y transcoding confiables, además de suficiente visibilidad operativa para sostener el procesamiento en producción.",
+        "contribution": "Construí servicios backend y microservices para ingesta, procesamiento y entrega multimedia, trabajando con jobs distribuidos, object storage, servicios en contenedores, distribución por CDN y pipelines de video. También integré sistemas de transferencia de archivos, contribuí a la observabilidad y modernización de flujos legacy, y brindé liderazgo técnico al equipo backend.",
+        "outcome": "Este trabajo permitió un procesamiento de contenido escalable, servicios backend reutilizables, mayor visibilidad operativa y flujos multimedia más mantenibles durante la evolución de componentes legacy."
+      },
+      "serverless-backend-architecture": {
+        "company": "Experiencia transversal",
+        "title": "Arquitectura Backend Serverless",
+        "type": "Arquitectura Cloud",
+        "shortDescription": "Experiencia transversal construyendo servicios backend desacoplados y event-driven en AWS y Azure.",
+        "context": "Sistemas backend enterprise en AWS y Azure.",
+        "problem": "Los sistemas backend enterprise suelen necesitar escalar cargas e integraciones de forma independiente sin asumir infraestructura innecesaria. El reto arquitectónico es mantener funciones, APIs, eventos y flujos desacoplados, con límites claros de seguridad, observabilidad y responsabilidad operativa.",
+        "contribution": "En distintos entornos de producción he trabajado con funciones y servicios, capas de APIs, comunicación event-driven, orquestación de flujos y procesamiento asíncrono. También he contribuido a infrastructure as code, permisos y seguridad, monitoreo, logging, prácticas de confiabilidad y límites de servicio mantenibles.",
+        "outcome": "Estos patrones permitieron límites de servicio más claros, despliegues independientes, procesamiento escalable de eventos, menor carga de infraestructura y mejor visibilidad operativa."
+      }
+    }
+  },
+  "expertise": {
+    "intro": "Tecnologías y capacidades de ingeniería agrupadas según las áreas donde se aplican en producción.",
+    "categories": {
+      "backend": "Backend Engineering",
+      "cloud": "Cloud & Serverless",
+      "distributed": "Sistemas Distribuidos y Arquitectura",
+      "databases": "Bases de Datos y Caching",
+      "devops": "DevOps e Infraestructura",
+      "observability": "Observabilidad y Calidad",
+      "media": "Procesamiento Multimedia"
+    }
+  },
+  "education": {
+    "items": {
+      "systems-engineering": { "degree": "Ingeniería en Sistemas", "status": "" },
+      "information-technology-masters": { "degree": "Maestría en Tecnologías de la Información", "status": "En curso" }
+    }
+  },
+  "contact": {
+    "title": "Construyamos algo.",
+    "description": "¿Buscas construir sistemas backend confiables, plataformas cloud o integraciones financieras? Estoy abierto a oportunidades remotas y proyectos freelance. Hablemos.",
+    "email": "Escríbeme"
+  },
+  "footer": {
+    "description": "Senior Backend Engineer · Cloud · Sistemas Distribuidos · Fintech"
+  }
+}

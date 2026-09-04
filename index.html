@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Senior Backend Engineer Portfolio">
+    <meta name="description" content="Senior Backend Engineer specializing in cloud-native architectures, distributed systems and fintech platforms.">
     <meta name="theme-color" content="#0a0e14">
-    <title>Gerardo Chay — Senior Backend Engineer</title>
-    <link rel="stylesheet" href="css/colors.css?v=5">
-    <link rel="stylesheet" href="css/style.css?v=5">
-    <link rel="stylesheet" href="css/layout.css?v=5">
-    <link rel="stylesheet" href="css/components.css?v=5">
+    <title>Gerardo Chay | Senior Backend Engineer</title>
+    <link rel="stylesheet" href="css/colors.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/layout.css?v=6">
+    <link rel="stylesheet" href="css/components.css?v=6">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,22 +17,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content" data-i18n="accessibility.skipToContent">Skip to content</a>
     <div class="page-background" aria-hidden="true"><div class="background-grid"></div><div class="background-glow"></div></div>
 
     <header class="site-header">
         <div class="header-inner">
-            <a class="brand" href="#top" aria-label="Gerardo Chay — Back to top">Gerardo Chay</a>
-            <nav class="desktop-nav" aria-label="Primary navigation">
+            <a class="brand" href="#top" aria-label="Gerardo Chay — Back to top" data-i18n-aria-label="accessibility.backToTop">Gerardo Chay</a>
+            <nav class="desktop-nav" aria-label="Primary navigation" data-i18n-aria-label="accessibility.primaryNavigation">
                 <div class="desktop-nav-links"></div>
             </nav>
             <div class="header-actions">
-                <div class="language-switcher" aria-label="Language selector — coming in Phase 5">
-                    <button type="button" class="language-option active" aria-pressed="true" disabled>EN</button>
+                <div class="language-switcher" role="group" aria-label="Language selector" data-i18n-aria-label="accessibility.languageSelector">
+                    <button type="button" class="language-option active" data-language="en" aria-pressed="true" aria-label="Switch language to English">EN</button>
                     <span aria-hidden="true">|</span>
-                    <button type="button" class="language-option" aria-pressed="false" disabled>ES</button>
+                    <button type="button" class="language-option" data-language="es" aria-pressed="false" aria-label="Switch language to Spanish">ES</button>
                 </div>
-                <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                <button class="menu-toggle" type="button" aria-label="Open menu" data-i18n-aria-label="accessibility.openMenu" aria-controls="mobile-menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -43,27 +43,27 @@
         <section class="hero" id="top" aria-labelledby="hero-name">
             <div class="section-container hero-layout">
                 <div class="hero-copy">
-                    <p class="eyebrow">Backend · Cloud · Architecture</p>
+                    <p class="eyebrow" data-i18n="ui.eyebrow">Backend · Cloud · Architecture</p>
                     <h1 id="hero-name" class="hero-name"></h1>
                     <p class="hero-role"></p>
                     <p class="hero-specialization"></p>
                     <p class="hero-description"></p>
                     <p class="availability"><span class="availability-dot" aria-hidden="true"></span><span></span></p>
                     <div class="hero-actions"></div>
-                    <div class="hero-socials" aria-label="Professional profiles"></div>
+                    <div class="hero-socials" aria-label="Professional profiles" data-i18n-aria-label="accessibility.professionalProfiles"></div>
                 </div>
                 <div class="hero-photo-wrap">
                     <div class="hero-photo-frame">
                         <img class="hero-photo" src="assets/images/profile-placeholder.svg" width="520" height="620" alt="Professional photo placeholder for Gerardo Chay">
                     </div>
-                    <p class="photo-note">Professional photo placeholder</p>
+                    <p class="photo-note" data-i18n="ui.photoNote">Professional photo placeholder</p>
                 </div>
             </div>
         </section>
 
         <section class="content-section" id="about" aria-labelledby="about-title">
             <div class="section-container">
-                <div class="section-heading"><span class="section-number">01</span><div><p class="section-kicker">Profile</p><h2 id="about-title">About</h2></div></div>
+                <div class="section-heading"><span class="section-number">01</span><div><p class="section-kicker" data-i18n="sections.about.kicker">Profile</p><h2 id="about-title" data-i18n="sections.about.title">About</h2></div></div>
                 <div class="about-layout">
                     <p class="about-summary"></p>
                     <div class="highlight-grid"></div>
@@ -73,7 +73,7 @@
 
         <section class="content-section section-tinted" id="experience" aria-labelledby="experience-title">
             <div class="section-container">
-                <div class="section-heading"><span class="section-number">02</span><div><p class="section-kicker">Production experience</p><h2 id="experience-title">Experience</h2></div></div>
+                <div class="section-heading"><span class="section-number">02</span><div><p class="section-kicker" data-i18n="sections.experience.kicker">Production experience</p><h2 id="experience-title" data-i18n="sections.experience.title">Experience</h2></div></div>
                 <p class="section-intro experience-intro"></p>
                 <div class="experience-list"></div>
             </div>
@@ -81,7 +81,7 @@
 
         <section class="content-section" id="work" aria-labelledby="work-title">
             <div class="section-container">
-                <div class="section-heading"><span class="section-number">03</span><div><p class="section-kicker">Professional case studies</p><h2 id="work-title">Selected Work</h2></div></div>
+                <div class="section-heading"><span class="section-number">03</span><div><p class="section-kicker" data-i18n="sections.work.kicker">Professional case studies</p><h2 id="work-title" data-i18n="sections.work.title">Selected Work</h2></div></div>
                 <p class="section-intro work-intro"></p>
                 <p class="work-confidentiality"></p>
                 <div class="case-study-grid"></div>
@@ -90,7 +90,7 @@
 
         <section class="content-section section-tinted" id="expertise" aria-labelledby="expertise-title">
             <div class="section-container">
-                <div class="section-heading"><span class="section-number">04</span><div><p class="section-kicker">Engineering domains</p><h2 id="expertise-title">Expertise</h2></div></div>
+                <div class="section-heading"><span class="section-number">04</span><div><p class="section-kicker" data-i18n="sections.expertise.kicker">Engineering domains</p><h2 id="expertise-title" data-i18n="sections.expertise.title">Expertise</h2></div></div>
                 <p class="section-intro expertise-intro"></p>
                 <div class="expertise-grid"></div>
             </div>
@@ -98,14 +98,14 @@
 
         <section class="content-section" id="education" aria-labelledby="education-title">
             <div class="section-container">
-                <div class="section-heading"><span class="section-number">05</span><div><p class="section-kicker">Academic background</p><h2 id="education-title">Education</h2></div></div>
+                <div class="section-heading"><span class="section-number">05</span><div><p class="section-kicker" data-i18n="sections.education.kicker">Academic background</p><h2 id="education-title" data-i18n="sections.education.title">Education</h2></div></div>
                 <div class="education-list"></div>
             </div>
         </section>
 
         <section class="content-section contact-section" id="contact" aria-labelledby="contact-title">
             <div class="section-container contact-layout">
-                <div><p class="section-kicker">Contact</p><h2 id="contact-title" class="contact-title"></h2><p class="contact-copy"></p></div>
+                <div><p class="section-kicker" data-i18n="sections.contact.kicker">Contact</p><h2 id="contact-title" class="contact-title"></h2><p class="contact-copy"></p></div>
                 <div class="contact-actions"></div>
             </div>
         </section>
@@ -115,20 +115,28 @@
         <div class="section-container footer-inner">
             <p>© <span id="current-year"></span> <span class="footer-name"></span></p>
             <p class="footer-role"></p>
-            <div class="footer-links" aria-label="Professional profiles"></div>
+            <div class="footer-links" aria-label="Professional profiles" data-i18n-aria-label="accessibility.professionalProfiles"></div>
         </div>
     </footer>
 
     <div class="mobile-menu-overlay" id="mobile-menu" aria-hidden="true">
-        <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-            <div class="mobile-menu-head"><span class="mobile-menu-title">Navigate</span><button class="close-menu-btn" type="button" aria-label="Close menu">×</button></div>
-            <nav class="mobile-nav-links" aria-label="Mobile navigation"></nav>
-            <div class="mobile-language-slot"></div>
+        <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation" data-i18n-aria-label="accessibility.mobileNavigation">
+            <div class="mobile-menu-head"><span class="mobile-menu-title" data-i18n="ui.navigate">Navigate</span><button class="close-menu-btn" type="button" aria-label="Close menu" data-i18n-aria-label="accessibility.closeMenu">×</button></div>
+            <nav class="mobile-nav-links" aria-label="Mobile navigation" data-i18n-aria-label="accessibility.mobileNavigation"></nav>
+            <div class="mobile-language-slot">
+                <span data-i18n="ui.language">Language</span>
+                <div class="language-switcher" role="group" aria-label="Language selector" data-i18n-aria-label="accessibility.languageSelector">
+                    <button type="button" class="language-option active" data-language="en" aria-pressed="true" aria-label="Switch language to English">EN</button>
+                    <span aria-hidden="true">|</span>
+                    <button type="button" class="language-option" data-language="es" aria-pressed="false" aria-label="Switch language to Spanish">ES</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <noscript><p class="noscript-message">JavaScript is required to load the portfolio content.</p></noscript>
-    <script src="js/main.js?v=5" defer></script>
-    <script src="js/data-loader.js?v=5" defer></script>
+    <script src="js/main.js?v=6" defer></script>
+    <script src="js/i18n.js?v=6" defer></script>
+    <script src="js/data-loader.js?v=6" defer></script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 {
-  "intro": "Technologies and engineering capabilities grouped by the areas where they are applied in production.",
   "categories": [
-    { "name": "Backend Engineering", "capabilities": ["Node.js", "TypeScript", "JavaScript", "NestJS", "Express", "REST APIs", "GraphQL"] },
-    { "name": "Cloud & Serverless", "capabilities": ["AWS", "Azure", "GCP", "AWS Lambda", "Azure Functions", "API Gateway", "Step Functions", "EventBridge", "S3", "CloudFront"] },
-    { "name": "Distributed Systems & Architecture", "capabilities": ["Distributed Systems", "Event-Driven Architecture", "Microservices", "Serverless Architecture", "Asynchronous Processing", "Enterprise Integrations", "System Design"] },
-    { "name": "Databases & Caching", "capabilities": ["MongoDB", "PostgreSQL", "Cosmos DB", "DynamoDB", "Firestore", "Redis", "SQL"] },
-    { "name": "DevOps & Infrastructure", "capabilities": ["Docker", "Kubernetes", "Git", "CI/CD", "AWS SAM", "CloudFormation", "Infrastructure as Code"] },
-    { "name": "Observability & Quality", "capabilities": ["Application Insights", "Grafana", "Kibana", "Elasticsearch", "Jest", "SonarQube", "Fluid Attacks", "Testing", "Code Quality"] },
-    { "name": "Media Processing", "capabilities": ["FFmpeg", "Video Encoding", "Transcoding", "HLS", "DASH", "FTP", "SFTP", "IBM Aspera"] }
+    { "id": "backend", "capabilities": ["Node.js", "TypeScript", "JavaScript", "NestJS", "Express", "REST APIs", "GraphQL"] },
+    { "id": "cloud", "capabilities": ["AWS", "Azure", "GCP", "AWS Lambda", "Azure Functions", "API Gateway", "Step Functions", "EventBridge", "S3", "CloudFront"] },
+    { "id": "distributed", "capabilities": ["Distributed Systems", "Event-Driven Architecture", "Microservices", "Serverless Architecture", "Asynchronous Processing", "Enterprise Integrations", "System Design"] },
+    { "id": "databases", "capabilities": ["MongoDB", "PostgreSQL", "Cosmos DB", "DynamoDB", "Firestore", "Redis", "SQL"] },
+    { "id": "devops", "capabilities": ["Docker", "Kubernetes", "Git", "CI/CD", "AWS SAM", "CloudFormation", "Infrastructure as Code"] },
+    { "id": "observability", "capabilities": ["Application Insights", "Grafana", "Kibana", "Elasticsearch", "Jest", "SonarQube", "Fluid Attacks", "Testing", "Code Quality"] },
+    { "id": "media", "capabilities": ["FFmpeg", "Video Encoding", "Transcoding", "HLS", "DASH", "FTP", "SFTP", "IBM Aspera"] }
   ]
 }
