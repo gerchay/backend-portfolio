@@ -39,9 +39,13 @@ function makeLink(label, href, className) {
   link.className = className;
   link.href = href;
   link.textContent = label;
+  if (href.startsWith('mailto:')) {
+    link.setAttribute('aria-label', `${label} — opens your email client`);
+  }
   if (href.startsWith('http')) {
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
+    link.setAttribute('aria-label', `${label} — opens in a new tab`);
   }
   return link;
 }

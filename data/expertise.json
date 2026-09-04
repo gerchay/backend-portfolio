@@ -1,12 +1,12 @@
 {
-  "intro": "PLACEHOLDER — Technologies and capabilities will be populated in Phase 3. Categories do not represent proficiency scores.",
+  "intro": "Technologies and engineering capabilities grouped by the areas where they are applied in production.",
   "categories": [
-    { "name": "Backend Engineering", "capabilities": [] },
-    { "name": "Cloud & Serverless", "capabilities": [] },
-    { "name": "Distributed Systems & Architecture", "capabilities": [] },
-    { "name": "Databases & Caching", "capabilities": [] },
-    { "name": "DevOps & Infrastructure", "capabilities": [] },
-    { "name": "Observability & Quality", "capabilities": [] },
-    { "name": "Media Processing", "capabilities": [] }
+    { "name": "Backend Engineering", "capabilities": ["Node.js", "TypeScript", "JavaScript", "NestJS", "Express", "REST APIs", "GraphQL"] },
+    { "name": "Cloud & Serverless", "capabilities": ["AWS", "Azure", "GCP", "AWS Lambda", "Azure Functions", "API Gateway", "Step Functions", "EventBridge", "S3", "CloudFront"] },
+    { "name": "Distributed Systems & Architecture", "capabilities": ["Distributed Systems", "Event-Driven Architecture", "Microservices", "Serverless Architecture", "Asynchronous Processing", "Enterprise Integrations", "System Design"] },
+    { "name": "Databases & Caching", "capabilities": ["MongoDB", "PostgreSQL", "Cosmos DB", "DynamoDB", "Firestore", "Redis", "SQL"] },
+    { "name": "DevOps & Infrastructure", "capabilities": ["Docker", "Kubernetes", "Git", "CI/CD", "AWS SAM", "CloudFormation", "Infrastructure as Code"] },
+    { "name": "Observability & Quality", "capabilities": ["Application Insights", "Grafana", "Kibana", "Elasticsearch", "Jest", "SonarQube", "Fluid Attacks", "Testing", "Code Quality"] },
+    { "name": "Media Processing", "capabilities": ["FFmpeg", "Video Encoding", "Transcoding", "HLS", "DASH", "FTP", "SFTP", "IBM Aspera"] }
   ]
 }

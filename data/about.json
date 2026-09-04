@@ -1,9 +1,9 @@
 {
-  "summary": "PLACEHOLDER — A concise professional summary covering backend engineering, cloud platforms, fintech, media systems and technical leadership will be added in Phase 3.",
+  "summary": "I'm a Backend Engineer with over five years of experience building and evolving scalable systems for fintech, banking, enterprise and media platforms. I specialize in Node.js and TypeScript, designing cloud-native services on AWS and Azure using serverless, microservice, event-driven and distributed architectures. My work spans enterprise APIs, financial integrations, video-processing workflows, observability, automated testing and code-quality practices. I have contributed to technical decisions, backend modernization and team leadership while keeping reliability, security and maintainability central to delivery. I focus on practical architecture: systems that are clear to operate, resilient in production and aligned with real business requirements.",
   "highlights": [
     { "value": "5+", "label": "Years Experience" },
-    { "value": "Backend", "label": "& Cloud" },
+    { "value": "Backend", "label": "Cloud Engineering" },
     { "value": "Fintech", "label": "Financial Systems" },
-    { "value": "Production", "label": "Platforms" }
+    { "value": "Distributed", "label": "Production Systems" }
   ]
 }

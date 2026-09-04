@@ -14,7 +14,7 @@ The page follows this order:
 6. Education
 7. Contact
 
-Content is stored by domain in `data/`. Text marked `PLACEHOLDER` is intentionally provisional and will be replaced in later phases.
+Content is stored by domain in `data/`. Selected Work, the professional photo, language switching and the downloadable CV remain intentionally pending for later phases.
 
 ## Run locally
 
