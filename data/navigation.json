@@ -1,7 +1,10 @@
 {
-  "tabs": [
-    { "id": "about", "title": "About", "active": true },
-    { "id": "resume", "title": "Resume", "active": false },
-    { "id": "portfolio", "title": "Portfolio", "active": false }
+  "links": [
+    { "label": "About", "href": "#about" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Work", "href": "#work" },
+    { "label": "Expertise", "href": "#expertise" },
+    { "label": "Education", "href": "#education" },
+    { "label": "Contact", "href": "#contact" }
   ]
 }

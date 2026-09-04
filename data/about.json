@@ -1,4 +1,9 @@
 {
-  "title": "About",
-  "description": "Portfolio content will be added in a later phase."
+  "summary": "PLACEHOLDER — A concise professional summary covering backend engineering, cloud platforms, fintech, media systems and technical leadership will be added in Phase 3.",
+  "highlights": [
+    { "value": "5+", "label": "Years Experience" },
+    { "value": "Backend", "label": "& Cloud" },
+    { "value": "Fintech", "label": "Financial Systems" },
+    { "value": "Production", "label": "Platforms" }
+  ]
 }

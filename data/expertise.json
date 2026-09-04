@@ -1,0 +1,12 @@
+{
+  "intro": "PLACEHOLDER — Technologies and capabilities will be populated in Phase 3. Categories do not represent proficiency scores.",
+  "categories": [
+    { "name": "Backend Engineering", "capabilities": [] },
+    { "name": "Cloud & Serverless", "capabilities": [] },
+    { "name": "Distributed Systems & Architecture", "capabilities": [] },
+    { "name": "Databases & Caching", "capabilities": [] },
+    { "name": "DevOps & Infrastructure", "capabilities": [] },
+    { "name": "Observability & Quality", "capabilities": [] },
+    { "name": "Media Processing", "capabilities": [] }
+  ]
+}

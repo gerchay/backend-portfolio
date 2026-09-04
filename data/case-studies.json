@@ -1,0 +1,25 @@
+{
+  "intro": "PLACEHOLDER — Selected Work will present professional case studies without exposing confidential information.",
+  "items": [
+    {
+      "title": "Case Study Placeholder 01",
+      "type": "PLACEHOLDER",
+      "shortDescription": "Structure preview for a featured production case study. No achievement or outcome is being claimed.",
+      "context": "Professional context pending Phase 4.",
+      "technologies": [],
+      "architectureTags": [],
+      "private": true,
+      "featured": true
+    },
+    {
+      "title": "Case Study Placeholder 02",
+      "type": "PLACEHOLDER",
+      "shortDescription": "Structure preview for an additional professional case study.",
+      "context": "Professional context pending Phase 4.",
+      "technologies": [],
+      "architectureTags": [],
+      "private": false,
+      "featured": false
+    }
+  ]
+}

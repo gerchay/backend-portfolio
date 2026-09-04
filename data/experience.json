@@ -1,0 +1,16 @@
+{
+  "intro": "PLACEHOLDER — Professional experience content will be added in Phase 3.",
+  "items": [
+    {
+      "company": "Company placeholder",
+      "role": "Role placeholder",
+      "dates": "Dates pending",
+      "location": "",
+      "summary": "PLACEHOLDER — This card validates the future experience structure without presenting invented professional claims.",
+      "achievements": [],
+      "technologies": [],
+      "leadership": false,
+      "featured": true
+    }
+  ]
+}

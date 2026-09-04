@@ -1,192 +1,71 @@
-/* ============================================================
-   Layout — app grid, console sidebar, tab bar, responsive
-   ============================================================ */
+/* Page-level layout and responsive navigation. */
+.site-header {
+  position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line);
+  background: rgba(10,14,20,.88); backdrop-filter: blur(14px);
+}
+.header-inner {
+  width: min(calc(100% - 3rem), var(--content-max)); min-height: 72px; margin-inline: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-5);
+}
+.brand { flex: none; font-family: var(--font-display); font-size: var(--fs-md); font-weight: 700; }
+.brand::before { content: "//"; margin-right: var(--s-2); font-family: var(--font-mono); color: var(--accent); }
+.desktop-nav { margin-left: auto; }
+.desktop-nav-links { display: flex; align-items: center; gap: var(--s-1); }
+.header-actions { display: flex; align-items: center; gap: var(--s-4); }
+.menu-toggle { display: none; }
 
-.app {
-  display: grid;
-  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
-  gap: 0;
-  min-height: 100vh;
-  max-width: 1500px;
-  margin: 0 auto;
-}
+.hero { min-height: calc(100svh - 72px); display: grid; align-items: center; padding: clamp(4rem, 8vw, 7rem) 0; }
+.hero-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); align-items: center; gap: clamp(3rem, 7vw, 7rem); }
+.hero-copy { min-width: 0; }
+.hero-photo-wrap { width: min(100%, 390px); justify-self: end; }
 
-/* ---- Sidebar console -------------------------------------- */
-.sidebar {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  height: 100vh;
-  padding: var(--s-6) var(--s-5);
-  border-right: 1px solid var(--line);
-  overflow-y: auto;
-}
-.console {
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.console-bar {
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-  padding: var(--s-3) var(--s-4);
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--line);
-}
-.console-bar .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex: none;
-}
-.dot-r { background: #ef5f6b; }
-.dot-y { background: #f2a65a; }
-.dot-g { background: #5be6c4; }
-.console-path {
-  margin-left: var(--s-2);
-  color: var(--text-faint);
-}
-.console-body {
-  padding: var(--s-5) var(--s-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-5);
-}
+.about-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr); gap: var(--s-8); align-items: start; }
+.experience-list { position: relative; display: grid; gap: var(--s-5); }
+.case-study-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); }
+.expertise-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); }
+.education-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-7); align-items: end; }
+.footer-inner { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); }
 
-/* ---- Main ------------------------------------------------- */
-.main-content {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ---- Tab bar ---------------------------------------------- */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(10, 14, 20, 0.82);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-.tabbar {
-  display: flex;
-  align-items: center;
-  gap: var(--s-3);
-  padding: var(--s-4) var(--s-7);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.tabbar::-webkit-scrollbar { display: none; }
-.tabbar-prompt {
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-weight: 700;
-}
-.tab-navigation {
-  display: flex;
-  gap: var(--s-1);
-}
-
-/* ---- Tab content + sections ------------------------------- */
-.tab-content {
-  flex: 1;
-  padding: var(--s-7);
-  width: 100%;
-  max-width: calc(var(--content-max) + var(--s-7) * 2);
-}
-.tab-pane { display: none; }
-.tab-pane.active { display: block; }
-
-.resume-content { display: flex; flex-direction: column; gap: var(--s-7); }
-
-.footer {
-  margin-top: auto;
-  padding: var(--s-5) var(--s-7);
-  border-top: 1px solid var(--line);
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  color: var(--text-faint);
-}
-
-/* ---- Mobile chrome (hidden on desktop) -------------------- */
-.mobile-header,
 .mobile-menu-overlay { display: none; }
 
-/* ============================================================
-   Responsive
-   ============================================================ */
-@media (max-width: 900px) {
-  .app { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 1024px) {
+  .desktop-nav-links { gap: 0; }
+  .nav-link { padding-inline: var(--s-2); }
+  .expertise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-layout { gap: var(--s-7); }
+}
 
-  .sidebar { display: none; }
+@media (max-width: 840px) {
+  .header-inner { width: min(calc(100% - 2rem), var(--content-max)); }
+  .desktop-nav, .header-actions > .language-switcher { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .hero { min-height: auto; }
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-photo-wrap { width: min(72vw, 340px); justify-self: start; grid-row: 1; }
+  .about-layout { grid-template-columns: 1fr; gap: var(--s-6); }
+  .case-study-grid, .education-list { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; align-items: start; }
+  .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: var(--s-5); }
 
-  /* Compact sticky header with hamburger */
-  .mobile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--s-4);
-    padding: var(--s-4) var(--s-5);
-  }
-  .mobile-profile { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
-  .mobile-profile .avatar-placeholder { width: 42px; height: 42px; }
-  .mobile-profile .name { font-size: var(--fs-md); line-height: 1.15; }
-  .mobile-profile .title { font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--accent); }
-  .menu-toggle { font-size: 1.4rem; color: var(--accent); padding: var(--s-2); flex: none; }
-
-  /* Navigation lives in the drawer on mobile — hide the tab bar so sections
-     aren't duplicated (and so the row can't overflow the viewport). */
-  .tabbar { display: none; }
-
-  .tab-content { padding: var(--s-5) var(--s-4) var(--s-7); }
-  .section-head { gap: var(--s-3); }
-  .section-title { white-space: normal; }
-  .footer { padding: var(--s-5) var(--s-4); }
-
-  /* ---- Slide-in drawer ---- */
   .mobile-menu-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: block;
-    overflow: hidden; /* clip the off-screen (closed) drawer so it can't widen the page */
-    background: rgba(6, 9, 13, 0.72);
-    backdrop-filter: blur(6px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--t-base), visibility var(--t-base);
+    position: fixed; inset: 0; z-index: 100; display: block;
+    visibility: hidden; opacity: 0; background: rgba(6,9,13,.76);
+    backdrop-filter: blur(6px); transition: opacity var(--t-base), visibility var(--t-base);
   }
-  .mobile-menu-overlay.show { opacity: 1; visibility: visible; }
-  .mobile-menu-content {
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: min(86%, 360px);
-    background: var(--surface);
-    border-left: 1px solid var(--line);
-    padding: var(--s-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-4);
-    overflow: hidden; /* the inner .drawer-scroll handles scrolling */
-    /* Vertical-only motion — never positioned off-screen horizontally, so it
-       can't create page overflow on any browser. */
-    transform: translateY(10px);
-    transition: transform var(--t-base);
+  .mobile-menu-overlay.is-open { visibility: visible; opacity: 1; }
+  .mobile-menu-panel {
+    position: absolute; inset: 0 0 0 auto; width: min(88vw, 380px); padding: var(--s-5);
+    display: flex; flex-direction: column; background: var(--surface);
+    border-left: 1px solid var(--line); transform: translateX(100%); transition: transform var(--t-base);
   }
-  .mobile-menu-overlay.show .mobile-menu-content { transform: translateY(0); }
-  .close-menu-btn { align-self: flex-end; flex: none; font-size: 1.8rem; line-height: 1; color: var(--text-dim); }
+  .mobile-menu-overlay.is-open .mobile-menu-panel { transform: translateX(0); }
+  .mobile-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: var(--s-5); border-bottom: 1px solid var(--line); }
+  .mobile-nav-links { display: flex; flex-direction: column; padding: var(--s-5) 0; }
+  .mobile-language-slot { margin-top: auto; display: flex; justify-content: space-between; padding-top: var(--s-5); border-top: 1px solid var(--line); }
+}
 
-  .drawer-scroll {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-5);
-  }
-  .mobile-nav-links { display: flex; flex-direction: column; gap: var(--s-1); }
+@media (max-width: 560px) {
+  .expertise-grid { grid-template-columns: 1fr; }
+  .hero-photo-wrap { width: min(82vw, 300px); }
 }

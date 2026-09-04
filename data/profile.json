@@ -1,5 +1,21 @@
 {
-  "name": "Your Name",
-  "title": "Senior Backend Engineer",
-  "footer": "Backend Portfolio"
+  "name": "Gerardo Chay",
+  "role": "Senior Backend Engineer",
+  "specialization": "Cloud · Distributed Systems · Fintech",
+  "description": "I design and build scalable backend systems, cloud-native architectures and distributed platforms for real-world production environments.",
+  "availability": "Open to remote opportunities & freelance projects.",
+  "photo": {
+    "src": "assets/images/profile-placeholder.svg",
+    "alt": "Professional photo placeholder for Gerardo Chay"
+  },
+  "links": {
+    "email": "",
+    "github": "",
+    "linkedin": "",
+    "cv": ""
+  },
+  "contact": {
+    "title": "Let's build something.",
+    "description": "Contact details and professional profiles will be connected in a later phase."
+  }
 }

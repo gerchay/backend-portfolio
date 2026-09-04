@@ -1,6 +1,20 @@
-# Backend Portfolio
+# Gerardo Chay — Backend Portfolio
 
-A static portfolio foundation built with HTML, CSS, JavaScript, and JSON. It is based on a portfolio template and will be personalized in later phases.
+A static, single-page professional portfolio built with HTML, CSS, JavaScript, and JSON. It is being developed incrementally and currently contains the definitive information architecture with provisional content.
+
+## Information architecture
+
+The page follows this order:
+
+1. Hero
+2. About
+3. Experience
+4. Selected Work
+5. Expertise
+6. Education
+7. Contact
+
+Content is stored by domain in `data/`. Text marked `PLACEHOLDER` is intentionally provisional and will be replaced in later phases.
 
 ## Run locally
 

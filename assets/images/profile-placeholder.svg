@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" role="img" aria-labelledby="title description">
+  <title id="title">Professional photo placeholder</title>
+  <desc id="description">Neutral placeholder to be replaced with Gerardo Chay's professional photo.</desc>
+  <rect width="520" height="620" fill="#11161f"/>
+  <circle cx="260" cy="230" r="92" fill="#2b3645"/>
+  <path d="M98 550c12-126 72-190 162-190s150 64 162 190" fill="#2b3645"/>
+  <path d="M82 72h90M82 72v90M438 548h-90M438 548v-90" fill="none" stroke="#5be6c4" stroke-width="4" opacity=".65"/>
+</svg>
