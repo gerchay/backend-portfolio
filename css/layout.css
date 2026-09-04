@@ -11,7 +11,7 @@
   margin: 0 auto;
 }
 
-/* ---- Status console (sidebar) ----------------------------- */
+/* ---- Sidebar console -------------------------------------- */
 .sidebar {
   position: sticky;
   top: 0;
@@ -55,7 +55,6 @@
   flex-direction: column;
   gap: var(--s-5);
 }
-.console-section { display: flex; flex-direction: column; }
 
 /* ---- Main ------------------------------------------------- */
 .main-content {
@@ -103,15 +102,6 @@
 .tab-pane.active { display: block; }
 
 .resume-content { display: flex; flex-direction: column; gap: var(--s-7); }
-.skills-section { margin-top: var(--s-2); }
-
-.interests-content { display: flex; flex-direction: column; gap: var(--s-7); }
-
-.contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s-6);
-}
 
 .footer {
   margin-top: auto;
@@ -132,7 +122,6 @@
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); }
 
-  /* The status console collapses into the slide-in drawer below. */
   .sidebar { display: none; }
 
   /* Compact sticky header with hamburger */
@@ -144,39 +133,18 @@
     padding: var(--s-4) var(--s-5);
   }
   .mobile-profile { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
-  .mobile-profile img {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--line-strong);
-    flex: none;
-  }
+  .mobile-profile .avatar-placeholder { width: 42px; height: 42px; }
   .mobile-profile .name { font-size: var(--fs-md); line-height: 1.15; }
   .mobile-profile .title { font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--accent); }
-  .mobile-header-contact { display: none; }
-  .mobile-actions { display: flex; align-items: center; gap: var(--s-2); flex: none; }
   .menu-toggle { font-size: 1.4rem; color: var(--accent); padding: var(--s-2); flex: none; }
 
   /* Navigation lives in the drawer on mobile — hide the tab bar so sections
      aren't duplicated (and so the row can't overflow the viewport). */
   .tabbar { display: none; }
 
-  .mobile-cv-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; height: 40px;
-    border-radius: var(--r-md);
-    color: var(--ground);
-    background: var(--accent);
-  }
-  .mobile-cv-btn:active { background: var(--accent-press); }
-
-  .tabbar { padding: var(--s-3) var(--s-5); }
   .tab-content { padding: var(--s-5) var(--s-4) var(--s-7); }
   .section-head { gap: var(--s-3); }
   .section-title { white-space: normal; }
-  .contact-content { grid-template-columns: 1fr; }
   .footer { padding: var(--s-5) var(--s-4); }
 
   /* ---- Slide-in drawer ---- */
@@ -212,7 +180,6 @@
   .mobile-menu-overlay.show .mobile-menu-content { transform: translateY(0); }
   .close-menu-btn { align-self: flex-end; flex: none; font-size: 1.8rem; line-height: 1; color: var(--text-dim); }
 
-  /* Scrollable region; the download button below it stays pinned + visible */
   .drawer-scroll {
     flex: 1;
     min-height: 0;
@@ -222,22 +189,4 @@
     gap: var(--s-5);
   }
   .mobile-nav-links { display: flex; flex-direction: column; gap: var(--s-1); }
-  .drawer-section { display: flex; flex-direction: column; }
-  .mobile-social-links { display: flex; flex-wrap: wrap; gap: var(--s-2); }
-  .drawer-download {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--s-2);
-    flex: none;
-    padding: var(--s-4);
-    border-radius: var(--r-md);
-    font-family: var(--font-mono);
-    font-size: var(--fs-sm);
-    letter-spacing: var(--tracking-mono);
-    color: var(--ground);
-    background: var(--accent);
-    transition: var(--t-fast);
-  }
-  .drawer-download:hover { background: var(--accent-press); }
 }

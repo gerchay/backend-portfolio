@@ -1,7 +1,7 @@
 /* ============================================================
-   Design tokens — "The Forge console"
+   Design tokens — console theme
    Cool-ink ground, mint-cyan signal accent, amber reserved for
-   status/numerals. All color, type, spacing and motion live here.
+   All color, type, spacing and motion live here.
    ============================================================ */
 
 :root {
@@ -24,11 +24,6 @@
   --accent-soft: rgba(91, 230, 196, 0.12);  /* tint wash        */
   --accent-line: rgba(91, 230, 196, 0.30);  /* tinted border    */
   --amber: #f2a65a;           /* reserved: numerals, warn dots   */
-
-  /* ---- Status semaphore (small dots only) ----------------- */
-  --ok: #5be6c4;
-  --warn: #f2a65a;
-  --down: #ef5f6b;
 
   /* ---- Typography ----------------------------------------- */
   --font-display: "Space Grotesk", system-ui, sans-serif;

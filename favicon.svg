@@ -1,17 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Asad Al Badi">
-  <defs>
-    <radialGradient id="g" cx="30%" cy="22%" r="80%">
-      <stop offset="0" stop-color="#5be6c4" stop-opacity="0.20"/>
-      <stop offset="60%" stop-color="#5be6c4" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <!-- full-bleed dark tile (maskable-safe) -->
-  <rect width="512" height="512" rx="64" fill="#0a0e14"/>
-  <rect width="512" height="512" rx="64" fill="url(#g)"/>
-  <rect x="6" y="6" width="500" height="500" rx="60" fill="none" stroke="#5be6c4" stroke-opacity="0.28" stroke-width="6"/>
-  <!-- terminal prompt: >_  (mint, bold) within the maskable safe zone -->
-  <g fill="none" stroke="#5be6c4" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 150 150 L 268 256 L 150 362"/>
-    <path d="M 300 360 H 392"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Backend portfolio">
+  <rect width="64" height="64" rx="12" fill="#0a0e14"/>
+  <path d="M17 22l11 10-11 10M33 43h14" fill="none" stroke="#5be6c4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

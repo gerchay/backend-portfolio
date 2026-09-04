@@ -1,23 +1,8 @@
 {
-  "name": "Asad Al Badi — Portfolio",
-  "short_name": "Asad Al Badi",
-  "description": "Software Engineer — SaaS, interconnected systems, and apps.",
-  "start_url": "/",
+  "name": "Backend Portfolio",
+  "short_name": "Portfolio",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0a0e14",
-  "theme_color": "#0a0e14",
-  "icons": [
-    {
-      "src": "/assets/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/assets/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+  "theme_color": "#0a0e14"
 }

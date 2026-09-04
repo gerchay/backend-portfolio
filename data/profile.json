@@ -1,40 +1,5 @@
 {
-  "name": "Asad Al Badi",
-  "title": "Software Engineer",
-  "website": "asadalbadi.dev",
-  "avatar": "assets/images/profile_cropped.png",
-  "contactInfo": [
-    {
-      "icon": "fas fa-envelope",
-      "text": "asad.badi@proton.me"
-    },
-    {
-      "icon": "fas fa-phone",
-      "text": "+968 91148404"
-    },
-    {
-      "icon": "fas fa-map-marker-alt",
-      "text": "Muscat, Oman"
-    }
-  ],
-  "socialLinks": [
-    {
-      "icon": "fab fa-github",
-      "url": "https://github.com/asad-albadi",
-      "label": "GitHub"
-    },
-    {
-      "icon": "fab fa-linkedin",
-      "url": "https://linkedin.com/in/asad-albadi",
-      "label": "LinkedIn"
-    },
-    {
-      "icon": "fas fa-server",
-      "url": "https://gist.github.com/asad-albadi/35387bd422d295fd79416d42febe7f7d",
-      "label": "Server Gist"
-    }
-  ],
-  "footer": {
-    "copyright": "© 2025 Asad Al Badi's Portfolio. All rights reserved."
-  }
-} 
+  "name": "Your Name",
+  "title": "Senior Backend Engineer",
+  "footer": "Backend Portfolio"
+}

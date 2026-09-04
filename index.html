@@ -3,285 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Asad Al Badi — Software Engineer building SaaS, large interconnected systems, and cross-platform apps, with deep automation and IT infrastructure experience.">
+    <meta name="description" content="Senior Backend Engineer Portfolio">
     <meta name="theme-color" content="#0a0e14">
-    <title>Asad Al Badi — Software Engineer</title>
-
-    <!-- Open Graph / Twitter -->
+    <title>Backend Portfolio</title>
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://asadalbadi.dev/">
-    <meta property="og:title" content="Asad Al Badi — Software Engineer">
-    <meta property="og:description" content="Software Engineer building SaaS, large interconnected systems, and cross-platform apps, with deep automation and IT infrastructure experience.">
-    <meta property="og:image" content="https://asadalbadi.dev/assets/og-image.png">
-    <meta property="og:image:secure_url" content="https://asadalbadi.dev/assets/og-image.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Asad Al Badi — Software Engineer">
-    <meta property="og:site_name" content="Asad Al Badi">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Asad Al Badi — Software Engineer">
-    <meta name="twitter:description" content="Software Engineer building SaaS, large interconnected systems, and cross-platform apps, with deep automation and IT infrastructure experience.">
-    <meta name="twitter:image" content="https://asadalbadi.dev/assets/og-image.png">
-
-    <!-- Stylesheets (cascade order matters: tokens → base → layout → components) -->
-    <link rel="stylesheet" href="css/colors.css?v=2">
-    <link rel="stylesheet" href="css/style.css?v=2">
-    <link rel="stylesheet" href="css/layout.css?v=2">
-    <link rel="stylesheet" href="css/components.css?v=2">
+    <meta property="og:title" content="Backend Portfolio">
+    <meta property="og:description" content="Senior Backend Engineer Portfolio">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Backend Portfolio">
+    <meta name="twitter:description" content="Senior Backend Engineer Portfolio">
+    <link rel="stylesheet" href="css/colors.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/layout.css?v=3">
+    <link rel="stylesheet" href="css/components.css?v=3">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    </noscript>
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
 <body>
-    <!-- Decorative background: dotted grid + vignette (non-interactive) -->
-    <div class="bg" aria-hidden="true">
-        <div class="bg-grid"></div>
-        <div class="bg-glow"></div>
-    </div>
-
+    <div class="bg" aria-hidden="true"><div class="bg-grid"></div><div class="bg-glow"></div></div>
     <div class="app">
-        <!-- ===================== STATUS CONSOLE (sidebar) ===================== -->
         <aside class="sidebar">
             <div class="console">
-                <div class="console-bar">
-                    <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-                    <span class="console-path">asad@forge: ~</span>
-                </div>
-
+                <div class="console-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="console-path">portfolio: ~</span></div>
                 <div class="console-body">
                     <div class="profile">
-                        <div class="avatar">
-                            <img src="assets/images/profile_cropped.png" alt="Asad Al Badi">
-                        </div>
-                        <div class="profile-id">
-                            <h1 class="name"><!-- profile.json --></h1>
-                            <p class="title"><!-- profile.json --></p>
-                        </div>
-                    </div>
-
-                    <div class="status">
-                        <span class="status-dot" data-state="ok"></span>
-                        <span class="status-label">available for work</span>
-                        <span class="status-clock" id="local-clock">--:--</span>
-                    </div>
-
-                    <div class="console-section">
-                        <span class="console-key">// contact</span>
-                        <div class="contact-info"><!-- profile.json --></div>
-                    </div>
-
-                    <div class="console-section">
-                        <span class="console-key">// links</span>
-                        <div class="social-links"><!-- profile.json --></div>
+                        <div class="avatar-placeholder" aria-hidden="true"><i class="fas fa-user"></i></div>
+                        <div class="profile-id"><h1 class="name"></h1><p class="title"></p></div>
                     </div>
                 </div>
             </div>
         </aside>
-
-        <!-- ===================== MAIN ===================== -->
         <main class="main-content">
-            <nav class="navbar">
-                <!-- Mobile header -->
+            <nav class="navbar" aria-label="Portfolio sections">
                 <div class="mobile-header">
                     <div class="mobile-profile">
-                        <img src="assets/images/profile_cropped.png" alt="">
-                        <div>
-                            <h1 class="name"><!-- profile.json --></h1>
-                            <p class="title"><!-- profile.json --></p>
-                            <div class="mobile-header-contact"></div>
-                        </div>
+                        <div class="avatar-placeholder" aria-hidden="true"><i class="fas fa-user"></i></div>
+                        <div><h1 class="name"></h1><p class="title"></p></div>
                     </div>
-                    <div class="mobile-actions">
-                        <button class="mobile-cv-btn" id="header-download-cv" aria-label="Download CV">
-                            <i class="fas fa-download"></i>
-                        </button>
-                        <button class="menu-toggle" aria-label="Toggle menu">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
+                    <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
                 </div>
-
-                <!-- Desktop / tablet tab bar -->
-                <div class="tabbar">
-                    <span class="tabbar-prompt">&gt;</span>
-                    <div class="tab-navigation"><!-- navigation.json --></div>
-                </div>
+                <div class="tabbar"><span class="tabbar-prompt" aria-hidden="true">&gt;</span><div class="tab-navigation"></div></div>
             </nav>
-
             <div class="tab-content">
-                <!-- ===== ABOUT (default / hero) ===== -->
                 <section id="about" class="section tab-pane active">
                     <div class="hero">
-                        <div class="hero-term" aria-hidden="true">
-                            <span class="term-prompt">asad@forge:~$</span>
-                            <span class="term-cmd">whoami</span>
-                        </div>
-                        <h2 class="hero-headline">
-                            I build systems<br>that <span class="accent">run themselves.</span>
-                        </h2>
-                        <p class="hero-sub">
-                            <span class="type-target" data-type="Software Engineer — SaaS · interconnected systems · apps · automation">Software Engineer — SaaS · interconnected systems · apps · automation</span><span class="caret">_</span>
-                        </p>
+                        <div class="hero-term" aria-hidden="true"><span class="term-prompt">portfolio:~$</span><span class="term-cmd">whoami</span></div>
+                        <h2 class="hero-headline">Backend Portfolio</h2>
+                        <p class="hero-sub">Senior Backend Engineer</p>
                     </div>
-
-                    <div class="section-head">
-                        <span class="section-index">01</span>
-                        <h3 class="section-title"><!-- about.json --></h3>
-                        <span class="section-rule"></span>
-                    </div>
-
-                    <p class="about-text"><!-- about.json --></p>
-
-                    <div class="what-i-do">
-                        <span class="console-key">// what I do</span>
-                        <div class="services-grid"><!-- about.json --></div>
-                    </div>
+                    <div class="section-head"><span class="section-index">01</span><h3 class="section-title"></h3><span class="section-rule"></span></div>
+                    <p class="about-text"></p>
                 </section>
-
-                <!-- ===== RESUME ===== -->
                 <section id="resume" class="section tab-pane">
-                    <div class="section-head">
-                        <span class="section-index">02</span>
-                        <h3 class="section-title"><!-- resume.json --></h3>
-                        <span class="section-rule"></span>
-                    </div>
-
+                    <div class="section-head"><span class="section-index">02</span><h3 class="section-title"></h3><span class="section-rule"></span></div>
                     <div class="resume-content">
-                        <div class="resume-section">
-                            <span class="console-key">// work experience</span>
-                            <div class="timeline"><!-- resume.json --></div>
-                        </div>
-                        <div class="resume-section">
-                            <span class="console-key">// education</span>
-                            <div class="timeline"><!-- resume.json --></div>
-                        </div>
-                        <div class="resume-section">
-                            <span class="console-key">// certifications</span>
-                            <div class="timeline"><!-- resume.json --></div>
-                        </div>
-
-                        <div class="skills-section" id="technical-skills">
-                            <span class="console-key">// technical skills</span>
-                            <div class="skills-grid"><!-- resume.json --></div>
-                        </div>
-                        <div class="skills-section" id="soft-skills">
-                            <span class="console-key">// soft skills</span>
-                            <div class="skills-grid"><!-- resume.json --></div>
-                        </div>
+                        <div class="resume-section"><span class="console-key">// work experience</span><div class="timeline"></div></div>
+                        <div class="resume-section"><span class="console-key">// education</span><div class="timeline"></div></div>
                     </div>
                 </section>
-
-                <!-- ===== PORTFOLIO ===== -->
                 <section id="portfolio" class="section tab-pane">
-                    <div class="section-head">
-                        <span class="section-index">03</span>
-                        <h3 class="section-title">Portfolio</h3>
-                        <span class="section-rule"></span>
-                    </div>
-                    <div class="portfolio-filters"><!-- portfolio.js --></div>
-                    <div class="portfolio-grid"><!-- portfolio.json --></div>
-                </section>
-
-                <!-- ===== INTERESTS ===== -->
-                <section id="interests" class="section tab-pane">
-                    <div class="section-head">
-                        <span class="section-index">04</span>
-                        <h3 class="section-title"><!-- interests.json --></h3>
-                        <span class="section-rule"></span>
-                    </div>
-
-                    <div class="interests-content">
-                        <div class="core-interests">
-                            <span class="console-key">// core interests</span>
-                            <div class="interests-grid core-interests-grid"></div>
-                        </div>
-                        <div class="fusion-passions">
-                            <span class="console-key">// where worlds collide</span>
-                            <h2></h2>
-                            <div class="interests-grid fusions-grid"></div>
-                        </div>
-                        <div class="homelab-showcase">
-                            <span class="console-key">// the digital forge</span>
-                            <h2></h2>
-                            <div class="homelab-links"></div>
-                            <div class="homelab-content"></div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ===== HONORS ===== -->
-                <section id="honors" class="section tab-pane">
-                    <div class="section-head">
-                        <span class="section-index">05</span>
-                        <h3 class="section-title"><!-- honors.json --></h3>
-                        <span class="section-rule"></span>
-                    </div>
-                    <div class="honors-content">
-                        <div class="timeline"><!-- honors.json --></div>
-                    </div>
-                </section>
-
-                <!-- ===== CONTACT ===== -->
-                <section id="contact" class="section tab-pane">
-                    <div class="section-head">
-                        <span class="section-index">06</span>
-                        <h3 class="section-title"><!-- contact.json --></h3>
-                        <span class="section-rule"></span>
-                    </div>
-                    <div class="contact-content">
-                        <div class="contact-form-container">
-                            <form class="contact-form"><!-- contact.json --></form>
-                        </div>
-                        <div class="map-container"><!-- contact.json --></div>
-                    </div>
+                    <div class="section-head"><span class="section-index">03</span><h3 class="section-title"></h3><span class="section-rule"></span></div>
+                    <div class="portfolio-grid"></div>
                 </section>
             </div>
-
-            <footer class="footer"><!-- profile.json --></footer>
+            <footer class="footer"></footer>
         </main>
     </div>
-
-    <!-- Mobile menu (drawer) — top-level so no transformed/blurred ancestor clamps it -->
-    <div class="mobile-menu-overlay">
-        <div class="mobile-menu-content">
-            <button class="close-menu-btn" aria-label="Close menu">&times;</button>
-            <div class="drawer-scroll">
-                <nav class="mobile-nav-links" aria-label="Sections"></nav>
-                <div class="drawer-section">
-                    <span class="console-key">// contact</span>
-                    <div class="mobile-contact-info"></div>
-                </div>
-                <div class="drawer-section">
-                    <span class="console-key">// links</span>
-                    <div class="mobile-social-links"></div>
-                </div>
-            </div>
-            <button class="drawer-download" id="drawer-download-cv">
-                <i class="fas fa-download"></i> download cv
-            </button>
+    <div class="mobile-menu-overlay" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-content" role="dialog" aria-modal="true" aria-label="Portfolio navigation">
+            <button class="close-menu-btn" type="button" aria-label="Close menu">&times;</button>
+            <div class="drawer-scroll"><nav class="mobile-nav-links" aria-label="Portfolio sections"></nav></div>
         </div>
     </div>
-
-    <script src="js/data-loader.js?v=2"></script>
-    <script src="js/main.js?v=2"></script>
-    <script src="js/portfolio.js?v=2"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="js/pdfGenerator.js?v=2"></script>
+    <script src="js/main.js?v=3" defer></script>
+    <script src="js/portfolio.js?v=3" defer></script>
+    <script src="js/data-loader.js?v=3" defer></script>
 </body>
 </html>

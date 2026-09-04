@@ -44,9 +44,7 @@ h1, h2, h3, h4 {
 .section-index,
 .console-path,
 .term-prompt,
-.term-cmd,
-.status-label,
-.status-clock {
+.term-cmd {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
   letter-spacing: var(--tracking-mono);

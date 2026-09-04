@@ -1,40 +1,7 @@
 {
   "tabs": [
-    {
-      "id": "about",
-      "title": "About",
-      "active": true,
-      "hidden": false
-    },
-    {
-      "id": "resume",
-      "title": "Resume",
-      "active": false,
-      "hidden": false
-    },
-    {
-      "id": "portfolio",
-      "title": "Portfolio",
-      "active": false,
-      "hidden": false
-    },
-    {
-      "id": "interests",
-      "title": "Interests",
-      "active": false,
-      "hidden": false
-    },
-    {
-      "id": "honors",
-      "title": "Honors",
-      "active": false,
-      "hidden": false
-    },
-    {
-      "id": "contact",
-      "title": "Contact",
-      "active": false,
-      "hidden": true
-    }
+    { "id": "about", "title": "About", "active": true },
+    { "id": "resume", "title": "Resume", "active": false },
+    { "id": "portfolio", "title": "Portfolio", "active": false }
   ]
-} 
+}
