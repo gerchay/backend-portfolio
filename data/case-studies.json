@@ -1,4 +1,54 @@
 {
-  "intro": "Professional case studies coming next.",
-  "items": []
+  "intro": "Selected examples of production systems and technical challenges I've worked on across financial services, cloud platforms and media processing.",
+  "confidentialityNote": "Implementation details are intentionally generalized to protect private systems and company information.",
+  "items": [
+    {
+      "id": "financial-backend-platforms",
+      "title": "Financial Backend Platforms",
+      "type": "Banking / Financial Services",
+      "shortDescription": "Backend services for financial products, enterprise integrations and critical operational workflows.",
+      "context": "Financial platforms supporting lending and extra-financing products.",
+      "company": "Grupo Financiero Ficohsa",
+      "role": "Backend Developer",
+      "problem": "Financial products depend on backend workflows that must remain reliable as integrations, data sources and operational requirements evolve. The challenge was to build and modernize services while preserving security, maintainability and visibility into production behavior.",
+      "contribution": "I contributed to the design and evolution of backend services, enterprise APIs and serverless workflows. My work included data integration, caching, resilience, automated testing, security and code-quality controls, observability, and participation in backend technical decisions and leadership responsibilities.",
+      "architectureHighlights": ["Serverless", "Financial Systems", "API Architecture", "Observability", "Security"],
+      "technologies": ["Node.js", "TypeScript", "NestJS", "Azure Functions", "Azure", "MongoDB / Cosmos DB", "Redis", "Application Insights"],
+      "outcome": "The work supported more maintainable and reliable backend workflows, stronger operational visibility, and safer delivery practices through testing, security validation and code-quality controls.",
+      "private": true,
+      "featured": true
+    },
+    {
+      "id": "cloud-video-processing-streaming",
+      "title": "Cloud Video Processing & Streaming",
+      "type": "Media / Streaming / Video Processing",
+      "shortDescription": "Distributed backend workflows for processing and delivering audiovisual content through cloud platforms.",
+      "context": "Media platforms serving major entertainment clients.",
+      "company": "Toolbox Digital S.A.",
+      "role": "Tech Lead / Backend Developer",
+      "problem": "Media platforms need to ingest, process and distribute audiovisual content through complex workflows across cloud services and external transfer systems. These workloads require coordinated backend jobs, reliable encoding and transcoding, and enough operational visibility to support production processing.",
+      "contribution": "I built backend services and microservices for media ingestion, processing and delivery, working with distributed jobs, object storage, containerized services, CDN delivery and video pipelines. I also integrated file-transfer systems, contributed to observability and legacy workflow modernization, and provided technical leadership within the backend team.",
+      "architectureHighlights": ["Distributed Processing", "Cloud", "Video Pipelines", "Microservices", "Observability"],
+      "technologies": ["Node.js", "TypeScript", "AWS", "Docker", "S3", "CloudFront", "FFmpeg", "MongoDB", "Elasticsearch"],
+      "outcome": "This work supported scalable content processing, reusable backend services, better operational visibility and more maintainable media-processing workflows as legacy components evolved.",
+      "private": true,
+      "featured": true
+    },
+    {
+      "id": "serverless-backend-architecture",
+      "title": "Serverless Backend Architecture",
+      "type": "Cloud Architecture",
+      "shortDescription": "A cross-company capability for building decoupled, event-driven backend services on AWS and Azure.",
+      "context": "Enterprise backend systems across AWS and Azure.",
+      "company": "Cross-company experience",
+      "role": "Backend Engineer",
+      "problem": "Enterprise backend systems often need to scale individual workloads and integrations without carrying unnecessary infrastructure overhead. The architectural challenge is to keep functions, APIs, events and workflows decoupled while retaining clear security boundaries, observability and operational ownership.",
+      "contribution": "Across production environments, I have worked on functions and services, API layers, event-driven communication, workflow orchestration and asynchronous processing. I have also contributed to infrastructure as code, permissions and security, monitoring, logging, reliability practices and maintainable service boundaries.",
+      "architectureHighlights": ["Event-Driven", "Serverless", "Infrastructure as Code", "Workflow Orchestration", "Distributed Systems"],
+      "technologies": ["Node.js", "TypeScript", "AWS Lambda", "Azure Functions", "API Gateway", "Step Functions", "EventBridge", "SAM / CloudFormation"],
+      "outcome": "These patterns supported clearer service boundaries, independent deployment, scalable event processing, reduced infrastructure overhead and improved operational visibility.",
+      "private": true,
+      "featured": true
+    }
+  ]
 }

@@ -210,6 +210,7 @@ function renderExperience(data) {
 function renderCaseStudies(data) {
   if (!data) return;
   setText('.work-intro', data.intro);
+  setText('.work-confidentiality', data.confidentialityNote);
   const grid = document.querySelector('.case-study-grid');
   if (!grid || !Array.isArray(data.items)) return;
   grid.replaceChildren();
@@ -217,6 +218,8 @@ function renderCaseStudies(data) {
   data.items.forEach((item) => {
     const article = document.createElement('article');
     article.className = `case-study-card${item.featured ? ' featured' : ''}`;
+    article.id = item.id;
+
     const top = document.createElement('div');
     top.className = 'case-study-top';
     const type = document.createElement('span');
@@ -234,13 +237,66 @@ function renderCaseStudies(data) {
     const description = document.createElement('p');
     description.className = 'card-summary';
     description.textContent = item.shortDescription;
-    const context = document.createElement('p');
+
+    const context = document.createElement('div');
     context.className = 'case-context';
-    context.textContent = item.context;
-    const tagList = document.createElement('ul');
-    tagList.className = 'tag-list';
-    [...(item.technologies || []), ...(item.architectureTags || [])].forEach((tag) => tagList.appendChild(makeTag(tag)));
-    article.append(top, title, description, context, tagList);
+    const company = document.createElement('span');
+    company.textContent = item.company;
+    const separator = document.createElement('span');
+    separator.textContent = '·';
+    separator.setAttribute('aria-hidden', 'true');
+    const role = document.createElement('span');
+    role.textContent = item.role;
+    context.append(company, separator, role);
+
+    const contextDescription = document.createElement('p');
+    contextDescription.className = 'case-context-description';
+    contextDescription.textContent = item.context;
+
+    const architectureLabel = document.createElement('p');
+    architectureLabel.className = 'case-label';
+    architectureLabel.textContent = 'Architecture';
+    const architectureTags = document.createElement('ul');
+    architectureTags.className = 'tag-list architecture-tags';
+    (item.architectureHighlights || []).forEach((tag) => architectureTags.appendChild(makeTag(tag, 'tag architecture-tag')));
+
+    const technologiesLabel = document.createElement('p');
+    technologiesLabel.className = 'case-label';
+    technologiesLabel.textContent = 'Technologies';
+    const technologies = document.createElement('ul');
+    technologies.className = 'tag-list';
+    (item.technologies || []).forEach((tag) => technologies.appendChild(makeTag(tag)));
+
+    const details = document.createElement('details');
+    details.className = 'case-details';
+    const detailsToggle = document.createElement('summary');
+    detailsToggle.textContent = 'Read case study';
+    const detailsContent = document.createElement('div');
+    detailsContent.className = 'case-details-content';
+
+    [
+      ['Problem', item.problem],
+      ['Role & Contribution', item.contribution],
+      ['Outcome', item.outcome]
+    ].forEach(([headingText, bodyText]) => {
+      const section = document.createElement('section');
+      const heading = document.createElement('h4');
+      heading.textContent = headingText;
+      const body = document.createElement('p');
+      body.textContent = bodyText;
+      section.append(heading, body);
+      detailsContent.appendChild(section);
+    });
+
+    if (item.confidentialityNote) {
+      const note = document.createElement('p');
+      note.className = 'case-confidentiality-note';
+      note.textContent = item.confidentialityNote;
+      detailsContent.appendChild(note);
+    }
+
+    details.append(detailsToggle, detailsContent);
+    article.append(top, title, description, context, contextDescription, architectureLabel, architectureTags, technologiesLabel, technologies, details);
     grid.appendChild(article);
   });
 }
